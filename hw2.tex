@@ -1,0 +1,613 @@
+%++++++++++++++++++++++++++++++++++++++++
+\documentclass[article,12pt]{article}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabu} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{tikz}
+\usepackage{caption} 
+\usepackage{fancyhdr}
+\usepackage{amssymb} % symbols like /therefore
+\usepackage{amsthm} % proofs
+\usepackage{enumerate} % lettered lists
+\usepackage{mathtools} % macros
+\usetikzlibrary{scopes}
+\usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039}
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+
+\newcounter{question}
+\setcounter{question}{0}
+\def\questionnum{{\Large\bfseries{Question \arabic{question} }}\\[1em]}
+
+\newcommand{\question}{
+    \stepcounter{question}
+    \questionnum
+}
+
+\newcommand{\solution}{
+    {{\large\bfseries{Solution}}}
+}
+
+\pagestyle{fancy}
+\fancyhf{}% clears all header and footer fields
+\fancyfoot[C]{--~\thepage~--}
+\renewcommand*{\headrulewidth}{0pt}
+\renewcommand*{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}% clears all header and footer fields
+  \fancyfoot[C]{--~\thepage~--}%
+  \renewcommand*{\headrulewidth}{0pt}%
+  \renewcommand*{\footrulewidth}{0pt}%
+}
+
+% Shortcuts
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\set{\{}{\}}
+\DeclarePairedDelimiter\paren{(}{)}
+
+\newcommand{\df}{\displaystyle\frac} % displaystyle fraction
+\newcommand{\qeq}{\overset{?}{=}} % questionable equality
+
+% Sets
+\newcommand{\unite}{\cup}
+\newcommand{\inter}{\cap}
+
+\newcommand{\reals}{\mathbb{R}} % real numbers: textbook is Z^+ and 0
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\rats}{\mathbb{Q}}
+
+\setlength\parindent{0pt}
+
+% Sign Charts
+\newdimen\tcolw \tcolw=2.5em % the column width
+\edef\ecatcode{\catcode`&=\the\catcode`&\relax}\catcode`&=4
+\def\sgchart#1#2{\vbox{\offinterlineskip\halign{\hfil##\quad&##\hfil\crcr\sgchartA#2,:,%
+   \omit\sgchartR&\kern.2pt\sgchartS{.5\tcolw}\relax\sgchartE#1,\relax,%
+   \sgchartS{.5\tcolw}\relax\cr
+   \noalign{\kern2pt}&\def~{}\kern.5\tcolw\sgchartD#1,\relax,\cr}}}
+\def\sgchartA#1:#2,{\cr\ifx,#1,\else $#1$&\sgchartB#2{}\expandafter\sgchartA\fi}
+\def\sgchartB#1{\hbox to\tcolw{\hss$#1$\hss}\sgchartC}
+\def\sgchartC#1{\ifx,#1,\else
+   \strut\vrule\kern-.4pt\hbox to\tcolw{\hss$#1$\hss}\expandafter\sgchartC\fi}
+\def\sgchartD#1#2,{\ifx\relax#1\else\hbox to\tcolw{\hss$#1#2$\hss}\expandafter\sgchartD\fi}
+\def\sgchartE#1#2,{\ifx\relax#1\else
+    \ifx~#1\sgchartS\tcolw\circ \else\sgchartS\tcolw\bullet\fi \expandafter\sgchartE\fi}
+\def\sgchartR{\leaders\vrule height2.8pt depth-2.4pt\hfil}
+\def\sgchartS#1#2{\hbox to#1{\kern-.2pt\sgchartR \ifx\relax#2\else
+   \kern-.7pt$#2$\kern-.7pt\sgchartR\fi\kern-.2pt}}
+\ecatcode
+%++++++++++++++++++++++++++++++++++++++++
+
+\title{Practice Exam 2}
+\author{Denny Cao}
+\date{%
+    %CCP MATH163 \\%
+    %Dr. Petrescu \\[2ex]%
+    \today
+}
+\begin{document}
+\maketitle
+% Question 1
+\question
+Let $S = \{\emptyset ,a,\{a\}\}$. Determine whether each of these is an  element of $S$, a subset of $S$, neither, or both. Justify your answer\\(a) \{a\}\\(b) \{\{a\}\} \\(c) $\emptyset$\\(d) $\{\{\emptyset\}, a\}$\\(e) $\{\emptyset\}$\\(f) $\{\emptyset,a\}$ \\
+
+\solution
+\begin{enumerate}[(a)]
+    \item $\set*{a}$ is both an element of $S$ and a subset of $S$. $\set*{a}$ is in $S$, therefore it is an element of $S$. All elements of $\set*{a}$ are in $S$ ($S$ contains an element $a$), therefore $\set*{a}$ is a subset of $S$. 
+    \item $\set*{\set*{a}}$ is not an element of $S$, but is a subset of $S$. $\set*{\set*{a}}$ is not in $S$, therefore it is not an element of $S$. All elements of $\set*{\set*{a}}$ are in $S$ ($S$ contains an element $\set*{a}$), therefore $\set*{\set*{a}}$ is a subset of $S$.
+    \item $\emptyset$ is both an element of $S$ and a subset of $S$. $\emptyset$ is in $S$, therefore it is an element of $S$. $\emptyset$ contains no elements, so all its elements (there are none) are in $S$. Therefore, $\emptyset$ is a subset of $S$.
+    \item $\set*{\set*{\emptyset}, a}$ is neither an element of $S$ nor a subset of $S$. $\set*{\set*{\emptyset}, a}$ is in $S$, therefore it is not an element of $S$. Since $\set*{\emptyset}$ is an element of $\set*{\set*{\emptyset}, a}$ and not $S$, $\set*{\set*{\emptyset}, a}$ is not a subset of $S$.
+    \item $\set*{\emptyset}$ is not an element of $S$, but is a subset of $S$. $\set*{\emptyset}$ is not in $S$, therefore it is not an element of $S$. All elements of $\set*{\emptyset}$ are in $S$ ($S$ contains an element $\emptyset$), therefore $\set*{\emptyset}$ is a subset of $S$.
+    \item $\set*{\emptyset, a}$ is not an element of $S$, but is a subset of $S$. $\set*{\emptyset, a}$ is not in $S$, therefore it is not an element of $S$. All elements of $\set*{\emptyset, a}$ are in $S$ ($S$ contains the elements $\emptyset$ and $a$), therefore $\set*{\emptyset, a}$ is a subset of $S$.
+\end{enumerate}
+\newpage
+
+% Question 2
+\question
+You begin with \$1000. You invest it at 5\% compounded annually, but at the end of each year you withdraw \$100 immediately after the interest is paid.\\(a) Set up a recurrence relation and initial condition for the amount you have after n years.\\(b) How much is left in the account after you have withdrawn \$100 at the end of the third year?\\(c) Find a formula for $a_n$.\\(d) Use the formula to determine how long it takes before the last withdrawal reduces the balance in the account to \$0.\\
+
+\solution
+\begin{enumerate}[(a)]
+    \item 
+    $S_n = S_{n-1}(1.05) - 100, n \geq 1, S_0 = 1000$
+    \item
+    \begin{align*}
+        S_0 = 1000 && S_1 &= S_0(1.05) - 100  &&& S_2 &= S_1(1.05) - 100 &&& S_3 &= S_2(1.05) - 100 \\
+                   &&     &= 1000(1.05) - 100 &&&     &= 950(1.05) - 100 &&&     &= 897.5(1.05) - 100 \\
+                   &&     &= 1050 - 100       &&&     &= 997.5 - 100     &&&     &= 942.375 - 100 \\
+                   &&     &= 950              &&&     &= 897.5           &&&     &= 842.375
+    \end{align*}
+    \textbf{\$842.37 is left in the account after withdrawing \$100 at the end of the third year.}
+    \item 
+    Let $P = S_0 = 1000, r = 1.05, c=100$.
+    \begin{align*}
+        S_0 = P && S_1 = Pr - c && S_2 &= (Pr - c)r - c &&& S_3 &= (Pr^2 - cr - c)r - c \\
+                &&              &&     &= Pr^2 - cr - c &&&     &= Pr^3 - cr^2 - cr - c
+    \end{align*}
+    \begin{align*}
+        S_n &= Pr^n - cr^{n-1} - cr^{n-2} - \cdots - cr^1 - c \\
+            &= Pr^n - c\paren*{r^{n-1} - r^{n-2} - \cdots - r - 1} \\
+            &= Pr^n - c\paren*{\sum_{i=0}^{n-1} r^i} \\
+            &= Pr^n - c\paren*{\sum_{i=1}^{n} r^{i-1}} \\
+            &= Pr^n - c\paren*{\frac{1-r^n}{1-r}} \\
+            &= 1000\paren*{1.05}^n - 100\paren*{\frac{1-1.05^n}{1-1.05}} \\
+            &= 1000\paren*{1.05}^n + 2000\paren*{1-1.05^n} \\
+            &= 1000\paren*{1.05^n + 2 - 2\paren*{1.05^n}} \\
+            &= 1000\paren*{-1.05^n + 2} \\
+        S_n &= -1000\paren*{1.05^n - 2}
+    \end{align*}
+    \item 
+    \begin{align*}
+        0 &= -1000(1.05^n - 2) \\
+        2 &= 1.05^n \\
+        \log_{1.05} 2 &= n \\
+        \frac{\log 2}{\log 1.05} &= n \\
+        14.21 &\approx n 
+    \end{align*}
+    \textbf{It will take 15 years until the last withdrawal reduces the balance in the account to \$0.}
+\end{enumerate}
+\newpage
+
+% Question 3
+\question
+If $P(A)$ means the power set of $A$, \\
+(a) Prove that $P(A)\cup P(B) \subset P(A\cup B)$ is true for all sets A and B.\\(b) Prove that the converse of (a) is not true. That is, prove that:\\ $P(A \cup B) \subset P(A) \cup P(B)$ is false for some sets A and B. \\
+
+\solution
+\begin{enumerate}[(a)]
+    \item 
+    \begin{proof}
+        Suppose $S \in (P(A) \unite P(B))$. \\
+        \\
+        Then $S\in P(A) \lor S \in P(B)$. Since $S$ is in the power set of $A$ or $B$, it is a subset of $A$ or $B$: $S \subset A \lor S \subset B$. \\
+        \\
+        $P(A \unite B)$, contains all subsets of $A \unite B$, which includes the subsets of $A$ and $B$. This means that in either case $S \subset A \lor S \subset B$, $S \in P(A \unite B)$. \\
+        \\
+        Since $S$ is arbitrary, $P(A) \unite P(B) \subset P(A \unite B)$.
+    \end{proof}
+    
+    \item 
+    \begin{proof}
+        Suppose $A = \set*{0}, \ B = \set*{1}$ \\
+        \\
+        $A \unite B = \set*{0,1}$. $P(A \unite B) = \set*{\emptyset, \set*{0}, \set*{1}, \set*{0,1}}$ \\
+        \\
+        $P(A) = \set*{\emptyset, \set*{0}}$. $P(B) = \set*{\emptyset, \set*{1}}$. $P(A) \unite P(B) = \set*{\emptyset, \set*{0}, \set*{1}}$. \\ 
+        \\
+        For $P(A \unite B)$ to be a subset of $P(A) \unite P(B)$, $P(A) \unite P(B)$ must contain all elements of $P(A \unite B)$. \\
+        \\
+        Since $\set*{0,1} \notin P(A) \unite P(B)$, $P(A \unite B) \subset P(A) \unite P(B)$ is false for some sets $A$ and $B$.
+    \end{proof}
+    
+\end{enumerate}
+\newpage
+
+% Question 4
+\question
+Prove that the following is true for all sets A, B, and C: if $A \cap C \subset B \cap C$ and $A \cup C \subset B \cup C$, then $A \subset B$. \\
+
+\solution
+\begin{proof}
+    Suppose $x \in A$. There are two cases: \\
+    \\
+    \textbf{Case 1: $x \in C$}. Then $x \in A \inter C$. Since $A \inter C \subset B \inter C$, $x \in B \inter C$. Therefore, $x \in B$. \\
+    \textbf{Case 2: $x \not\in C$}. Since $x \in A$, $x \in A \unite C$. Since $A \unite C \subset B \unite C$, $x \in B \unite C$. Because $x \not\in C$, $x \in B$. \\
+    \\
+    Since $x$ is arbitrary, $A \subset B$.
+\end{proof}
+\newpage
+% Question 5
+\question
+Let $f:R\rightarrow R$ have the rule $f(x) = \lceil 3x\rceil + 1$and $g:R\rightarrow R$ have the rule $g(x)=\df{x}{3}$.\\(a) Find $(f o g)^{-1}=(\{2.5\})$.\\ (b) Find $(f o g)^{-1}=(\{2\})$. \\
+
+\solution
+\begin{align*}
+    (f \circ g)(x) &= \ceil*{3\paren*{\df{x}{3}}} + 1\\
+                   &= \ceil*{x} + 1 
+\end{align*}
+
+\begin{enumerate}[(a)]
+    \item 
+    \begin{align*}
+        (f \circ g)(\set*{2.5}) &= \set*{\ceil*{2.5} + 1} \\
+                         &= \set*{3 + 1} \\
+                         &= \set*{4}
+    \end{align*}
+    \item
+    \begin{align*}
+        (f \circ g)(\set*{2}) &= \set*{\ceil*{2} + 1} \\
+                       &= \set*{2 + 1} \\
+                       &= \set*{3}
+    \end{align*}
+\end{enumerate}
+\newpage
+
+% Question 6
+\question
+Find a formula for the recurrence relation $a_n = 2a_{n-1} + 2^n, a_0 = 1$, using a recursive method. \\
+
+\solution
+\begin{align*}
+    a_0 &= a_0 &&& a_1 &= 2(a_0) + 2^1  &&& a_2 &= 2(2^1(a_0) + 2^1) + 2^2  &&& a_3 &= 2(2^2 a_0 + 2(2^2)) + 2^3 \\ 
+        &= 1   &&&     &= 2^1 a_0 + 2^1 &&&     &= 2^2 a_0 + 2^2 + 2^2      &&&     &= 2^3 a_0 + 2^3 + 2^3 + 2^3 \\
+        &      &&&     &= 4             &&&     &= 2^2 a_0 + 2(2^2)         &&&     &= 2^3 a_0 + 3(2^3) \\
+        &      &&&     &                &&&     &= 12                       &&&     &= 32
+\end{align*}
+\begin{align*}
+    a_n &= 2^n a_0 + n(2^n) \\
+        &= 2^n + n(2^n) \\
+        &= (n+1)2^n
+\end{align*}
+
+\newpage
+
+% Question 7
+\question
+Let $f : \nats\cup\{0\} \rightarrow \nats\cup\{0\}$ where $f(x)=\lfloor \frac{x}2\rfloor$\\(a) Show $f(x)$ is surjective.\\(b) Show $f(x)$ is not injective. \\
+
+\solution
+\begin{enumerate}[(a)]
+    \item
+    \begin{proof}
+        Suppose that  $x = 2y$. 
+        \begin{align*}
+            f(2x) &= \floor*{\frac{2y}{2}} \\
+                &= \floor*{y}
+        \end{align*}
+        Since $x \in \nats \unite \set*{0}$, $\floor*{y}$ will be as well. \\
+        \\
+        Every $y \in \nats \unite \set*{0}$ has an $x \in \nats \unite \set*{0}$, such that $f(x)=y$ where $x=2y$. Therefore, $f(x)$ is surjective.
+    \end{proof}
+    
+    \item 
+    \begin{proof}
+        Suppose $x_1 = 0, \ x_2 = 1$. \\
+        \\
+        $f(x_1) = 0, \ f(x_2) = 0$. However, $x_1 \neq x_2$, meaning that there is an element in the domain of $f(x)$ that is unique but does not map to a unique element in the codomain. Therefore, $f(x)$ is not injective. 
+    \end{proof}
+\end{enumerate}
+\newpage
+
+% Question 8
+\question
+Suppose that A and B are sets such that $P(A\cup B)\subset P(A)\cup P(B)$. Prove that either $A\subset B$ or $B\subset A$.\\
+\\
+\solution
+\begin{proof}
+    \leavevmode \\
+    \\
+    Since the power set contains all subsets of a set, the power set $P(A \unite B)$ contains the set $A \unite B$. Since $P(A \unite B) \subset P(A) \unite P(B)$, $A \unite B \in P(A) \unite P(B)$. Therefore, \\ $(A \unite B \in P(A)) \lor (A \unite B \in P(B))$. \\
+    \\
+    Thus, we have two cases: \\
+    \\
+    \textbf{Case 1: $A \unite B \in P(A)$}. If an element is in the power set, it is a subset of the set: $A \unite B \subset A$. Since $B \subset A \unite B$, $B \subset A$. \\
+    \\
+    \textbf{Case 2: $A \unite B \in P(B)$}. If an element is in the power set, it is a subset of the set: $A \unite B \subset B$. Since $A \subset A \unite B$, $A \subset B$. \\
+    \\
+    Therefore, if there are two sets $A$ and $B$ such that $P(A \unite B) \subset P(A) \unite P(B)$, either $A \subset B$ or $B \subset A$.
+\end{proof}
+\newpage
+
+% Question 9
+\question
+Show that the set $\{x | -1 < x < 1\}$ is uncountable by showing that there is a one-to-one correspondence between this set and the set of all real numbers. Hint: A  trigonometric function. \\
+
+\solution
+\begin{flalign*}
+&\text{Let } S = \set*{x | -1 < x < 1} &\\
+&\text{Let } f: \reals \rightarrow S, \text{ where } f(x) = \frac{2}{\pi} \tan^{-1}{x} 
+\end{flalign*}
+\textbf{Theorem:} $f$ is injective.
+\begin{proof}
+    Suppose that $a_1, a_2 \in \reals$ \\
+    \[ f(a_1) = \frac{2}{\pi} \tan^{-1}{a_1}, \ f(a_2) = \frac{2}{\pi} \tan^{-1}{a_2} \]
+    \begin{align*}
+        f(a_1) &= f(a_2) \\
+        \frac{2}{\pi} \tan^{-1}{a_1} &= \frac{2}{\pi} \tan^{-1}{a_2} \\
+        \tan^{-1}{a_1} &= \tan^{-1}{a_2} \\
+        \intertext{Since the range of $\tan^{-1}{x}$ is $\paren*{-\frac{\pi}{2}, \frac{\pi}{2}}$, we can take the tangent of both sides, as $\tan{x}$ is defined.}
+        a_1 &= a_2
+    \end{align*}
+    \\ 
+    Since there are no 2 distinct values in the domain that map to the same image, $f$ is injective.
+\end{proof}
+\textbf{Theorem:} $f$ is surjective.
+\begin{proof}
+    Suppose that $y$ is an element in $S$, the codomain of $f$. Suppose that $x$ is $\tan{\df{\pi y}{2}}$, an element in $\reals$, the domain of $f$. \\
+    \begin{align*}
+        f(x) &= \frac{2}{\pi}\tan^{-1}{x} \\
+        f\paren*{\tan{\frac{\pi y}{2}}} &= \frac{2}{\pi}\tan^{-1}\paren*{{\tan\frac{\pi y}{2}}} \\
+        &= \frac{2}{\pi}\paren*{\frac{\pi y}{2}} \\
+        &= y
+    \end{align*}
+    Since there exists an $x$, $\df{\pi y}{2}$, such that $f(x)=y$, $f$ is surjective.
+\end{proof}
+\textbf{Theorem:} $\{x | -1 < x < 1\}$ is uncountable
+\begin{proof}
+    Since $f$ is both injective and surjective, $f$ is bijective. This means that $f$ is a one-to-one function, meaing there is a one-to-one correspondence between $\reals$ and $S$. Therefore, $S$, $\{x | -1 < x < 1\}$, is uncountable.
+\end{proof}
+\newpage
+
+% Question 10
+\question 
+a) Find a function $f : {\bf Z} \rightarrow {\bf N} $ that is one-to-one but not onto.\par b)  Find a function $f : {\bf Z} \rightarrow {\bf N} $ that is one-to-one and  onto.\\
+
+\solution
+\begin{enumerate}[(a)]
+    \item 
+    \begin{equation*}
+        f(x)=
+            \begin{cases}
+                2x + 1 & x > 0 \\
+                -2x    & x \leq 0 
+            \end{cases}
+    \end{equation*}
+    \item 
+    \begin{equation*}
+        f(x)=
+            \begin{cases}
+                2x - 1 & x > 0 \\
+                -2x    & x \leq 0 
+            \end{cases}
+    \end{equation*}
+\end{enumerate}
+\newpage
+
+% Question 11
+\question
+Show that \hskip.5cm$\displaystyle\sum_{i=1}^\infty \df{1}{4^i}=2\,\,\sum_{i=1}^\infty \df{1}{7^i}$ \\
+\begin{align*}
+    \sum_{i=1}^\infty \paren*{\df{1}{4}}^i &= \df{\df{1}{4}}{1-\df{1}{4}} &&& 2 \sum_{i=1}^\infty \paren*{\df{1}{7}}^i &= 2 \paren*{\df{\df{1}{7}}{1-\df{1}{7}}} \\
+                                           &= \df{\df{1}{4}}{\df{3}{4}}   &&&                                          &= \df{\df{2}{7}}{\df{6}{7}} \\
+                                           &=  \df{1}{3}                  &&&                                          &= \df{1}{3}            
+\end{align*}
+Since the two series' equate to the same value, $\displaystyle\sum_{i=1}^\infty \df{1}{4^i}$ and $2\displaystyle\sum_{i=1}^\infty \df{1}{7^i}$ are equivalent.
+\newpage
+
+% Question 12
+\question
+Determine whether each of these sets is countable or uncountable. For those that are countably infinite, exhibit a one-to-one correspondence between the set of positive integers and that set.\\ a) integers not divisible by 3\\ b) integers divisible by 5 but not by 7 \\ c) the real numbers with decimal representations consisting of all 1s\\ d) the real numbers with decimal representations of all 1s or 9s. \\
+\\
+\solution \\
+
+\begin{enumerate}[(a)]
+    \item 
+    \begin{align*}
+       &\cdots, a_{-2} = -2, a_{-1} = -1, a_0 = 1, a_1 = 2, a_2 = 4, a_3 = 5, a_4 = 7, a_5 = 8, a_6 = 10, a_7 = 11, a_8 = 13, \cdots\\
+        &a_{2n} = 3n + 1 \\ 
+        &a_{2n + 1} = 3n + 2
+    \end{align*}
+    We can split the set of integers not divisible by 3 into 2: \\  
+    \\
+    Let $n_1 = \set*{x \ | \ 2x \in \ints}$ \\
+    Let $n_2 = \set*{x \ | \ 2x + 1 \in \ints}$
+    \begin{align*}
+        S_1 = \set*{3n_1 + 1} && S_2 = \set*{3n_2 + 2}
+    \end{align*}
+    The set of integers not divisible by 3, which we will denote $A$, is then $S_1 \unite S_2$. $S_1$ has a one-to-one correspondence to $n_1$, even integers. $S_2$ has a one-to-one correspondence with $n_2$, odd integers. The union of the two will create a set with a one-to-one correspondence to both even and odd integers, $\ints$. Therefore, $A$, the set of integers not divisible by 3, is countable.
+    \item 
+        Let $D$ be the set of all integers divisible by 5 but not by 7. We can represent $D$ by spltting it into sets: \\
+
+        Let $n_1 = \set*{x \ | \ 2x \in \ints, 2x \geq 12}$ \\
+        Let $n_2 = \set*{x \ | \ 2x + 1 \in \ints, 2x + 1 > 12}$
+    \begin{align*}
+        a_1 &= -5 & a_7 &= -20 \\
+        a_2 &= 5 & a_8 &= 20 \\
+        a_3 &= -10 & a_9 &= -25 \\
+        a_4 &= 10 & a_{10} &= 25 \\
+        a_5 &= -15 & a_{11} &= -30 \\
+        a_6 &= 15 & a_{12} &= 30
+    \end{align*} \vskip-1cm
+    \begin{align*}
+        a_n = a_{n-12} + 35(-1)^{n} \text{, } n > 12
+    \end{align*}
+    The odd indices are negative integers divisible by 5 but not by 7, and the even indices are a positive integer divisible by 5 but not by 7. Since the values of $B$ can be mapped to the positive integers, $\mathbb{Z}^+$, $B$ has a one-to-one correspondence with $B$. Therefore it is countable.
+    \end{align*}
+    \item 
+        Let $C$ be the set of real numbers with decimal representations consisting of all 1s. To prove that $C$ is countable, we can first list out the elements in $C^+$, the set of positive real numbers with decimal representations consisting of all 1s in a grid, where the $i$th row has $i-1$ 1s before the decimal point. The $j$th column has $j$ 1s after the decimal point. Every $x \in C, x \in \reals^+$ can be found at row $i$, the amount of 1s before the decimal point of $x$, and column $j$, the amount of 1s after thed decimal point.
+        \begin{center}
+            \begin{tabular}{cccc}
+                0.1 & 0.11 & 0.111 & \ldots\\
+                1.1 & 1.11 & 1.111 & \ldots\\
+                11.1 & 11.11 & 11.111 & \ldots\\
+                $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$
+            \end{tabular}
+        \end{center}
+       Let $C^$ be the set of negative real numbers with decimal representations consisting of all 1s., the same can be done. \\
+       \begin{center}
+        \begin{tabular}{cccc}
+            -0.1 & -0.11 & -0.111 & -\ldots\\
+            -1.1 & -1.11 & -1.111 & -\ldots\\
+            -11.1 & -11.11 & -11.111 & -\ldots\\
+            $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$
+        \end{tabular}
+    \end{center}
+    Since $C = C^+ \unite C^-$ and both $C^+$ and $C^-$ are countable, $C$, the set of real numbers with decimal representations consisting of all 1s, is countable.
+\end{enumerate}
+\newpage
+
+% Question 13
+\question
+If $A$ and $B$ are $n \times n$ matrices with $AB = BA = I_n$, then $B$ is called the inverse of $A$ (this terminology is appropriate because such a matrix $B$ is unique) and $A$ is the inverse of $B$ and $A$ and $B$ are said to be invertible. The notation $B = A^{-1} $ denotes that $B$ is the inverse of $A$. Show that  the matrix 
+\[B=\left( \begin{array}{ccc}2 & 3 & -1 \\1 & 2 & 1\\-1 &  -1 &3\end{array} \right) \] is the inverse of  \[ A=\left( \begin{array}{ccc}7 & -8 & 5 \\-4 & 5 & -3\\1 &  -1 &1\end{array} \right) \]
+
+\solution
+\begin{align*}
+    AB &= 
+    \begin{bmatrix}
+        7(2)-8(1)+5(-1) & -4(2)+5(1)-3(-1) & 1(2)-1(1)+1(-1) \\
+        7(3)-8(2)+5(-1) & -4(3)+5(2)-3(-1) & 1(3)-1(2)+1(-1) \\
+        7(-1)-8(1)+5(3) & -4(-1)+5(1)-3(3) & 1(-1)-1(1)+1(3) \\
+    \end{bmatrix} \\
+    &=
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+    \end{bmatrix} \\
+    BA &= 
+    \begin{bmatrix}
+        2(7)+3(-4)-1(1)  & 2(-8)+3(5)-1(-1)  & 2(5)+3(-3)-1(1) \\
+        1(7)+2(-4)+1(1)  & 1(-8)+2(5)+1(-1)  & 1(5)+2(-3)+1(1) \\
+        -1(7)-1(-4)+3(1) & -1(-8)-1(5)+3(-1) & -1(5)-1(-3)+3(1) \\  
+    \end{bmatrix} \\
+    &=
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+    \end{bmatrix}
+\end{align*}
+Since $AB=BA=I_n$, $B$ is the inverse of $A$.
+\newpage
+
+% Question 14
+\question
+Solve for x: $\floor*{x} + \sqrt{x - \sqrt{x}} = \floor*{x + \displaystyle\frac{1}{x}}$ \\
+
+\solution \\
+To find the domain of $x$, we can find the domain restrictions of the addends and the sum. $\floor*{x}$ is defined for all real numbers. $\floor*{x + \frac{1}{x}}$ is undefined when $x=0$. $\sqrt{x - \sqrt{x}}$ is undefined when $x - \sqrt{x} < 0$:
+\begin{align*}
+    x - \sqrt{x}           &< 0 \\
+    \sqrt{x}(\sqrt{x} - 1) &< 0 
+\end{align*}
+\noindent\makebox[\textwidth] {
+    \sgchart{~0,~1} {\sqrt{x} (\sqrt{x}-1): \null-+}
+}
+$x$ is undefined when $(-\infty,1)$. Therefore, the domain is $[1,\infty)$
+\begin{align*}
+    \floor*{x} + \sqrt{x - \sqrt{x}}      &= \floor*{x + \frac{1}{x}} \\
+    \floor*{x + \frac{1}{x}} - \floor*{x} &= \sqrt{x - \sqrt{x}}
+\end{align*}
+Let $\floor*{x} = n, \ceil*{x} = c$ 
+\[ n \leq x \leq c \]
+Since the least value of $x$ is $n$ and the greatest is $c$, we can bound the value of $\floor*{n + \frac{1}{n}}$: 
+\[ \floor*{n + \frac{1}{n}} \leq \floor*{x + \frac{1}{x}} \leq \floor*{c + \frac{1}{c}} \]
+Since $n$ and $c$ are $\floor*{x}, \ceil*{x}$ respectively, they are both integers. Therefore, we can simplify: 
+\[ n + \floor*{\frac{1}{n}} \leq \floor*{x + \frac{1}{x}} \leq c + \floor*{\frac{1}{c}} \]
+We can bound the values of $\floor*{x + \frac{1}{x}} - \floor*{x}$. The lower bound will be:
+\begin{alignat*}{2}
+    n + \floor*{\frac{1}{n}} - \floor*{x}                   &\leq \floor*{x + \frac{1}{x}} - \floor*{x} \\
+    \floor*{x} + \floor*{\frac{1}{\floor*{x}}} - \floor*{x} &\leq \floor*{x + \frac{1}{x}} - \floor*{x} \\                                        
+    \floor*{\frac{1}{\floor*{x}}}                           &\leq \floor*{x + \frac{1}{x}} - \floor*{x}
+\end{alignat*}
+The domain is $x \geq 1$. 
+\begin{align*}
+    \begin{gathered}
+       \textbf{Case 1: $1 \leq x < 2$} \\
+       \floor*{x} \text{ will always be 1}. \\
+       \therefore \frac{1}{\floor*{x}} = 1 \\
+       \therefore \floor*{\frac{1}{\floor*{x}}} = 1
+    \end{gathered}
+    &&
+    \begin{gathered}
+        \textbf{Case 2: $x \geq 2$} \\
+        \floor*{x} \text{ will always be greater than 1} \\
+        \therefore \frac{1}{\floor*{x}} = 0 \\
+        \therefore \floor*{\frac{1}{\floor*{x}}} = 0
+    \end{gathered}
+    \end{align*}
+When $1 \leq x < 2$, $\floor*{x + \frac{1}{x}} - \floor*{x}$ must at least be 1. Otherwise, it must be at least 0. \\ 
+\\
+We can find the upper bound of $\floor*{x + \frac{1}{x}} - \floor*{x}$: 
+\begin{alignat*}{2}
+    \floor*{x + \frac{1}{x}} - \floor*{x} &\leq c + \floor*{\frac{1}{c}} - \floor*{x} \\
+    \floor*{x + \frac{1}{x}} - \floor*{x} &\leq \ceil*{x} + \floor*{\frac{1}{\ceil*{x}}} - \floor*{x}
+\end{alignat*}
+The domain is $x \geq 1$. 
+\begin{align*}
+    \begin{gathered}
+       \textbf{Case 1: $x = 1$} \\
+       \ceil*{1} + \floor*{\frac{1}{\ceil*{1}}} - \floor*{1} = 1 \\
+       \\
+       \\
+       \\
+       \\
+       \\
+       \\
+    \end{gathered}
+    &&
+    \begin{gathered}
+        \textbf{Case 2: $x > 1$} \\
+        \floor*{\frac{1}{\ceil*{x}}} \text{will always be 0.} \\ 
+        \ceil*{x} + \floor*{\frac{1}{\ceil*{x}}} - \floor*{x} = \ceil*{x} - \floor*{x} \\
+        \begin{aligned}
+            \begin{gathered}
+                \textit{Subcase (i): $x \in\ints$} \\
+                \ceil*{x} = \floor*{x} \\
+                \therefore \ceil*{x} + \floor*{\frac{1}{\ceil*{x}}} - \floor*{x} = 0
+            \end{gathered}
+            && 
+            \begin{gathered}
+                \textit{Subcase (ii): $x \notin\ints$} \\
+                \ceil*{x} = \floor*{x} + 1 \\
+                \therefore \ceil*{x} + \floor*{\frac{1}{\ceil*{x}}} - \floor*{x} = 1
+            \end{gathered}
+        \end{aligned}
+    \end{gathered}
+    \end{align*}
+When $x = 1$, $\floor*{x + \frac{1}{x}} - \floor*{x}$ must be at most 1. Otherwise, if $x$ is an integer, it must be at most 0 and if $x$ is not an integer, it must be at most $1$. \\
+
+We can now create different bounds for $\floor*{x + \frac{1}{x}} - \floor*{x}$ depending on the value of $x$: \\
+\\
+\textbf{Case 1: $1 \leq x < 2$} 
+\[ 1 \leq \floor*{x + \frac{1}{x}} - \floor*{x} \leq 1 \]
+By the squeeze theorem, \[ \floor*{x + \frac{1}{x}} - \floor*{x} = 1 \]
+\newpage
+\textbf{Case 2: $x \geq 2, x \in \ints$}
+\[ 0 \leq \floor*{x + \frac{1}{x}} - \floor*{x} \leq 0 \]
+By the squeeze theorem, \[ \floor*{x + \frac{1}{x}} - \floor*{x} = 0 \]
+\textbf{Case 3: $x \geq 2, x \notin \ints$}
+\[ 0 \leq \floor*{x + \frac{1}{x}} - \floor*{x} \leq 1 \]
+Since $\floor*{x + \frac{1}{x}}$ and $\floor*{x}$ are both integers, $\floor*{x + \frac{1}{x}} - \floor*{x}$ will be an integer. Since it is bounded below by 0 and above by 1, the only possible values are:
+\[ \floor*{x + \frac{1}{x}} - \floor*{x} = 0 \ \lor \ \floor*{x + \frac{1}{x}} - \floor*{x} = 1 \]
+In all cases, $\floor*{x + \frac{1}{x}} - \floor*{x} = 0 \ \lor \ \floor*{x + \frac{1}{x}} - \floor*{x} = 1$. 
+\[ \floor*{x + \frac{1}{x}} - \floor*{x} = \sqrt{x - \sqrt{x}} \]
+Therefore, 
+\[ \sqrt{x - \sqrt{x}} = 0 \ \lor \ \sqrt{x - \sqrt{x}} = 1 \]
+\begin{align*}
+    \sqrt{x - \sqrt{x}} &= 0
+    \intertext{Since the domain is $x \geq 1$, squaring both sides will not eliminate solutions.}
+    x - \sqrt{x} &= 0 \\
+    \sqrt{x}(\sqrt{x} -1) &= 0 \\
+    x = 0, 1
+\end{align*}
+\begin{align*}
+    \sqrt{x - \sqrt{x}} &= 1
+    \intertext{Since the domain is $x \geq 1$, squaring both sides will not eliminate solutions.}
+    x - \sqrt{x} &= 1 \\
+    x - \sqrt{x} -1 &= 0
+    \intertext{Let $a^2 = x$.}
+    a^2 - a - 1 &= 0 \\
+    \frac{1 \pm \sqrt{5}}{2} &= a \\
+    \paren*{\frac{1 \pm \sqrt{5}}{2}}^2 &= x \\
+    \frac{\paren*{1 + \sqrt{5}}^2}{4}, \frac{\paren*{1 - \sqrt{5}}^2}{4} &= x
+\end{align*}
+We can eliminate $x=0, \frac{\paren*{1 - \sqrt{5}}^2}{4}$ as potential solutions, as they are outside the domain, $x \geq 1$. \\
+We will validate the solution $x=1$:
+\begin{align*}
+    \floor*{1 + \frac{1}{1}} - \floor*{1} &\qeq \sqrt{1 - \sqrt{1}} \\
+    1 &\neq 0
+\end{align*}
+$x=1$ is not a solution. \\
+\\
+We will validate the solution $x=\frac{\paren*{1 + \sqrt{5}}^2}{4}$
+\begin{align*}
+    \floor*{\frac{\paren*{1 + \sqrt{5}}^2}{4} + \df{4}{\paren*{1 + \sqrt{5}}^2}} - \floor*{\frac{\paren*{1 + \sqrt{5}}^2}{4}} &\qeq \sqrt{\frac{\paren*{1 + \sqrt{5}}^2}{4} - \sqrt{\frac{\paren*{1 + \sqrt{5}}^2}{4}}} \\
+    1 &= 1
+\end{align*}
+Since the two expressions evaluate to the same value, the solution to the equation $\floor*{x} + \sqrt{x - \sqrt{x}} = \floor*{x + \displaystyle\frac{1}{x}}$ is: \[ \boxed{x=\frac{\paren*{1 + \sqrt{5}}^2}{4}} \]
+\end{document} 
