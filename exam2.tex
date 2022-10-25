@@ -93,10 +93,10 @@ If $\stcomp{A} \inter B = B \ \land \ \stcomp{B}\inter A = A$, what can you say 
 \\
 \solution
 \begin{proof}
-    Assume $x \in A$. By definition of stcomplement, $x \notin \stcomp{A}$. Since $x \notin \stcomp{A}$, $x \notin \stcomp{A} \inter B$. Since $\stcomp{A} \inter B = B$, $x \notin B$. $x$ is arbitrary, therefore we can generalize to $A \not\subseteq{B}$.
+    Assume $x \in A$. By definition of complement, $x \notin \stcomp{A}$. Since $x \notin \stcomp{A}$, $x \notin \stcomp{A} \inter B$. Since $\stcomp{A} \inter B = B$, $x \notin B$. $x$ is arbitrary, therefore we can generalize to $A \not\subseteq{B}$.
 \end{proof}
 \begin{proof}
-    Assume $y \in B$. By definition of ststcomplement, $y \notin \stcomp{B}$. Since $y \notin \stcomp{B}$, $y \notin \stcomp{B} \inter A$. Since $\stcomp{B} \inter A = A$, $y \notin A$. $y$ is arbitrary, therefore we can generalize to $B \not\subseteq A$.
+    Assume $y \in B$. By definition of complement, $y \notin \stcomp{B}$. Since $y \notin \stcomp{B}$, $y \notin \stcomp{B} \inter A$. Since $\stcomp{B} \inter A = A$, $y \notin A$. $y$ is arbitrary, therefore we can generalize to $B \not\subseteq A$.
 \end{proof}
 \begin{proof}
     Since $A \not\subseteq B \ \land \ B \not\subseteq A$, $A \inter B = \emptyset \\
@@ -137,16 +137,21 @@ Evaluate $\sum_{n=1}^{3}\sum_{k=1}^{n}(n^k)$. Show all your steps. \\
 Find a $f: \nats \rightarrow \ints$ that is surjection that is not injection. Prove that it satisfies the conditions held. \\
 \\
 \solution \\
-Let $S_1 = \set*{x: 2x, x \in \nats}$, $S_2 = \set*{x: 2x-1, x \in \nats}$
+$\nats = \ints^+ \unite \set*{0}$ \\
+Let $S_1 = \set*{x \ | \ 2x, x \in \nats}$, $S_2 = \set*{x \ | \ 2x+1, x \in \nats}$
 \[ f(n)=
 \begin{cases}
-    \frac{n}{2} & n \in S_1 \\
-    -(\frac{n}{2}+\frac{1}{2}) & n \in S_2
+    \frac{n}{2}                & n \in S_1 \\
+    -(\frac{n}{2}-\frac{1}{2}) & n \in S_2 \\
+    10                         & n = 1
 \end{cases}
 \]
 \textbf{Theorem: $f(n)$ is surjective.}
 \begin{proof}
     We can separate the domain, $\nats$ into two sets of odd and even naturals, $S_1$ and $S_2$ respectively. \\
-    Let $n=2|y|$. Since $2|y|$ is always an even, it will satisfy the first case, $n \in S_1$. 
+    Let $n=2y$. Since $2y$ is always an even, it will satisfy the first case, $n \in S_1$. 
 \end{proof}
+\newpage
+% Question 6
+
 \end{document} 
