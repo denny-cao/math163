@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1667199785 "/home/akkaro/math163/exam2.tex" "exam2.pdf" "exam2" 1667199786
-  "/home/akkaro/math163/exam2.tex" 1667199785 12776 a6443266ed73d795bdd444cecd52cec9 ""
+["pdflatex"] 1667200415 "/home/akkaro/math163/exam2.tex" "exam2.pdf" "exam2" 1667200416
+  "/home/akkaro/math163/exam2.tex" 1667200415 12817 ab7a74be8653cf5e8fc113b11f05379c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -170,9 +170,9 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1666161220 4595883 1a8137d784f6ac4a90cecb4bdd05a7cf ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1666161259 3058865 e4f58d72146e9845b97136b6e6ac75ce ""
   "/usr/local/texlive/2022/texmf.cnf" 1666161215 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "exam2.aux" 1667199786 555 540749b6ad8058d101a9af1f659298d1 "pdflatex"
+  "exam2.aux" 1667200416 555 540749b6ad8058d101a9af1f659298d1 "pdflatex"
   "exam2.out" 0 -1 0 "pdflatex"
-  "exam2.tex" 1667199785 12776 a6443266ed73d795bdd444cecd52cec9 ""
+  "exam2.tex" 1667200415 12817 ab7a74be8653cf5e8fc113b11f05379c ""
   (generated)
   "exam2.aux"
   "exam2.log"
