@@ -60,7 +60,11 @@
 \newcommand{\df}{\displaystyle\frac} % displaystyle fraction
 \newcommand{\qeq}{\overset{?}{=}} % questionable equality
 
+\newcommand{\xor}{\oplus}
+
 \newcommand{\comp}{\circ}
+
+\newcommand{\centervdots}{\mathrel{\makebox[\widthof{=}]{\vdots}}}
 
 % Sets
 \newcommand{\unite}{\cup}
@@ -68,6 +72,7 @@
 
 \newcommand{\stcomp}[1]{\overline{#1}}  
 
+\newcommand{\powset}{\mathcal{P}}
 \newcommand{\reals}{\mathbb{R}} % real numbers: textbook is Z^+ and 0
 \newcommand{\ints}{\mathbb{Z}}
 \newcommand{\nats}{\mathbb{N}}
@@ -110,16 +115,44 @@ Suppose that $g : A \rightarrow A$ and $f: A \rightarrow A$ where $A=\set*{a,b,c
 \\
 \solution
 \begin{align*}
-    &g(A) = \set*{(a,a),(b,c),(c,a),(d,c)} \\
-    &f(g(A)) = \set*{(a,d),(b,b),(c,d),(d,b)} \\
-    &g(f(g(A))) = \set*{(a,c),(b,c),(c,c),(d,c)}
+    g &= \set*{(a,a),(b,c),(c,a),(d,c)} \\
+    \\
+    f \comp g &= f\paren*{\set*{(a,a),(b,c),(c,a),(d,c)}} \\
+              &= \set*{(a,d),(b,b),(c,d),(d,b)} \\
+    \\
+    g \comp f \comp g &= g\paren*{\set*{(a,d),(b,b),(c,d),(d,b)}} \\
+                      &= \set*{(a,c),(b,c),(c,c),(d,c)}
 \end{align*}
 \newpage
 % Quesiton 3
 \question 
 Verify that $a_n = \pi$ \textbf{is a possible solution} to the recurrence relation $a_n = (2n-1)a_{n-1}-(2n-2)a_{n-2}$. What are the conditions for this to happen? \\
 \\
-\solution
+\solution \\
+Initial Conditions: $a_0 = \pi, a_1 = \pi$ 
+\begin{align*}
+    a_2 &= (2(2) - 1)a_1 - (2(2) - 2)a_0 \\
+        &= 3a_1 - 2a_0 \\
+        &= 3\pi - 2\pi \\
+        &= \pi \\
+    a_3 &= (2(3) - 1)a_2 - (2(3) - 2)a_1 \\
+        &= 5a_2 - 4a_1 \\
+        &= 5\pi - 4\pi \\
+        &= \pi \\
+    a_4 &= (2(4) - 1)a_3 - (2(4) - 2)a_2 \\
+        &= 5a_3 - 4a_2 \\
+        &= 5\pi - 4\pi \\
+        &= \pi \\
+    a_5 &= (2(5) - 1)a_4 - (2(5) - 2)a_3 \\
+        &= 5a_4 - 4a_3 \\
+        &= 5\pi - 4\pi \\
+        &= \pi \\
+        &\centervdots \\
+    a_n &= (2n - 1)\pi - (2n - 2)\pi \\
+        &= 2n\pi - \pi - 2n\pi + 2\pi \\
+        &= \pi 
+\end{align*}
+Thus, the conditions for $a_n = \pi$ are $a_0 = \pi, a_1 = \pi$. 
 \newpage
 % Question 4
 \question
@@ -138,20 +171,196 @@ Find a $f: \nats \rightarrow \ints$ that is surjection that is not injection. Pr
 \\
 \solution \\
 $\nats = \ints^+ \unite \set*{0}$ \\
-Let $S_1 = \set*{x \ | \ 2x, x \in \nats}$, $S_2 = \set*{x \ | \ 2x+1, x \in \nats}$
-\[ f(n)=
+Suppose $S_1 = \set*{x \ | \ 2x, x \in \nats}$, $S_2 = \set*{x \ | \ 2x+1, x \in \nats}$
+\[ f(x)=
 \begin{cases}
-    \frac{n}{2}                & n \in S_1 \\
-    -(\frac{n}{2}-\frac{1}{2}) & n \in S_2 \\
-    10                         & n = 1
+    \frac{x}{2}                & x \in S_1 \\
+    -(\frac{x}{2}-\frac{1}{2}) & x \in S_2 
 \end{cases}
 \]
-\textbf{Theorem: $f(n)$ is surjective.}
+\textbf{$f(n)$ is surjective.}
 \begin{proof}
-    We can separate the domain, $\nats$ into two sets of odd and even naturals, $S_1$ and $S_2$ respectively. \\
-    Let $n=2y$. Since $2y$ is always an even, it will satisfy the first case, $n \in S_1$. 
+    We can separate the domain, $\nats$ into two sets of odd and even naturals, $S_1$ and $S_2$ respectively.
+    \begin{align*}
+    \intertext{Let $n=2y, y \in \nats$. Since $2y$ is an even integer, it will satisfy the first case, $x \in S_1$.}
+        f(x)  &= \frac{x}{2}, x \in S_1 \\
+        f(2y) &= \frac{2y}{2} \\
+              &= y 
+    \intertext{There exists an $x=2y$ that maps to all $\ints^+ \unite \set*{0}$ in the codomain.}
+    \intertext{Let $n=2y + 1, y \in \nats$. Since $2y + 1$ is an odd integer, it will satisfy the second case, $x \in S_2$.}
+        f(x)      &= -\paren*{\frac{x}{2} - \frac{1}{2}}, x \in S_2 \\
+        f(2y + 1) &= -\paren*{\frac{2y + 1}{2} - \frac{1}{2}} \\
+                  &= -\paren*{\frac{2y}{2}} \\
+                  &= -y
+    \intertext{There exists an $x=2y+1$ that maps to all $\ints^-$ in the codomain.}      
+    \end{align*}
+    Since $\ints^+ \unite \set*{0} \unite \ints^+ = \ints$, there exists an $x$ that maps to every value $y$ in the codomain. Thus, $f(x)$ is surjective. \\
+\end{proof}
+\newpage
+\textbf{$f(n)$ is not injective.}
+\begin{proof}
+    Suppose $x_0 = 0, x_1 = 1$
+    \begin{align*}
+        f(x_0) &= \frac{0}{2} = 0 \\
+        f(x_1) &= -\paren*{\frac{1}{2} - \frac{1}{2}} = 0
+    \end{align*}
+    Since there exists multiple values in the domain, $x_0, x_1$,  that map to the same value in the codomain, $0$, $f(x)$ is not injective. \\
 \end{proof}
 \newpage
 % Question 6
+\question
+Suppose $\powset^n(A)$ = $\overbrace{\powset(\powset(\powset\cdots\powset(A))\cdots)}^{n}$, $n \in \ints^+$, where for instance, $\powset^3(A)=\powset(\powset(\powset(A)))$. Find the cardinality of $\powset^4(\emptyset)$, where $\powset(A)$ is the power set of $A$. \\
+\\
+\solution \\
+The cardinality of the power set of a set is $2^n$, where $n$ is the cardinality of the set. \\
+The cardinality of $\emptyset = 0$. 
+\begin{alignat*}{5}
+    &\powset(\emptyset)   &&= \set*{\emptyset} \ \ \                    &&|\powset(\emptyset)|   &&= 2^0 &&= 1 \\
+    &\powset^2(\emptyset) &&= \set*{\emptyset, \set*{\emptyset}} \ \ \  &&|\powset^2(\emptyset)| &&= 2^1 &&= 2 \\
+    &\powset^3(\emptyset) &&= \set*{\emptyset, \set*{\emptyset}, \set*{\set*{\emptyset}}, \set*{\emptyset, \set*{\emptyset}}} \ \ \ &&|\powset^3(\emptyset)| &&= 2^2 &&= 4 \\
+\end{alignat*}
+\[ |\powset^4(\emptyset)| = 16\]
+\newpage
+% Question 7
+\question
+Prove or disprove: $\forall$ sets $A,B,C, (A \xor B = A \xor C) \implies B=C$ \\
+\\
+\solution
+\begin{proof} 
+    \ \\
+    \textbf{Case 1: Suppose $x \in B$} \\
+    \textit{Subcase i: $x \in A$} \\
+    $x \in B \land x \in A \implies x \notin A \xor B$. Since $A \xor B = A \xor C$, $x \notin A \xor C$. \\
+    $x \in A \land x \notin A \xor C \implies x \in C$\\
+    \\
+    \textit{Subcase ii: $x \notin A$} \\
+    $x \in B \land x \notin A \implies x \in A \xor B$. Since $A \xor B = A \xor C$, $x \in A \xor C$. \\
+    $x \notin A \land x \in A \xor C \implies x \in C$ \\
 
+    Since $x \in C$ in all cases when $x \in B$, $B \subseteq C$.\\
+    \\
+    \textbf{Case 2: Suppose $x \in C$} \\
+    \textit{Subcase i: $x \in A$} \\
+    $x \in C \land x \in A \implies x \notin A \xor C$. Since $A \xor C = A \xor B$, $x \notin A \xor B$. \\
+    $x \in A \land x \notin A \xor B \implies x \in B$\\
+    \\
+    \textit{Subcase ii: $x \notin A$} \\
+    $x \in C \land x \notin A \implies x \in A \xor C$. Since $A \xor C = A \xor B$, $x \in A \xor B$. \\
+    $x \notin A \land x \in A \xor B \implies x \in B$ \\
+
+    Since $x \in B$ in all cases when $x \in C$, $C \subseteq B$.\\
+    \\
+    $B \subseteq C \land C \subseteq B \implies B = C$. Thus, $(A \xor B = A \xor C) \implies B=C$. 
+\end{proof}
+
+\begin{align*}
+    B &= \emptyset \xor B \\
+      &= (A \xor A) \xor B \\
+      &= A \xor (A \xor B) \\
+      &= A \xor (A \xor C) \\
+      &= (A \xor A) \xor C \\
+      &= \emptyset \xor C \\
+    B &= C
+\end{align*}
+\newpage
+% Question 8
+\question
+Solve for $x$: $\floor*{2x} + \ceil*{2x} = 4x$ \\
+\\
+\solution \\
+Any number can be represented by $a + b, a \in \ints, b \in \set*{k \ | \
+ 0 \leq k < 1}$. Let $x=a+b$. \\
+\begin{align*}
+    \floor*{2(a+b)} + \ceil*{2(a+b)}   &= 4(a+b) \\
+    \floor*{2a + 2b} + \ceil*{2a + 2b} &= 4a + 4b \\ 
+    2a + \floor*{2b} + 2a + \ceil*{2b} &= 4a + 4b \\
+    \floor*{2b} + \ceil*{2b}           &= 4b 
+\end{align*}
+\begin{alignat*}{3}
+\floor*{2b} =
+\begin{cases}
+    0 & 0 \leq b < 0.5 \\
+    1 & 0.5 \leq b < 1 
+\end{cases}
+&& \ \ \ \ \ceil*{2b} =
+\begin{cases}
+    0 & b = 0 \\
+    1 & 0 < b \leq 0.5 \\
+    2 & 0.5 < b < 1
+\end{cases}
+\end{alignat*}
+\begin{align*}
+    4b &=
+\begin{cases}
+    0 + 0 = 0 \\
+    0 + 1 = 1 \\
+    1 + 1 = 2 \\
+    1 + 3 = 3 
+\end{cases} \\
+b &= 
+\begin{cases}
+    \df{0}{4} \\[1em]
+    \df{1}{4} \\[1em]
+    \df{2}{4} \\[1em]
+    \df{3}{4}
+\end{cases}
+\end{align*}
+Thus, $x=a+b$, where $a \in \ints$ and $b \in \set*{\frac{1}{4}c \ | \ c \in 0 \leq c < 4, k \in \ints}$. Since all integers are multiples of $\frac{1}{4}$, $a$ can be represented as $a=\frac{1}{4}k, k \in \ints$. Since $b=\frac{1}{4}c, c \in 0 \leq c < 4, c \in \ints$, we can express $a+b$ as $\frac{1}{4}(k+c)$. Since $k$ and $c$ are both integers, $x$ is a multiple of $\frac{1}{4}$. \\
+\begin{gather*}
+    x \in \set*{\frac{1}{4}r \ | \ r \in \ints}
+\end{gather*}
+\newpage
+\question
+Give an example of two uncountable sets $A$ and $B$ such that $A \cap B$ is:\\a) finite. \hskip2.5cm b) countably infinite.\hskip2.5cm c) uncountable. \\
+\\
+\solution
+\begin{enumerate}[(a)]
+    \item 
+        \begin{align*}
+            A &= \reals^+ \unite \set*{0} \\
+            B &= \reals^- \unite \set*{0}
+        \end{align*}
+        \begin{align*}
+            A \inter B = \set*{0}
+        \end{align*}
+    \item 
+        \begin{align*}
+            A &= \reals^+ \unite \ints \\
+            B &= \reals^- \unite \ints
+        \end{align*}
+        \begin{align*}
+            A \inter B = \ints
+        \end{align*}
+    \item 
+        \begin{align*}
+            A &= \reals \\
+            B &= \reals^+
+        \end{align*}
+        \begin{align*}
+            A \inter B = \reals^+
+        \end{align*}
+\end{enumerate}
+\newpage
+\question
+Prove if $f:A\rightarrow B$ and $g:B\rightarrow C$ are injective, then $g \comp f:A\rightarrow C$ is also injective. \\
+\\
+\solution
+\begin{proof}
+Suppose $x_0, x_1 \in A$. \\
+
+Since $g$ is injective: 
+\begin{align*}
+    g(f(x_0)) = g(f(x_1)) \implies f(x_0) = f(x_1) 
+\end{align*}
+Since $f$ is injective:
+\begin{align*}
+    f(x_0) = f(x_1) \implies x_0 = x_1
+\end{align*}
+By Hypothetical Syllogism: 
+\begin{align*}
+    g(f(x_0)) = g(f(x_1)) \implies x_0 = x_1
+\end{align*}
+Thus, $\forall x_0 \forall x_1 (g(f(x_0)) = g(f(x_1)) \implies x_0 = x_1)$. Therefore, $g \comp f$ is injective.    
+\end{proof}
 \end{document} 
+
