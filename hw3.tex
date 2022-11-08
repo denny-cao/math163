@@ -1,0 +1,224 @@
+%++++++++++++++++++++++++++++++++++++++++
+\documentclass[article,12pt]{article}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabu} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{tikz}
+\usepackage{caption} 
+\usepackage{fancyhdr}
+\usepackage{amssymb} % symbols like /therefore
+\usepackage{amsthm} % proofs
+\usepackage{enumerate} % lettered lists
+\usepackage{mathtools} % macros
+\usetikzlibrary{scopes}
+\usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039}
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+
+\newcounter{question}
+\setcounter{question}{0}
+\def\questionnum{{\Large\bfseries{Question \arabic{question} }}\\[1em]}
+
+\newcommand{\question}{
+    \stepcounter{question}
+    \questionnum
+}
+
+\newcommand{\solution}{
+    {{\large\bfseries{Solution}}}
+}
+
+\pagestyle{fancy}
+\fancyhf{}% clears all header and footer fields
+\fancyfoot[C]{--~\thepage~--}
+\renewcommand*{\headrulewidth}{0pt}
+\renewcommand*{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}% clears all header and footer fields
+  \fancyfoot[C]{--~\thepage~--}%
+  \renewcommand*{\headrulewidth}{0pt}%
+  \renewcommand*{\footrulewidth}{0pt}%
+}
+
+% Shortcuts
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
+
+\DeclarePairedDelimiter\paren{(}{)} % parenthesis
+
+\newcommand{\df}{\displaystyle\frac} % displaystyle fraction
+\newcommand{\qeq}{\overset{?}{=}} % questionable equality
+
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)} % modulo operator
+
+% Sets
+\DeclarePairedDelimiter\set{\{}{\}}
+\newcommand{\unite}{\cup}
+\newcommand{\inter}{\cap}
+
+\newcommand{\reals}{\mathbb{R}} % real numbers: textbook is Z^+ and 0
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\rats}{\mathbb{Q}}
+
+\setlength\parindent{0pt}
+
+% Sign Charts
+\newdimen\tcolw \tcolw=2.5em % the column width
+\edef\ecatcode{\catcode`&=\the\catcode`&\relax}\catcode`&=4
+\def\sgchart#1#2{\vbox{\offinterlineskip\halign{\hfil##\quad&##\hfil\crcr\sgchartA#2,:,%
+   \omit\sgchartR&\kern.2pt\sgchartS{.5\tcolw}\relax\sgchartE#1,\relax,%
+   \sgchartS{.5\tcolw}\relax\cr
+   \noalign{\kern2pt}&\def~{}\kern.5\tcolw\sgchartD#1,\relax,\cr}}}
+\def\sgchartA#1:#2,{\cr\ifx,#1,\else $#1$&\sgchartB#2{}\expandafter\sgchartA\fi}
+\def\sgchartB#1{\hbox to\tcolw{\hss$#1$\hss}\sgchartC}
+\def\sgchartC#1{\ifx,#1,\else
+   \strut\vrule\kern-.4pt\hbox to\tcolw{\hss$#1$\hss}\expandafter\sgchartC\fi}
+\def\sgchartD#1#2,{\ifx\relax#1\else\hbox to\tcolw{\hss$#1#2$\hss}\expandafter\sgchartD\fi}
+\def\sgchartE#1#2,{\ifx\relax#1\else
+    \ifx~#1\sgchartS\tcolw\circ \else\sgchartS\tcolw\bullet\fi \expandafter\sgchartE\fi}
+\def\sgchartR{\leaders\vrule height2.8pt depth-2.4pt\hfil}
+\def\sgchartS#1#2{\hbox to#1{\kern-.2pt\sgchartR \ifx\relax#2\else
+   \kern-.7pt$#2$\kern-.7pt\sgchartR\fi\kern-.2pt}}
+\ecatcode
+%++++++++++++++++++++++++++++++++++++++++
+
+\title{Practice Exam 3}
+\author{Denny Cao}
+\date{%
+    %CCP MATH163 \\%
+    %Dr. Petrescu \\[2ex]%
+    \today
+}
+\begin{document}
+\maketitle
+% Question 1
+\question 
+Use the Principle of Mathematical Induction to  show this inequality is true for all  integers $n\geq 2$:\hskip1cm$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
+\begin{proof}
+    By induction. \\
+    Let P(n) be the proposition that $\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n\,\,}$, where $n \in \ints$. \\ 
+    \textbf{Base Case: $n=2$}
+    \begin{align*}
+        \sum_{i=1}^{2}{\frac{1}{\sqrt{i}}}&\stackrel{?}{>} \sqrt{2} \\
+        \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}}&\stackrel{?}{>}\sqrt{2} \\
+        1 + \frac{\sqrt{2}}{2}&\stackrel{?}{>}\sqrt{2} \\
+        2 + \sqrt{2}&\stackrel{?}{>}2\sqrt{2} \\
+        2 &> \sqrt{2}
+    \end{align*}
+    Since $2 > \sqrt{2}$, $P(2)$ is true. \\
+    \\
+    \textbf{Inductive Hypothesis:} Assume $P(k)$ is true, $k \in \ints \land k \geq 2$. \\
+    \\
+    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Assume the Inductive Hypothesis. \\
+    \begin{align*}
+        \sum_{i=1}^{k}{\frac{1}{\sqrt{i}}} &> \sqrt{k} \\
+        1 + \cdots + \frac{1}{\sqrt{k}} &> \sqrt{k}
+        \intertext{Let $c = 1 + \cdots + \df{1}{\sqrt{k}}$}
+        c &> \sqrt{k} \\
+        c + \frac{1}{\sqrt{k+1}} &> \sqrt{k} + \frac{1}{\sqrt{k+1}} \\
+        c + \frac{1}{\sqrt{k+1}} &> \frac{\sqrt{k}\sqrt{k+1} + 1}{\sqrt{k+1}} \\
+        c + \frac{1}{\sqrt{k+1}} &> \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} \\
+        \\
+        \sum_{i=1}^{k+1}{\frac{1}{\sqrt{i}}} &\stackrel{?}{>} \sqrt{k+1} \\
+        1 + \cdots + \frac{1}{\sqrt{k}} + \frac{1}{k + 1} &\stackrel{?}{>} \sqrt{k+1} \\
+        c + \frac{1}{k + 1} &\stackrel{?}{>} \sqrt{k+1} \\
+        c + \frac{1}{k + 1} &\stackrel{?}{>} \frac{\sqrt{k+1}\sqrt{k+1}}{\sqrt{k+1}} \\
+        c + \frac{1}{k + 1} &\stackrel{?}{>} \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} \\
+        \intertext{Since $c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}}$, by the transitive property, $\df{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} \implies c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}}$}
+        \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} &\stackrel{?}{>} \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} \\
+        \sqrt{k^2 + 2k} + 1 &\stackrel{?}{>} \sqrt{k^2 + 2k + 1} \\
+        \paren*{\sqrt{k^2 + 2k} + 1}^2 &\stackrel{?}{>} k^2 + 2k + 1 \\
+        k^2 + 2k + 1 + 2\sqrt{k^2 + 2k} &\stackrel{?}{>} k^2 + 2k + 1 \\
+        \intertext{Since $k \geq 2$, the statement is true:}
+        \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} &> \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}}
+        \intertext{Therefore, $c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} = c + \df{1}{\sqrt{k+1}} > \sqrt{k+1} = \sum_{i=1}^{k+1}{\frac{1}{\sqrt{i}}} > \sqrt{k+1}$. Thus, $P(k) \implies P(k+1)$.}
+    \end{align*}
+    By induction, we have shown that $\displaystyle\sum_{i=1}^{n+1}{\frac{1}{\sqrt{i}}} > \sqrt{n+1}$ is true $n\geq2$
+\end{proof}
+\newpage
+% Question 2
+\question
+Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
+\begin{proof}
+    By induction. \\
+    Let $P(n)$ be the statement that $3^{2^n} -1$ is divisible by $2^{n+2}$, $n \in \ints^+$ \\ 
+    \\
+    \textbf{Base Case: $n=1$}
+    \begin{align*}
+        (3^{2^1} - 1)\Mod{2^{1+2}} &= (3^{2} - 1)\Mod{2^{3}} \\
+                                   &= 8\Mod{8} \\
+                                   &= 0
+    \end{align*}
+    Since the remainder when $3^{2^1}-1$ is divided by $2^{1+2}$ is 0, $P(n)$ is true when $n=0$. \\
+    \\
+    \textbf{Inductive Hypothesis:} Assume $P(k)$ is true for some $k \in \ints^+ \land k > 1$. \\
+    \\
+    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Assume the Inductive Hypothesis.
+\end{proof}
+\newpage
+% Question 3
+Find a formula for $$(1-\df1{2^2})(1-\df1{3^2})(1-\df1{4^2})(1-\df1{5^2})...(1-\df1{n^2})$$  where $n \geq 2$, and use the Principle of Mathematical Induction to prove that the formula is correct. \\
+\newpage
+% Question 4
+\question
+Which amounts of money can be formed using just two-dollar bills and five- dollar bills? Prove your answer using strong induction.
+\newpage
+% Question 5
+\question
+A baker bakes six different kinds of muffins. If a box with 25 muffins is made with a random number  of each kind of muffin, in how many ways can a box of muffins be prepared.
+\newpage
+% Question 6
+\question
+Let P( n) be the statement that a postage of n cents can be formed using just 3- cent stamps and 5- cent stamps. Parts of this exercise outline a strong induction proof that P( n) is true for $n \geq 8$.\\ a) Show that the statements P( 8), P( 9), and P( 10) are true, completing the basis step of the proof. \\ b) What is the inductive hypothesis of the proof?\\ c) What do you need to prove in the inductive step?\\ d) Complete the inductive step for $k \geq 10$ .
+\newpage
+% Question 7
+\question
+Find the number of strings of length 10 of letters of the alphabet, with no repeated letters, that have vowels in the first two positions. {\bf NOTE:} y is a vowel.
+\newpage
+% Question 8
+\question
+Ten men and ten women are to be put in a row. Find the number of possible different  rows if no two of the same sex stand adjacent.
+\newpage
+% Question 9
+\question
+If positive integers are chosen at random, what is the minimum number you must have in order to guarantee that two of the chosen numbers are congruent modulo 6.   Prove your answer. \par  {\bf NOTE:} Two numbers are congruent modulo 6 if their difference is a multiple of 6.
+\newpage
+% Question 10
+\question
+Write the expansion of $\paren*{x^2 -\df1 x}^{12}$.
+\begin{align*}
+    \paren*{x^2 - \frac{1}{x}}^{12} &= \sum_{i=0}^{12}\binom{12}{i}{x^2}^{12-i}\paren*{-\frac{1}{x}}^{i} \\
+    &= \binom{12}{0} \paren*{x^{2}}^{12} \paren*{\frac{1}{x}}^{0} + \binom{12}{1} \paren*{x^{2}}^{11} \paren*{\frac{1}{x}}^{1} + \binom{12}{2} \paren*{x^{2}}^{10} \paren*{\frac{1}{x}}^{2} + \binom{12}{3} \paren*{x^{2}}^{9} \paren*{\frac{1}{x}}^{3} \\ + \binom{12}{4} \paren*{x^{2}}^{8} \paren*{\frac{1}{x}}^{4} + \binom{12}{5} \paren*{x^{2}}^{7} \paren*{\frac{1}{x}}^{5} + \binom{12}{6} \paren*{x^{2}}^{6} \paren*{\frac{1}{x}}^{6} \\ + \binom{12}{7} \paren*{x^{2}}^{5} \paren*{\frac{1}{x}}^{7} + \binom{12}{8} \paren*{x^{2}}^{4} \paren*{\frac{1}{x}}^{8} + \binom{12}{9} \paren*{x^{2}}^{3} \paren*{\frac{1}{x}}^{9} \\+ \binom{12}{10} \paren*{x^{2}}^{2} \paren*{\frac{1}{x}}^{10} + \binom{12}{11} \paren*{x^{2}}^{1} \paren*{\frac{1}{x}}^{11} + \binom{12}{12} \paren*{x^{2}}^{0} \paren*{\frac{1}{x}}^{12} \\ 
+    \\
+    &= 1 \paren*{x^{2}}^{12} \paren*{\frac{1}{x}}^{0} + 12 \paren*{x^{2}}^{11} \paren*{\frac{1}{x}}^{1} + 66 \paren*{x^{2}}^{10} \paren*{\frac{1}{x}}^{2} + 220 \paren*{x^{2}}^{9} \paren*{\frac{1}{x}}^{3} + 495 \paren*{x^{2}}^{8} \paren*{\frac{1}{x}}^{4} + 792 \paren*{x^{2}}^{7} \paren*{\frac{1}{x}}^{5} + 924 \paren*{x^{2}}^{6} \paren*{\frac{1}{x}}^{6} + 792 \paren*{x^{2}}^{5} \paren*{\frac{1}{x}}^{7} + 495 \paren*{x^{2}}^{4} \paren*{\frac{1}{x}}^{8} + 220 \paren*{x^{2}}^{3} \paren*{\frac{1}{x}}^{9} + 66 \paren*{x^{2}}^{2} \paren*{\frac{1}{x}}^{10} + 12 \paren*{x^{2}}^{1} \paren*{\frac{1}{x}}^{11} + 1 \paren*{x^{2}}^{0} \paren*{\frac{1}{x}}^{12}
+\end{align*}
+    \newpage
+% Question 11
+\question
+In how many ways can 7 of the 8 letters in CHEMISTS be put in a row?
+\newpage
+% Question 12
+\question 
+What is the minimum number of cards that must be drawn from an ordinary deck of cards to guarantee that you have been dealt \\ (a) at least three of at least one suit?\\ (b) at least three clubs?  \\ Explain. 
+\newpage
+% Question 13
+\question
+Prove the identity $\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k}$ , whenever $n, r$, and $k$ are nonnegative integers with $r \leq n$ and $k \leq r$,\\a) algebraically.\\ b) using a combinatorial argument.
+\newpage
+% Question 14
+\question
+How many solutions are there to the equation $\sum_{i=1}^6 x_i=29$, where $x_i, i = 1, 2, 3, 4, 5, 6,$ is a nonnegative integer such that\\ a)$x_i > 1$ for$ i = 1, 2, 3, 4, 5, 6$?\\ b)$x_1 \geq 1$, x2 $\geq 2$, $x_3 \geq 3$, $x4 \geq 4$, $x_5 > 5$, and $x_6 \geq 6$?\\ c)$x_1 \geq 5$? \\ d)$x_1 < 8$ and $x_2 > 8$?
+\end{document} 
+
