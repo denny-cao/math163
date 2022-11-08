@@ -166,6 +166,13 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
     \textbf{Inductive Hypothesis:} Assume $P(k)$ is true for some $k \in \ints^+ \land k > 1$. \\
     \\
     \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Assume the Inductive Hypothesis.
+    \begin{align*}
+        \frac{3^{2^k} - 1}{2^{k+2}} \in \nats \\
+        \frac{9^k - 1}{4\paren*{2^k}} \in \nats \\
+        \\
+        \frac{9}{2}\paren*{\frac{9^k - 1}{4\paren*{2^k}}} \\
+        \frac{9^{k+1} - 1}{2^{k+1} + 4} = \frac{9^{k} + 8}{2^{k} + 6}
+    \end{align*}
 \end{proof}
 \newpage
 % Question 3
