@@ -1,8 +1,8 @@
-PWD /home/akkaro/math163
+PWD /home/akkaro/discrete/math163
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /home/akkaro/math163/hw3.tex
+INPUT /home/akkaro/discrete/math163/hw3.tex
 OUTPUT hw3.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls

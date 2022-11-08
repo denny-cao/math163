@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.19)  8 NOV 2022 16:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.20)  8 NOV 2022 18:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/akkaro/math163/hw3.tex
-(/home/akkaro/math163/hw3.tex
+**/home/akkaro/discrete/math163/hw3.tex
+(/home/akkaro/discrete/math163/hw3.tex
 LaTeX2e <2022-06-01> patch level 5
 L3 programming layer <2022-09-28> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -711,12 +711,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--169
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-[5] [6] [7] [8] [9] [10] [11]
-Overfull \hbox (1005.15813pt too wide) detected at line 213
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 186--190
+
+ []
+
+[6] [7] [8] [9] [10] [11]
+Overfull \hbox (1005.15813pt too wide) detected at line 238
 []
  []
 
@@ -726,14 +731,14 @@ Package rerunfilecheck Info: File `hw3.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  23563 strings out of 475071
- 437425 string characters out of 5778915
+ 437452 string characters out of 5778915
  779180 words of memory out of 5000000
  44568 multiletter control sequences out of 15000+600000
  478062 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,89p,836b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,14n,89p,845b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw3.pdf (16 pages, 146775 bytes).
+Output written on hw3.pdf (16 pages, 148461 bytes).
 PDF statistics:
  148 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams
