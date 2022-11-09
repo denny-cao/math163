@@ -613,4 +613,210 @@ LaTeX Font Info:    ... okay on input line 104.
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 104.
+(./hw3.out) (./hw3.out)
+\@outlinefile=\write4
+\openout4 = `hw3.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 107.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 107.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--125
+
+ []
+
+
+Overfull \hbox (23.38802pt too wide) in paragraph at lines 147--147
+\OT1/cmr/m/n/12 Since $\OML/cmm/m/it/12 c \OT1/cmr/m/n/12 + [] \OML/cmm/m/it/12 > []$\OT1/cmr/m/n/12 , by the tran-si-tive prop-erty, $[] \OML/cmm/m/it/12 > []  \OT1/cmr/m/n/12 =[]\OMS/cmsy/m/n/12 )
+ []
+
+
+Overfull \hbox (23.38802pt too wide) in paragraph at lines 147--147
+\OT1/cmr/m/n/12 Since $\OML/cmm/m/it/12 c \OT1/cmr/m/n/12 + [] \OML/cmm/m/it/12 > []$\OT1/cmr/m/n/12 , by the tran-si-tive prop-erty, $[] \OML/cmm/m/it/12 > []  \OT1/cmr/m/n/12 =[]\OMS/cmsy/m/n/12 )
+ []
+
+[1
+
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 155--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--169
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
+
+ []
+
+
+Overfull \hbox (14.57513pt too wide) detected at line 187
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--194
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--213
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 223--227
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 230--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--266
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--266
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 269--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--275
+
+ []
+
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 286--290
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--290
+
+ []
+
+[10] [11] [12]
+Overfull \hbox (1005.15813pt too wide) detected at line 308
+[]
+ []
+
+[13] [14] [15] [16] [17] (./hw3.aux)
+Package rerunfilecheck Info: File `hw3.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+ ) 
+Here is how much of TeX's memory you used:
+ 23565 strings out of 475071
+ 437449 string characters out of 5778915
+ 779178 words of memory out of 5000000
+ 44569 multiletter control sequences out of 15000+600000
+ 478369 words of font info for 63 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 84i,16n,89p,836b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on hw3.pdf (17 pages, 155614 bytes).
+PDF statistics:
+ 152 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
+ 18 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+
