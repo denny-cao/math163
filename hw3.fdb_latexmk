@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1667950661 "/home/akkaro/discrete/math163/hw3.tex" "hw3.pdf" "hw3" 1667950661
-  "/home/akkaro/discrete/math163/hw3.tex" 1667950660 12992 4159a608b21f8575ba382fa2844ac2c6 ""
+["pdflatex"] 1667952645 "/home/akkaro/discrete/math163/hw3.tex" "hw3.pdf" "hw3" 1667952646
+  "/home/akkaro/discrete/math163/hw3.tex" 1667952645 13395 f304a2073852ad0394e567edd23f03e5 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -172,9 +172,9 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1666284334 4609062 08c49d5e671d25747d0647f95b82ad6d ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1666276713 3058867 d2312b4faaffca87fb02f601ea36a14e ""
   "/usr/local/texlive/2022/texmf.cnf" 1666276685 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "hw3.aux" 1667950661 555 907f391b031292eb27cccb03ee6a388a "pdflatex"
+  "hw3.aux" 1667952646 555 907f391b031292eb27cccb03ee6a388a "pdflatex"
   "hw3.out" 0 -1 0 "pdflatex"
-  "hw3.tex" 1667950660 12992 4159a608b21f8575ba382fa2844ac2c6 ""
+  "hw3.tex" 1667952645 13395 f304a2073852ad0394e567edd23f03e5 ""
   (generated)
   "hw3.aux"
   "hw3.log"

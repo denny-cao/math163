@@ -204,7 +204,15 @@ Which amounts of money can be formed using just two-dollar bills and five-dollar
             2(0) + 5(1) &= 5 \\
         \end{aligned}
     \end{alignat*}
-    Since $2a+5b=2,4,5$ when $a=1,b=0$; $a=2,b=0$; $a=0,b=1$ respectively, $P(2), P(4)$ and $P(5)$ are true.
+    Since $2a+5b=2,4,5$ when $a=1,b=0$; $a=2,b=0$; $a=0,b=1$ respectively, $P(2), P(4)$ and $P(5)$ are true. \\
+    \\
+    \textbf{Inductive Hypothesis:} Assume $P(j)$ is true for some $j \in \nats$, where $5 \leq k \leq j$, $j \geq 6$, $j \in \ints$. \\
+    \\
+    \textbf{Inductive Step:} We want to show that $P(k)\implies P(k+1)$. Assume the Inductive Hypothesis.
+    \begin{align*}
+        2a + 5b = k+1 = (k - 1) + 2 
+    \end{align*}   
+    By adding a 2-dollar bill to $k-1$, we can form $k+1$. 
 \end{proof}
 \newpage
 % Question 5
