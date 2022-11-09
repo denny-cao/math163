@@ -108,7 +108,7 @@
 Use the Principle of Mathematical Induction to  show this inequality is true for all  integers $n\geq 2$:\hskip1cm$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
 \begin{proof}
     By induction. \\
-    Let P(n) be the proposition that $\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n\,\,}$, where $n \in \ints$. \\ 
+    Let P(n) be the statement that $\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n\,\,}$, where $n \in \ints$. \\ 
     \textbf{Base Case: $n=2$}
     \begin{align*}
         \sum_{i=1}^{2}{\frac{1}{\sqrt{i}}}&\stackrel{?}{>} \sqrt{2} \\
@@ -145,7 +145,7 @@ Use the Principle of Mathematical Induction to  show this inequality is true for
         \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} &> \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}}
         \intertext{Therefore, $c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} = c + \df{1}{\sqrt{k+1}} > \sqrt{k+1} = \sum_{i=1}^{k+1}{\frac{1}{\sqrt{i}}} > \sqrt{k+1}$. Thus, $P(k) \implies P(k+1)$.}
     \end{align*}
-    By induction, we have shown that $\displaystyle\sum_{i=1}^{n+1}{\frac{1}{\sqrt{i}}} > \sqrt{n+1}$ is true $n\geq2$
+    \textbf{Conclusion:} By induction, we have shown that $\displaystyle\sum_{i=1}^{n+1}{\frac{1}{\sqrt{i}}} > \sqrt{n+1}$ is true $n\geq2$
 \end{proof}
 \newpage
 % Question 2
@@ -178,21 +178,67 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
 % Question 3
 \question
 Find a formula for $$(1-\df1{2^2})(1-\df1{3^2})(1-\df1{4^2})(1-\df1{5^2})...(1-\df1{n^2})$$  where $n \geq 2$, and use the Principle of Mathematical Induction to prove that the formula is correct. \\
+\begin{align*}
+      &\paren*{1-\df1{2^2}}\paren*{1-\df1{3^2}}\paren*{1-\df1{4^2}}\paren*{1-\df1{5^2}}\cdots \paren*{1-\df1{n^2}} \\
+    = &\paren*{\frac{2^2-1}{2^2}}\paren*{\frac{3^2-1}{3^2}}\paren*{\frac{4^2-1}{4^2}}\paren*{\frac{5^2-1}{5^2}}\cdots \paren*{\frac{n^2-1}{n^2}} \\
+    = &\paren*{\frac{(2+1)(2-1)}{2^2}}\paren*{\frac{(3+1)(3-1)}{3^2}}\paren*{\frac{(4+1)(4-1)}{4^2}}\paren*{\frac{(5+1)(5-1)}{5^2}}\cdots\paren*{\frac{(n+1)(n-1)}{n^2}} \\
+    = &\paren*{\frac{3 \times 1}{2^2}}\paren*{\frac{4 \times 2}{3^2}}\paren*{\frac{5 \times 3}{4^2}}\paren*{\frac{6 \times 4}{5^2}}\cdots\paren*{\frac{(n+1)(n-1)}{n^2}} \\
+    = &\frac{\df{(n+1)!}{2} \times (n-1)!}{n! \times n!} = \frac{(n+1)! \times (n-1)!}{2 \times n! \times n!} = \frac{n+1}{2n}
+\end{align*}
+\begin{proof} By induction. \\
+    Let P(n) be the statement that:
+    \[ \prod_{i=2}^{n}{1 - \frac{1}{i^2}} = \frac{n+1}{2n}\]
+    where $n \geq 2, n \in \ints$. \\
+    \\
+    \textbf{Base Case: $n=2$}
+    \begin{align*}
+        \begin{aligned}
+            \prod_{i=2}^{2}{1-\frac{1}{i^2}} &= \paren*{1 - \frac{1}{2^2}} \\
+                                         &= \paren*{1 - \frac{1}{4}} \\
+                                         &= \frac{3}{4}
+        \end{aligned}
+        &&
+        \begin{aligned}
+            \frac{2+1}{2(2)} &= \frac{3}{4} \\
+            \\
+            \\
+            \\
+        \end{aligned}
+    \end{align*}
+    Since $\displaystyle\prod_{i=2}^{n}{1-\frac{1}{i^2}}$ and $\df{n+1}{2n}$ evaluate to the same value, $\df{3}{4}$, when $n=2$, $P(2)$ is true. \\
+    \\
+    \textbf{Inductive Hypothesis:} Assume $P(k)$ is true, $k \geq 2, k \in \ints$. \\
+    \\
+    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Assume the Inductive Hypothesis:
+    \begin{align*}
+        \prod_{i=2}^{k}{1-\frac{1}{i^2}} &= \frac{k+1}{2k} \\
+        \paren*{\prod_{i=2}^{k}{1-\frac{1}{i^2}}}\paren*{1-\frac{1}{(k+1)^2}} &= \paren*{\frac{k+1}{2k}}\paren*{1-\frac{1}{(k+1)^2}} \\
+        \prod_{i=2}^{k+1}{1-\frac{1}{i^2}} &= \paren*{\frac{k+1}{2k}}\paren*{\frac{(k+1)^2 - 1}{(k+1)^2}} \\
+                                           &= \frac{(k+1)^2 - 1}{2k(k+1)} \\
+                                           &= \frac{k^2 + 2k + 1 - 1}{2k(k+1)} \\
+                                           &= \frac{k^2 + 2k}{2k(k+1)} \\
+                                           &= \frac{k(k+2)}{2k(k+1)} \\
+                                           &= \frac{k+2}{2(k+1)} \\
+                                           &= \frac{(k + 1) + 1}{2(k+1)} 
+    \end{align*} 
+    $\displaystyle\paren*{\prod_{i=2}^{k}{1-\frac{1}{i^2}}}\paren*{1-\frac{1}{(k+1)^2}}$, which is equivalent to $\displaystyle\prod_{i=2}^{k+1}{1-\frac{1}{i^2}}$, evaluates to $\df{(k + 1) + 1}{2(k+1)}$. Thus, $P(k) \implies P(k+1)$. \\
+    \\
+    \textbf{Conclusion:} By induction, we have shown that $P(n)$ is true, or $\displaystyle\prod_{i=2}^{n}{1-\frac{1}{i^2}} = \df{n+1}{2n}$, $n \geq 2, n \in \ints$.
+\end{proof}
 \newpage
 % Question 4
 \question
-Which amounts of money can be formed using just two-dollar bills and five-dollar bills? Prove your answer using strong induction.
+Which amounts of money can be formed using just two-dollar bills and five-dollar bills? Prove your answer using strong induction. \\
+\\
+\solution
 \begin{proof}
     By strong induction. \\
+    An amount of money that can be formed using just two-dollar bills and five-dollar bills can be represented by $n=2a+5b$, where $n$ is the amount of money, $a$ is the amount of two-dollar bills, and $b$ is the amount of five-dollar bills. \\
+    \\
     Let $P(n)$ be the statement that $n=2a+5b$, $a, b \in \nats$. \\
     \\
     \textbf{Basis Cases: $n \in \set*{2, 4, 5}$}
-    \begin{alignat*}{3}
-        &\begin{aligned}
-            n &= 2 \\
-            2a + 5b &= 2 \\
-            2(1) + 5(0) &= 2 \\
-        \end{aligned} \quad && 
+    \begin{alignat*}{2}
         \begin{aligned}
             n = 4 \\
             2a + 5b &= 4 \\
@@ -204,28 +250,44 @@ Which amounts of money can be formed using just two-dollar bills and five-dollar
             2(0) + 5(1) &= 5 \\
         \end{aligned}
     \end{alignat*}
-    Since $2a+5b=2,4,5$ when $a=1,b=0$; $a=2,b=0$; $a=0,b=1$ respectively, $P(2), P(4)$ and $P(5)$ are true. \\
+    Since $2a+5b=4,5$ when $a=2,b=0$; $a=0,b=1$ respectively, $P(4)$ and $P(5)$ are true. \\
     \\
-    \textbf{Inductive Hypothesis:} Assume $P(j)$ is true for some $j \in \nats$, where $5 \leq k \leq j$, $j \geq 6$, $j \in \ints$. \\
+    \textbf{Inductive Hypothesis:} Assume $P(j)$ is true, $4 \leq j \leq k$. \\
     \\
     \textbf{Inductive Step:} We want to show that $P(k)\implies P(k+1)$. Assume the Inductive Hypothesis.
     \begin{align*}
         2a + 5b = k+1 = (k - 1) + 2 
     \end{align*}   
-    By adding a 2-dollar bill to $k-1$, we can form $k+1$. 
+    By adding a 2-dollar bill to $k-1$, we can form $k+1$. By the Inductive Hypothesis, $P(k-1)$ is true, meaning $k-1$ can be formed with just two-dollar bills and five-dollar bills. Therefore, since $k+1$ can be formed by adding another two-dollar bill, $P(k+1)$ is true. \\
+    \\
+    \textbf{Conclusion:} By strong induction, we have shown that $P(n)$ is true for $n \geq 4, n \in \ints$, or $n$ dollars can be formed with just two-dollar bills and five-dollar bills, $n \geq 4, n \in \ints$. \\
+    \\
+    2 dollars can be formed with 1 two-dollar bill and 0 five-dollar bills. Therefore, $n$ dollars can be formed with just two-dollar bills and five-dollar bills, $n \in \set*{2} \unite \set*{k \in \ints \ | \ k \geq 4}$.
 \end{proof}
 \newpage
 % Question 5
 \question
-A baker bakes six different kinds of muffins. If a box with 25 muffins is made with a random number  of each kind of muffin, in how many ways can a box of muffins be prepared.
+A baker bakes six different kinds of muffins. If a box with 25 muffins is made with a random number  of each kind of muffin, in how many ways can a box of muffins be prepared. \\
+\\
+\solution \\
+\\
+When repetition of elements is allowed, there are $C(n+r-1,r)$ $r$-combinations from a set with $n$ elements. We have $n=6$ kinds muffins and $r=25$ total muffins: 
+\begin{align*}
+    \binom{6 - 1 + 25}{25} &= \binom{30}{25} \\
+                           &= 142,506
+\end{align*}
+There are 142,506 ways for a box of muffins to be prepared.
 \newpage
 % Question 6
 \question
-Let P( n) be the statement that a postage of n cents can be formed using just 3- cent stamps and 5- cent stamps. Parts of this exercise outline a strong induction proof that P( n) is true for $n \geq 8$.\\ a) Show that the statements P( 8), P( 9), and P( 10) are true, completing the basis step of the proof. \\ b) What is the inductive hypothesis of the proof?\\ c) What do you need to prove in the inductive step?\\ d) Complete the inductive step for $k \geq 10$ .
+Let P(n) be the statement that a postage of n cents can be formed using just 3- cent stamps and 5- cent stamps. Parts of this exercise outline a strong induction proof that P(n) is true for $n \geq 8$.\\ a) Show that the statements P(8), P(9), and P(10) are true, completing the basis step of the proof. \\ b) What is the inductive hypothesis of the proof?\\ c) What do you need to prove in the inductive step?\\ d) Complete the inductive step for $k \geq 10$ .
 \newpage
 % Question 7
 \question
-Find the number of strings of length 10 of letters of the alphabet, with no repeated letters, that have vowels in the first two positions. {\bf NOTE:} y is a vowel.
+Find the number of strings of length 10 of letters of the alphabet, with no repeated letters, that have vowels in the first two positions. {\bf NOTE:} y is a vowel. \\
+\solution \\
+\\
+
 \newpage
 % Question 8
 \question
