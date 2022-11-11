@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.19)  9 NOV 2022 00:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.10.19)  11 NOV 2022 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -710,118 +710,123 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--169
 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--169
+
+ []
+
+[4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
  []
 
 
-Overfull \hbox (14.57513pt too wide) detected at line 187
+Overfull \hbox (14.57513pt too wide) detected at line 198
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 191--195
+Underfull \hbox (badness 10000) in paragraph at lines 202--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--214
+Underfull \hbox (badness 10000) in paragraph at lines 219--225
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--214
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 224--228
+Underfull \hbox (badness 10000) in paragraph at lines 219--225
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 231--236
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--259
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 253--259
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--267
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--267
+Underfull \hbox (badness 10000) in paragraph at lines 235--239
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 270--276
+Underfull \hbox (badness 10000) in paragraph at lines 242--247
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--276
-
- []
-
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 287--291
+Underfull \hbox (badness 10000) in paragraph at lines 247--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--291
+Underfull \hbox (badness 10000) in paragraph at lines 247--253
 
  []
 
-[10] [11] [12]
-Overfull \hbox (1005.15813pt too wide) detected at line 309
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--270
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--278
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 281--287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 281--287
+
+ []
+
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 298--302
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 298--302
+
+ []
+
+[11] [12] [13]
+Overfull \hbox (1005.15813pt too wide) detected at line 320
 []
  []
 
-[13] [14] [15] [16] [17] (./hw3.aux)
+[14] [15] [16] [17] [18] (./hw3.aux)
 Package rerunfilecheck Info: File `hw3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23565 strings out of 475071
- 437449 string characters out of 5778915
- 779178 words of memory out of 5000000
+ 23566 strings out of 475071
+ 437456 string characters out of 5778915
+ 779179 words of memory out of 5000000
  44569 multiletter control sequences out of 15000+600000
  478369 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,16n,89p,836b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,16n,89p,836b,517s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw3.pdf (17 pages, 155788 bytes).
+Output written on hw3.pdf (18 pages, 158864 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
