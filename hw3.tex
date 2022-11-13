@@ -38,11 +38,21 @@
     {{\large\bfseries{Solution}}}
 }
 
+\newcommand{\hwTitle}{Practice Exam 3}
+\newcommand{\hwDueDate}{November 14, 2022}
+\newcommand{\class}{MATH163}
+\newcommand{\professor}{Dr.\ Petrescu}
+\newcommand{\name}{Denny\ Cao}
+
 \pagestyle{fancy}
 \fancyhf{}% clears all header and footer fields
 \fancyfoot[C]{--~\thepage~--}
-\renewcommand*{\headrulewidth}{0pt}
+\renewcommand*{\headrulewidth}{0.4pt}
 \renewcommand*{\footrulewidth}{0pt}
+\lhead{\name}
+\chead{\class: \hwTitle}
+\rhead{Question \arabic{question}}
+
 
 \fancypagestyle{plain}{%
   \fancyhf{}% clears all header and footer fields
@@ -50,6 +60,7 @@
   \renewcommand*{\headrulewidth}{0pt}%
   \renewcommand*{\footrulewidth}{0pt}%
 }
+
 
 % Shortcuts
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
@@ -71,6 +82,11 @@
 \newcommand{\ints}{\mathbb{Z}}
 \newcommand{\nats}{\mathbb{N}}
 \newcommand{\rats}{\mathbb{Q}}
+
+
+% Counting
+\newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
 
 \setlength\parindent{0pt}
 
@@ -94,22 +110,23 @@
 \ecatcode
 %++++++++++++++++++++++++++++++++++++++++
 
-\title{Practice Exam 3}
-\author{Denny Cao}
+\title{\hwTitle}
+\author{\name}
 \date{%
     %CCP MATH163 \\%
     %Dr. Petrescu \\[2ex]%
-    \today
+    Due: \hwDueDate
 }
 \begin{document}
 \maketitle
 % Question 1
 \question 
-Use the Principle of Mathematical Induction to  show this inequality is true for all  integers $n\geq 2$:\hskip1cm$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
+Use the Principle of Mathematical Induction to show this inequality is true for all  integers $n\geq 2$:\hskip1cm$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
+\solution
 \begin{proof}
     By induction. \\
     Let P(n) be the statement that $\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n\,\,}$, where $n \in \ints$. \\ 
-    \textbf{Base Case: $n=2$}
+    \textbf{Basis Step: $n=2$}
     \begin{align*}
         \sum_{i=1}^{2}{\frac{1}{\sqrt{i}}}&\stackrel{?}{>} \sqrt{2} \\
         \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}}&\stackrel{?}{>}\sqrt{2} \\
@@ -155,7 +172,7 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
     By induction. \\
     Let $P(n)$ be the statement that $3^{2^n} -1$ is divisible by $2^{n+2}$, $n \in \ints^+$ \\ 
     \\
-    \textbf{Base Case: $n=1$}
+    \textbf{Basis Step: $n=1$}
     \begin{align*}
         (3^{2^1} - 1)\Mod{2^{1+2}} &= (3^{2} - 1)\Mod{2^{3}} \\
                                    &= 8\Mod{8} \\
@@ -165,14 +182,14 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
     \\
     \textbf{Inductive Hypothesis:} Assume $P(k)$ is true for some $k \in \ints^+$. \\
     \\
-    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true from the inductive hypothesis, we must prove that $P(k+1)$ is true.\\
+    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true in the Inductive Hypothesis, we must prove that $P(k+1)$ is true.\\
     \begin{align*}
         \frac{3^{2^{k+1}} - 1}{2^{k+1+2}} &= \frac{3^{2^k(2)} - 1}{2^1\paren*{2^{k+2}}} \\
                                           &= \frac{3^{2^{k^2}} - 1}{2^1\paren*{2^{k+2}}} \\
                                           &= \frac{\paren*{3^{2^k} - 1}\paren*{3^{2^k} + 1}}{2^1\paren*{2^{k+2}}} \\
                                           &= \paren*{\frac{3^{2^k} - 1}{2^{k+2}}}\paren*{\frac{3^{2^k} + 1}{2}}
     \end{align*}
-    Since we assume the inductive hypothesis, $P(k)$ is true. Therefore, $\paren*{3^{2^k} - 1}\Mod{2^{k+2}} = 0$, meaning $\df{3^{2^k} - 1}{2^{k+2}} \in \ints$. Since $\paren*{\df{3^{2^k} - 1}{2^{k+2}}}\paren*{\df{3^{2^k} + 1}{2}}$ are factors of $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$, if both are integers, $\paren*{3^{2^{k + 1}} - 1}\Mod{2^{k+3}} = 0$, meaning $P(k + 1)$ is true. Therefore, it is sufficient to prove $P(k + 1)$ by proving $\paren*{3^{2^k} + 1}\Mod{2} = 0$:
+    From the Inductive Hypothesis, $P(k)$ is true. Therefore, $\paren*{3^{2^k} - 1}\Mod{2^{k+2}} = 0$, meaning $\df{3^{2^k} - 1}{2^{k+2}} \in \ints$. Since $\paren*{\df{3^{2^k} - 1}{2^{k+2}}}\paren*{\df{3^{2^k} + 1}{2}}$ are factors of $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$, if both are integers, $\paren*{3^{2^{k + 1}} - 1}\Mod{2^{k+3}} = 0$, meaning $P(k + 1)$ is true. Therefore, it is sufficient to prove $P(k + 1)$ by proving $\paren*{3^{2^k} + 1}\Mod{2} = 0$:
     \begin{align*}
         \intertext{For an integer $x$ to be even, 2 must be included in the prime factorization of $x$. The prime factorization of $3^{2^k}$ is $2^k$ amount of 3s. Since 2 is not included and $3^{2^k} \neq 0$, $3^{2^k}$ is odd. Therefore, $3^{2^k}$ can be expressed as $2c + 1, c \in \ints$:}
         {[(2c + 1) + 1]}\Mod{2}  &= {(2c + 2)}\Mod{2} \\
@@ -181,7 +198,7 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
                                  &= ((0(c\Mod{2}))\Mod{2} + 0)\Mod{2} \\
                                  &= 0\Mod{2} \\
                                  &= 0
-        \intertext{$((2c+1) + 1)\Mod{2} = 0$, where $2c+1 = 3^{2^k}$, therefore $\df{3^{2^k} + 1}{2} \in \ints$. Since both factors of $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$ are integers, $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$ will also be an integer. Therefore, $\paren*{3^{2^{k+1}} - 1}\Mod{2^{k+1+2}} = 0$; $P(k+1)$ is true.}
+        \intertext{$((2c+1) + 1)\Mod{2} = 0$, where $2c+1 = 3^{2^k}$, therefore $\df{3^{2^k} + 1}{2} \in \ints$. Since both factors of $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$ are integers, $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$ will also be an integer. Therefore, $\paren*{3^{2^{k+1}} - 1}\Mod{2^{k+1+2}} = 0$; $P(k+1)$ is true. Thus, $P(k) \implies P(k+1)$.}
     \end{align*}
 
 \end{proof}
@@ -202,7 +219,7 @@ Find a formula for $$(1-\df1{2^2})(1-\df1{3^2})(1-\df1{4^2})(1-\df1{5^2})...(1-\
     \[ \prod_{i=2}^{n}{1 - \frac{1}{i^2}} = \frac{n+1}{2n}\]
     where $n \geq 2, n \in \ints$. \\
     \\
-    \textbf{Base Case: $n=2$}
+    \textbf{Basis Step: $n=2$}
     \begin{align*}
         \begin{aligned}
             \prod_{i=2}^{2}{1-\frac{1}{i^2}} &= \paren*{1 - \frac{1}{2^2}} \\
@@ -221,7 +238,7 @@ Find a formula for $$(1-\df1{2^2})(1-\df1{3^2})(1-\df1{4^2})(1-\df1{5^2})...(1-\
     \\
     \textbf{Inductive Hypothesis:} Assume $P(k)$ is true, $k \geq 2, k \in \ints$. \\
     \\
-    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Assume the Inductive Hypothesis:
+    \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true in the Inductive Hypothesis, we must prove that $P(k+1)$ is true: 
     \begin{align*}
         \prod_{i=2}^{k}{1-\frac{1}{i^2}} &= \frac{k+1}{2k} \\
         \paren*{\prod_{i=2}^{k}{1-\frac{1}{i^2}}}\paren*{1-\frac{1}{(k+1)^2}} &= \paren*{\frac{k+1}{2k}}\paren*{1-\frac{1}{(k+1)^2}} \\
@@ -245,11 +262,11 @@ Which amounts of money can be formed using just two-dollar bills and five-dollar
 \solution
 \begin{proof}
     By strong induction. \\
-    An amount of money that can be formed using just two-dollar bills and five-dollar bills can be represented by $n=2a+5b$, where $n$ is the amount of money, $a$ is the amount of two-dollar bills, and $b$ is the amount of five-dollar bills. \\
+    An amount of money, $n$, that can be formed using just two-dollar bills and five-dollar bills can be represented by $n=2a+5b$, where $a$ is the amount of two-dollar bills, and $b$ is the amount of five-dollar bills. \\
     \\
     Let $P(n)$ be the statement that $n=2a+5b$, $a, b \in \nats$. \\
     \\
-    \textbf{Basis Cases: $n \in \set*{2, 4, 5}$}
+    \textbf{Basis Step: $n \in \set*{2, 4, 5}$}
     \begin{alignat*}{2}
         \begin{aligned}
             n = 4 \\
@@ -264,13 +281,13 @@ Which amounts of money can be formed using just two-dollar bills and five-dollar
     \end{alignat*}
     Since $2a+5b=4,5$ when $a=2,b=0$; $a=0,b=1$ respectively, $P(4)$ and $P(5)$ are true. \\
     \\
-    \textbf{Inductive Hypothesis:} Assume $P(j)$ is true, $4 \leq j \leq k$. \\
+    \textbf{Inductive Hypothesis:} Assume $P(j)$ is true, $4 \leq j \leq k$, where $j,k \in \ints$. \\
     \\
-    \textbf{Inductive Step:} We want to show that $P(k)\implies P(k+1)$. Assume the Inductive Hypothesis.
+    \textbf{Inductive Step:} We want to show that $P(k)\implies P(k+1)$. Since we assume $P(k)$ is true in the Inductive Hypothesis, we must prove that $P(k+1)$ is true.
     \begin{align*}
         2a + 5b = k+1 = (k - 1) + 2 
     \end{align*}   
-    By adding a 2-dollar bill to $k-1$, we can form $k+1$. By the Inductive Hypothesis, $P(k-1)$ is true, meaning $k-1$ can be formed with just two-dollar bills and five-dollar bills. Therefore, since $k+1$ can be formed by adding another two-dollar bill, $P(k+1)$ is true. \\
+    By adding a 2-dollar bill to $k-1$, we can form $k+1$. From the Inductive Hypothesis, $P(k-1)$ is true, meaning $k-1$ can be formed with just two-dollar bills and five-dollar bills. Therefore, since $k+1$ can be formed by adding another two-dollar bill, $P(k+1)$ is true. \\
     \\
     \textbf{Conclusion:} By strong induction, we have shown that $P(n)$ is true for $n \geq 4, n \in \ints$, or $n$ dollars can be formed with just two-dollar bills and five-dollar bills, $n \geq 4, n \in \ints$. \\
     \\
@@ -288,26 +305,99 @@ When repetition of elements is allowed, there are $C(n+r-1,r)$ $r$-combinations 
     \binom{6 - 1 + 25}{25} &= \binom{30}{25} \\
                            &= 142,506
 \end{align*}
-There are 142,506 ways for a box of muffins to be prepared.
+\textbf{There are 142,506 ways for a box of muffins to be prepared.}
 \newpage
 % Question 6
 \question
-Let P(n) be the statement that a postage of n cents can be formed using just 3- cent stamps and 5- cent stamps. Parts of this exercise outline a strong induction proof that P(n) is true for $n \geq 8$.\\ a) Show that the statements P(8), P(9), and P(10) are true, completing the basis step of the proof. \\ b) What is the inductive hypothesis of the proof?\\ c) What do you need to prove in the inductive step?\\ d) Complete the inductive step for $k \geq 10$ .
+Let P(n) be the statement that a postage of n cents can be formed using just 3- cent stamps and 5- cent stamps. Parts of this exercise outline a strong induction proof that P(n) is true for $n \geq 8$.\\ a) Show that the statements P(8), P(9), and P(10) are true, completing the basis step of the proof. \\ b) What is the inductive hypothesis of the proof?\\ c) What do you need to prove in the inductive step?\\ d) Complete the inductive step for $k \geq 10$. \\
+\\
+\solution \\
+\\
+A postage of n cents that can be formed using just 3-cent stamps and 5-cent stamps can be represented by $n=3a+5b$, where $a,b$ are the amount of 3-cent stamps and 5-cent stamps respectively. \\
+\begin{enumerate}[a)]
+    \item 
+    \textbf{Basis Step:}
+    \begin{alignat*}{3}
+        \begin{aligned}
+            n = 8 \\
+            3a + 5b &= 8 \\
+            3(1) + 5(1) &= 8 \\
+        \end{aligned} \quad &&
+        \begin{aligned}
+            n = 9 \\
+            3a + 5b &= 9 \\
+            3(3) + 5(0) &= 9 \\
+        \end{aligned} \quad &&
+        \begin{aligned}
+            n = 10 \\
+            3a + 5b &= 10 \\
+            3(0) + 5(2) &= 10 \\
+        \end{aligned}
+    \end{alignat*}
+    Since a postage of 8-cents can be formed with 1 3-cent stamp and 1 5-cent stamp, a postage of 9-cents can be formed with 3 3-cent stamps and 0 5-cent stamps, and a postage of 10-cents can be formed with 0 3-cent stamps and 2 5-cent stamps, $P(8),P(9),P(10)$ are true.
+    \item 
+    \textbf{Inductive Hypothesis:} Assume $P(j)$ is true, $8 \leq j \leq k$ where $j,k \in \ints$.
+    \item 
+    In the Inductive Step, we must prove that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true from the Inductive Hypothesis, we must prove that $P(k+1)$ is true.
+    \item 
+    \textbf{Inductive Step:} we want to prove that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true from the Inductive Hypothesis, we must prove that $P(k+1)$ is true: 
+    \begin{align*}
+        k + 1 &= (k - 2) + 3
+    \end{align*}
+\end{enumerate}
 \newpage
 % Question 7
 \question
 Find the number of strings of length 10 of letters of the alphabet, with no repeated letters, that have vowels in the first two positions. {\bf NOTE:} y is a vowel. \\
+\\
 \solution \\
 \\
-
+The cardinality of the set of vowels, $\set*{\text{a},\text{e},\text{i},\text{o},\text{u},\text{y}}$, is 6. The number of 2 permutations of 6 without repetition is $6 \times 5$. This is the amount of unique 2 letter strings, where both letters are in the set of vowels and are not the same. 
+    \begin{align}
+        \underset{\text{-----}}{6}\times\underset{\text{{-----}}}{5}
+    \end{align}
+The cardinality of the set of letters in the alphabet is 26. Since there cannot be repetition and 2 letters have been used, we are left with 24 letters. The number of 8 permutations of 24 without repetition is $\df{24!}{(24-8)!} = \df{24!}{16!}$. This is the amount of unique 8 letter strings excluding 2 letters and each letter is different.
+    \begin{align}
+        \underset{\text{{-----}}}{24}\times\underset{\text{{-----}}}{23}\times\underset{\text{{-----}}}{22}\times\underset{\text{{-----}}}{21}\times\underset{\text{{-----}}}{20}\times\underset{\text{{-----}}}{19}\times\underset{\text{{-----}}}{18}\times\underset{\text{{-----}}}{17}
+    \end{align}
+We can use the product rule, multiplying (1) and (2) to find the amount of strings of length 10 of letters of the alphabet, with no repeated letters, that have vowels in the first two positions: there are $\df{6!}{4!} \times \df{24!}{16!}$ strings.
+\begin{align*}
+    \underbrace{\underset{\text{-----}}{6}\times\underset{\text{{-----}}}{5}}_{(1)}\times\underbrace{\underset{\text{{-----}}}{24}\times\underset{\text{{-----}}}{23}\times\underset{\text{{-----}}}{22}\times\underset{\text{{-----}}}{21}\times\underset{\text{{-----}}}{20}\times\underset{\text{{-----}}}{19}\times\underset{\text{{-----}}}{18}\times\underset{\text{{-----}}}{17}}_{(2)}
+\end{align*}
 \newpage
 % Question 8
 \question
-Ten men and ten women are to be put in a row. Find the number of possible different  rows if no two of the same sex stand adjacent.
+Ten men and ten women are to be put in a row. Find the number of possible different  rows if no two of the same sex stand adjacent. \\
+\\
+\solution \\
+\\
+We have $10!$ ways to organize the men and $10!$ ways to organize the women. Alternating the genders is the same as placing the 10 women in between 10 men or placing 10 men in between 10 women. This can be visualized as follows:
+\begin{center}
+    MWMWMWMWMWMWMWMWMWMW
+\end{center}
+\begin{center}
+    WMWMWMWMWMWMWMWMWMWM
+\end{center}
+By the product rule, there are $10! \times 10!$ ways to order 10 women in between 10 men. Likewise, there are $10! \times 10!$ ways to order 10 men in between 10 women. Therefore, the total amount of different rows if no two of the same sex stand adjacent is the sum of these two possibilities: $10! \times 10! + 10! \times 10! = 2 \times 10! \times 10!$
 \newpage
 % Question 9
 \question
-If positive integers are chosen at random, what is the minimum number you must have in order to guarantee that two of the chosen numbers are congruent modulo 6.   Prove your answer. \par  {\bf NOTE:} Two numbers are congruent modulo 6 if their difference is a multiple of 6.
+If positive integers are chosen at random, what is the minimum number you must have in order to guarantee that two of the chosen numbers are congruent modulo 6.   Prove your answer. \par  {\bf NOTE:} Two numbers are congruent modulo 6 if their difference is a multiple of 6.\\
+\\
+\solution
+\begin{proof}
+    By definition of congruence modulo, $ a \equiv b \pmod{c} \iff a \Mod{c} = b \Mod{c}$. Therefore, two integers, $a$ and $b$, are congruent modulo 6 if and only if $a \Mod{6} = b \Mod{6}$. \\
+    
+    The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. The cardinality of the codomain of $f$ is 6. Therefore, there are only 6 possible outputs for $f$. By the pigeonhole principle, with 7 random integers in the domain, at least 2 must map to the same value in the codomain---at least 2 are congruent modulo 6---because there are only 6 values in the codomain. Thus, there must be a minimum of 7 random positive integers to guarentee that two numbers are congruent modulo 6.
+
+    There are $n$ possible remainders when an integer is divided by $n$. Therefore, there are 6 possible remainders when an integer is diviided by 6; $\set*{0,1,2,3,4,5}$. When there are 7 random integers, by the pigeon hole principle, there must be at least two with the same remainder when divided by 6 since there are only 6 possible remainders
+\\
+\\
+    The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. Suppose that for each element $y$ in the codomain of $f$, we have a box that contains all elements $x$ of the domain of $f$ such that $f(x)=y$. \\
+    \\
+    \\
+    Since thecardinality of the codomain of $f$ is 6, the number of boxes is 6. By the pigeonhole principle, the number of random integers must be at least 7 to have one box contain 2 values from the domain.
+\end{proof}
 \newpage
 % Question 10
 \question
@@ -321,11 +411,47 @@ Write the expansion of $\paren*{x^2 -\df1 x}^{12}$.
     \newpage
 % Question 11
 \question
-In how many ways can 7 of the 8 letters in CHEMISTS be put in a row?
+In how many ways can 7 of the 8 letters in CHEMISTS be put in a row? \\
+\\
+\solution
+\\
+The word CHEMISTS has 8 letters, not all of them distinct. To create a 7 letter word, we can consider 2 cases: \\
+\\
+\textbf{Case 1:} Selecting 2 S's \\
+There are $\displaystyle\binom{7}{2}$ ways to choose 2 slots where the 2 S's will go. That leaves 5 positions for 6 letters, which there are $\perm[6]{5}= \df{6!}{(6-5)!} = 6!$ ways to arrange them. By the product rule, there are $\displaystyle\binom{7}{2} \times 6!$ ways to make a 7 letter word from the letters of CHEMISTS, given that we select 2 S's.\\
+\\
+\textbf{Case 2:} Selecting 1 S \\
+There are $\displaystyle\binom{7}{1}$ ways to choose 1 slot where the S will go. That leaves 6 positions for 6 letters (There are 7 letters left, but since we are considering only 1 S, we remove the remaining S from the count as well.), which there are $\perm[6]{6} = \df{6!}{(6-6)!} = 6!$ ways to arrange them. By the product rule, there are $\displaystyle\binom{7}{1} \times 6!$ ways to make a 7 letter word from the letters of CHEMISTS, given that we select only 1 S. \\
+\\
+We can add these two cases together to get the total ways: 
+\begin{align*}
+    \binom{7}{2} \times 6! + \binom{7}{1} \times 6! &= \frac{7!\enspace 6!}{(7-2)! \enspace 2!} + \frac{7! \enspace 6!}{(7-1)! \enspace 1!} \\
+                                                    &= 7! \times 3 + 7! \\
+                                                    &= 7! \times 4 \\
+                                                    &= 20160
+\end{align*}
+\textbf{There are 20160 ways to put 7 of the 8 letters in CHEMISTS in a row.}
 \newpage
 % Question 12
 \question 
-What is the minimum number of cards that must be drawn from an ordinary deck of cards to guarantee that you have been dealt \\ (a) at least three of at least one suit?\\ (b) at least three clubs?  \\ Explain. 
+What is the minimum number of cards that must be drawn from an ordinary deck of cards to guarantee that you have been dealt \\ (a) at least three of at least one suit?\\ (b) at least three clubs?  \\ Explain. \\
+\\
+\solution
+\begin{enumerate}[a)]
+    \item 
+    A minimum of 9 cards must be drawn to guarentee at least three of at least one suit. Suppose there is a box for each suit (There will be 4 boxes), and each time a card is drawn, it is placed in the box that corresponds to its suit. With 8 cards, it is possible to have 2 cards of each suit, therefore more than 8 cards are needed. By the generalized pigeonhole principle, with at least 9 objects, at least three objects will be in one box---at least three cards that are the same suit. We can verify this algebraically: \\
+    \\
+    By generalized pigeonhole principle, if $N$ objects are placed in $k$ boxes, then there is at least one box containing at least $\ceil*{N/k}$ objects. Let $k$ be the number of suits; $k=4$. \\
+    \\
+    \[ \ceil*{\frac{N}{4}} \geq 3 \]
+    \begin{align*}
+        N &\geq 2 \times 4 + 1 \\
+        N &\geq 9
+    \end{align*}
+    Thus, a minimum of 9 cards must be drawn to guarantee at least three of at least one suit.
+    \item 
+    A minimum of 42 cards must be drawn to guarentee at least three clubs. Note that in the worst case, we can select all the hearts, diamonds, and spades, a total of 39 cards, before we select a single club. The next 3 cards will be all clubs.  
+\end{enumerate}
 \newpage
 % Question 13
 \question
