@@ -1,5 +1,5 @@
 %++++++++++++++++++++++++++++++++++++++++
-\documentclass[article,12pt]{article}
+\documentclass[article, 11pt]{article}
 \usepackage{float}
 \usepackage{setspace}
 \usepackage{tabu} % extra features for tabular environment
@@ -121,7 +121,7 @@
 \maketitle
 % Question 1
 \question 
-Use the Principle of Mathematical Induction to show this inequality is true for all  integers $n\geq 2$:\hskip1cm$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
+Use the Principle of Mathematical Induction to show this inequality is true for all  integers $n\geq 2$: \\$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
 \solution
 \begin{proof}
     By induction. \\
@@ -141,27 +141,20 @@ Use the Principle of Mathematical Induction to show this inequality is true for 
     \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Assume the Inductive Hypothesis. \\
     \begin{align*}
         \sum_{i=1}^{k}{\frac{1}{\sqrt{i}}} &> \sqrt{k} \\
-        1 + \cdots + \frac{1}{\sqrt{k}} &> \sqrt{k}
-        \intertext{Let $c = 1 + \cdots + \df{1}{\sqrt{k}}$}
-        c &> \sqrt{k} \\
-        c + \frac{1}{\sqrt{k+1}} &> \sqrt{k} + \frac{1}{\sqrt{k+1}} \\
-        c + \frac{1}{\sqrt{k+1}} &> \frac{\sqrt{k}\sqrt{k+1} + 1}{\sqrt{k+1}} \\
-        c + \frac{1}{\sqrt{k+1}} &> \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} \\
-        \\
-        \sum_{i=1}^{k+1}{\frac{1}{\sqrt{i}}} &\stackrel{?}{>} \sqrt{k+1} \\
-        1 + \cdots + \frac{1}{\sqrt{k}} + \frac{1}{k + 1} &\stackrel{?}{>} \sqrt{k+1} \\
-        c + \frac{1}{k + 1} &\stackrel{?}{>} \sqrt{k+1} \\
-        c + \frac{1}{k + 1} &\stackrel{?}{>} \frac{\sqrt{k+1}\sqrt{k+1}}{\sqrt{k+1}} \\
-        c + \frac{1}{k + 1} &\stackrel{?}{>} \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} \\
-        \intertext{Since $c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}}$, by the transitive property, $\df{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} \implies c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}}$}
-        \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} &\stackrel{?}{>} \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} \\
-        \sqrt{k^2 + 2k} + 1 &\stackrel{?}{>} \sqrt{k^2 + 2k + 1} \\
-        \paren*{\sqrt{k^2 + 2k} + 1}^2 &\stackrel{?}{>} k^2 + 2k + 1 \\
-        k^2 + 2k + 1 + 2\sqrt{k^2 + 2k} &\stackrel{?}{>} k^2 + 2k + 1 \\
-        \intertext{Since $k \geq 2$, the statement is true:}
-        \frac{\sqrt{k^2 + 2k} + 1}{\sqrt{k+1}} &> \frac{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}}
-        \intertext{Therefore, $c + \df{1}{\sqrt{k+1}} > \df{\sqrt{k^2 + 2k + 1}}{\sqrt{k+1}} = c + \df{1}{\sqrt{k+1}} > \sqrt{k+1} = \sum_{i=1}^{k+1}{\frac{1}{\sqrt{i}}} > \sqrt{k+1}$. Thus, $P(k) \implies P(k+1)$.}
+        \sum_{i=1}^{k}{\frac{1}{\sqrt{i}} + \frac{1}{\sqrt{k+1}}} &> \sqrt{k} + \frac{1}{\sqrt{k+1}} \\
+        \sum_{i=1}^{k+1}{\frac{1}{\sqrt{i}}} &> \sqrt{k} + \frac{1}{\sqrt{k+1}}
     \end{align*}
+    Using the Inductive Hypothesis, we know the above inequality is true. Thus, it is sufficient to prove that $\sqrt{k} + \df{1}{\sqrt{k+1}} > \sqrt{k+1}$ by the transitive property.
+    \begin{align*}
+        \sqrt{k} + \frac{1}{\sqrt{k+1}}                   &\stackrel{?}{>} \sqrt{k+1} \\
+        \sqrt{k+1}\paren*{\sqrt{k} +\frac{1}{\sqrt{k+1}}} &\stackrel{?}{>} \sqrt{k+1}\sqrt{k+1} \\
+        \sqrt{k^2 + k} + 1                                &\stackrel{?}{>} k + 1 \\
+        \sqrt{k^2 + k}                                    &\stackrel{?}{>} k \\
+        k^2 + k                                           &\stackrel{?}{>} k^2 \\
+        k                                                 &>               0
+    \end{align*}
+    Since $k \geq 2$, $k > 0$ is true. Thus, the inequality $\sqrt{k} + \df{1}{\sqrt{k+1}} > \sqrt{k+1}$ is true. Therefore, $P(k+1)$ is true using the Inductive Hypothesis; $P(k) \implies P(k+1)$. \\
+    \\
     \textbf{Conclusion:} By induction, we have shown that $\displaystyle\sum_{i=1}^{n+1}{\frac{1}{\sqrt{i}}} > \sqrt{n+1}$ is true $n\geq2$
 \end{proof}
 \newpage
@@ -178,18 +171,17 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
                                    &= 8\Mod{8} \\
                                    &= 0
     \end{align*}
+    Since 
     Since the remainder when $3^{2^1}-1$ is divided by $2^{1+2}$ is 0, $P(n)$ is true when $n=0$. \\
     \\
     \textbf{Inductive Hypothesis:} Assume $P(k)$ is true for some $k \in \ints^+$. \\
     \\
     \textbf{Inductive Step:} We want to show that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true in the Inductive Hypothesis, we must prove that $P(k+1)$ is true.\\
     \begin{align*}
-        \frac{3^{2^{k+1}} - 1}{2^{k+1+2}} &= \frac{3^{2^k(2)} - 1}{2^1\paren*{2^{k+2}}} \\
-                                          &= \frac{3^{2^{k^2}} - 1}{2^1\paren*{2^{k+2}}} \\
-                                          &= \frac{\paren*{3^{2^k} - 1}\paren*{3^{2^k} + 1}}{2^1\paren*{2^{k+2}}} \\
-                                          &= \paren*{\frac{3^{2^k} - 1}{2^{k+2}}}\paren*{\frac{3^{2^k} + 1}{2}}
+        3^{2^{k+1}} - 1 &= 3^{(2)2^k} - 1 \\
+                        &= \paren*{3^{2^k}}^2 - 1 \\
+                        &= \paren*{3^{2^k} - 1}\paren*{3^{2^k}+1}
     \end{align*}
-    From the Inductive Hypothesis, $P(k)$ is true. Therefore, $\paren*{3^{2^k} - 1}\Mod{2^{k+2}} = 0$, meaning $\df{3^{2^k} - 1}{2^{k+2}} \in \ints$. Since $\paren*{\df{3^{2^k} - 1}{2^{k+2}}}\paren*{\df{3^{2^k} + 1}{2}}$ are factors of $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$, if both are integers, $\paren*{3^{2^{k + 1}} - 1}\Mod{2^{k+3}} = 0$, meaning $P(k + 1)$ is true. Therefore, it is sufficient to prove $P(k + 1)$ by proving $\paren*{3^{2^k} + 1}\Mod{2} = 0$:
     \begin{align*}
         \intertext{For an integer $x$ to be even, 2 must be included in the prime factorization of $x$. The prime factorization of $3^{2^k}$ is $2^k$ amount of 3s. Since 2 is not included and $3^{2^k} \neq 0$, $3^{2^k}$ is odd. Therefore, $3^{2^k}$ can be expressed as $2c + 1, c \in \ints$:}
         {[(2c + 1) + 1]}\Mod{2}  &= {(2c + 2)}\Mod{2} \\
@@ -198,9 +190,12 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
                                  &= ((0(c\Mod{2}))\Mod{2} + 0)\Mod{2} \\
                                  &= 0\Mod{2} \\
                                  &= 0
-        \intertext{$((2c+1) + 1)\Mod{2} = 0$, where $2c+1 = 3^{2^k}$, therefore $\df{3^{2^k} + 1}{2} \in \ints$. Since both factors of $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$ are integers, $\df{3^{2^{k+1}} - 1}{2^{k+1+2}}$ will also be an integer. Therefore, $\paren*{3^{2^{k+1}} - 1}\Mod{2^{k+1+2}} = 0$; $P(k+1)$ is true. Thus, $P(k) \implies P(k+1)$.}
     \end{align*}
-
+    Therefore, $3^{2^k} + 1$ is divisible by 2.\\
+    \\
+    Using the Inductive Hypothesis, $3^{2^k} - 1$ is divisible by $2^{k+2}$. Since $3^{2^k}+1$ is divisible by 2, then $\paren*{3^{2^k} - 1}\paren*{3^{2^k}+1}$ is divisible by $2^{k+3}$, as $2^{k+2} \cdot 2 = 2^{k+3}$. Thus, $3^{2^{k+1}} - 1 \pmod{2^{k + 2 + 1}} = 0$. Since $P(k + 1)$ is true using the Inductive Hypothesis, $P(k) \implies P(k+1)$. \\
+    \\
+    \textbf{Conclusion:} By induction, we have shown that $P(n)$ is true, or $3^{2^n} - 1$ is divisible by $2^{n+2}$, $n \in \ints^+$.
 \end{proof}
 \newpage
 % Question 3
@@ -283,11 +278,11 @@ Which amounts of money can be formed using just two-dollar bills and five-dollar
     \\
     \textbf{Inductive Hypothesis:} Assume $P(j)$ is true, $4 \leq j \leq k$, where $j,k \in \ints$. \\
     \\
-    \textbf{Inductive Step:} We want to show that $P(k)\implies P(k+1)$. Since we assume $P(k)$ is true in the Inductive Hypothesis, we must prove that $P(k+1)$ is true.
+    \textbf{Inductive Step:} We want to show that $P(k+1)$ is true using the Inductive Hypothesis.
     \begin{align*}
-        2a + 5b = k+1 = (k - 1) + 2 
+        k+1 = (k - 1) + 2 
     \end{align*}   
-    By adding a 2-dollar bill to $k-1$, we can form $k+1$. From the Inductive Hypothesis, $P(k-1)$ is true, meaning $k-1$ can be formed with just two-dollar bills and five-dollar bills. Therefore, since $k+1$ can be formed by adding another two-dollar bill, $P(k+1)$ is true. \\
+    By adding a 2-dollar bill to $k-1$, we can form $k+1$. Using the Inductive Hypothesis, $P(k-1)$ is true, meaning $k-1$ can be formed with just two-dollar bills and five-dollar bills. Therefore, since $k+1$ can be formed by adding another two-dollar bill, $P(k+1)$ is true using the Inductive Hypothesis. \\
     \\
     \textbf{Conclusion:} By strong induction, we have shown that $P(n)$ is true for $n \geq 4, n \in \ints$, or $n$ dollars can be formed with just two-dollar bills and five-dollar bills, $n \geq 4, n \in \ints$. \\
     \\
@@ -338,12 +333,15 @@ A postage of n cents that can be formed using just 3-cent stamps and 5-cent stam
     \item 
     \textbf{Inductive Hypothesis:} Assume $P(j)$ is true, $8 \leq j \leq k$ where $j,k \in \ints$.
     \item 
-    In the Inductive Step, we must prove that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true from the Inductive Hypothesis, we must prove that $P(k+1)$ is true.
+    In the Inductive Step, we must prove that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true using the Inductive Hypothesis, we must prove that $P(k+1)$ is true.
     \item 
-    \textbf{Inductive Step:} we want to prove that $P(k) \implies P(k+1)$. Since we assume $P(k)$ is true from the Inductive Hypothesis, we must prove that $P(k+1)$ is true: 
+    \textbf{Inductive Step:} we want to prove that $P(k+1)$ is true using the Inductive Hypothesis. Since we assume $P(k)$ is true using the Inductive Hypothesis, we must prove that $P(k+1)$ is true: 
     \begin{align*}
         k + 1 &= (k - 2) + 3
     \end{align*}
+    By adding a 3-cent stamp, we can form $k+1$. Using the Inductive Hypothesis, $P(k-1)$ is true, meaning $k-1$ can be formed using 3-cent stamps and 5-cent stamps. Therefore, since $k+1$ can be formed by adding another 3-cent stamp, $P(k+1)$ is true using the Inductive Hypothesis. \\
+    \\
+    Thus, by induction, we have proved that postage of $n$ cents can be formed using just 3-cent stamps and 5-cent stamps, $n \geq 8$. Since a postage of 3 and 5 cents can also be formed using 1 3-cent stamp and 1 5-cent stamp respectively, $n \in \set*{3,5} \unite \set*{k \in \ints, k \geq 8}$.
 \end{enumerate}
 \newpage
 % Question 7
@@ -388,27 +386,23 @@ If positive integers are chosen at random, what is the minimum number you must h
 \begin{proof}
     By definition of congruence modulo, $ a \equiv b \pmod{c} \iff a \Mod{c} = b \Mod{c}$. Therefore, two integers, $a$ and $b$, are congruent modulo 6 if and only if $a \Mod{6} = b \Mod{6}$. \\
     
-    The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. The cardinality of the codomain of $f$ is 6. Therefore, there are only 6 possible outputs for $f$. By the pigeonhole principle, with 7 random integers in the domain, at least 2 must map to the same value in the codomain---at least 2 are congruent modulo 6---because there are only 6 values in the codomain. Thus, there must be a minimum of 7 random positive integers to guarentee that two numbers are congruent modulo 6.
-
-     There are $n$ possible remainders when an integer is divided by $n$. Therefore, there are 6 possible remainders when an integer is diviided by 6; $\set*{0,1,2,3,4,5}$. When there are 7 random integers, by the pigeon hole principle, there must be at least two with the same remainder when divided by 6 since there are only 6 possible remainders
-\\
-\\
-    The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. Suppose that for each element $y$ in the codomain of $f$, we have a box that contains all elements $x$ of the domain of $f$ such that $f(x)=y$. \\
-    \\
-    \\
-    Since thecardinality of the codomain of $f$ is 6, the number of boxes is 6. By the pigeonhole principle, the number of random integers must be at least 7 to have one box contain 2 values from the domain.
+    The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. Suppose that for each element $y$ in the codomain of $f$, we have a box that contains all elements $x$ of the domain of $f$ such that $f(x)=y$. The cardinality of the codomain of $f$ is 6. Therefore, there are only 6 possible boxes. By the pigeonhole principle, the number of random values in the domain must be at least 7 to have one box contain 2 values; with 7 random integers in the domain, at least 2 must map to the same value in the codomain---at least 2 are congruent modulo 6---because there are only 6 values in the codomain. Thus, there must be a minimum of 7 random positive integers to guarentee that two numbers are congruent modulo 6.
 \end{proof}
 \newpage
 % Question 10
 \question
 Write the expansion of $\paren*{x^2 -\df1 x}^{12}$.
 \begin{align*}
-    \paren*{x^2 - \frac{1}{x}}^{12} &= \sum_{i=0}^{12}\binom{12}{i}{x^2}^{12-i}\paren*{-\frac{1}{x}}^{i} \\
-    &= \binom{12}{0} \paren*{x^{2}}^{12} \paren*{\frac{1}{x}}^{0} + \binom{12}{1} \paren*{x^{2}}^{11} \paren*{\frac{1}{x}}^{1} + \binom{12}{2} \paren*{x^{2}}^{10} \paren*{\frac{1}{x}}^{2} + \binom{12}{3} \paren*{x^{2}}^{9} \paren*{\frac{1}{x}}^{3} \\ + \binom{12}{4} \paren*{x^{2}}^{8} \paren*{\frac{1}{x}}^{4} + \binom{12}{5} \paren*{x^{2}}^{7} \paren*{\frac{1}{x}}^{5} + \binom{12}{6} \paren*{x^{2}}^{6} \paren*{\frac{1}{x}}^{6} \\ + \binom{12}{7} \paren*{x^{2}}^{5} \paren*{\frac{1}{x}}^{7} + \binom{12}{8} \paren*{x^{2}}^{4} \paren*{\frac{1}{x}}^{8} + \binom{12}{9} \paren*{x^{2}}^{3} \paren*{\frac{1}{x}}^{9} \\+ \binom{12}{10} \paren*{x^{2}}^{2} \paren*{\frac{1}{x}}^{10} + \binom{12}{11} \paren*{x^{2}}^{1} \paren*{\frac{1}{x}}^{11} + \binom{12}{12} \paren*{x^{2}}^{0} \paren*{\frac{1}{x}}^{12} \\ 
-    \\
-    &= 1 \paren*{x^{2}}^{12} \paren*{\frac{1}{x}}^{0} + 12 \paren*{x^{2}}^{11} \paren*{\frac{1}{x}}^{1} + 66 \paren*{x^{2}}^{10} \paren*{\frac{1}{x}}^{2} + 220 \paren*{x^{2}}^{9} \paren*{\frac{1}{x}}^{3} + 495 \paren*{x^{2}}^{8} \paren*{\frac{1}{x}}^{4} + 792 \paren*{x^{2}}^{7} \paren*{\frac{1}{x}}^{5} + 924 \paren*{x^{2}}^{6} \paren*{\frac{1}{x}}^{6} + 792 \paren*{x^{2}}^{5} \paren*{\frac{1}{x}}^{7} + 495 \paren*{x^{2}}^{4} \paren*{\frac{1}{x}}^{8} + 220 \paren*{x^{2}}^{3} \paren*{\frac{1}{x}}^{9} + 66 \paren*{x^{2}}^{2} \paren*{\frac{1}{x}}^{10} + 12 \paren*{x^{2}}^{1} \paren*{\frac{1}{x}}^{11} + 1 \paren*{x^{2}}^{0} \paren*{\frac{1}{x}}^{12}
+    \paren*{x^2 - \frac{1}{x}}^{12} &= \sum_{k=0}^{12}\binom{12}{k}\paren*{x^2}^{12-k}\paren*{-\frac{1}{x}}^{k} \\
+                                    &=\binom{12}{0}\paren*{x^2}^{12}\paren*{-\frac{1}{x}}^{0}+\binom{12}{1}\paren*{x^2}^{11}\paren*{-\frac{1}{x}}^{1}+\binom{12}{2}\paren*{x^2}^{10}\paren*{-\frac{1}{x}}^{2}  \\
+                                    &+\binom{12}{3}\paren*{x^2}^{9}\paren*{-\frac{1}{x}}^{3}+\binom{12}{4}\paren*{x^2}^{8}\paren*{-\frac{1}{x}}^{4}+\binom{12}{5}\paren*{x^2}^{7}\paren*{-\frac{1}{x}}^{5}    \\
+                                    &+\binom{12}{6}\paren*{x^2}^{6}\paren*{-\frac{1}{x}}^{6}+\binom{12}{7}\paren*{x^2}^{5}\paren*{-\frac{1}{x}}^{7}+\binom{12}{8}\paren*{x^2}^{4}\paren*{-\frac{1}{x}}^{8}     \\
+                                    &+\binom{12}{9}\paren*{x^2}^{3}\paren*{-\frac{1}{x}}^{9}+\binom{12}{10}\paren*{x^2}^{2}\paren*{-\frac{1}{x}}^{10}+\binom{12}{11}\paren*{x^2}^{1}\paren*{-\frac{1}{x}}^{11} \\
+                                    &+\binom{12}{12}\paren*{x^2}^{0}\paren*{-\frac{1}{x}}^{12}    \\ 
+                                    &= x^{24}-12x^{21}+66x^{18}-220x^{15}+495x^{12}-792x^9+924x^6-792x^3+495 \\
+                                    &-\frac{220}{x^3}+\frac{66}{x^6}-\frac{12}{x^9}+\frac{1}{x^{12}}
 \end{align*}
-    \newpage
+\newpage
 % Question 11
 \question
 In how many ways can 7 of the 8 letters in CHEMISTS be put in a row? \\
@@ -470,7 +464,18 @@ Prove the identity $\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k}$ , whe
                                          &= \paren*{\frac{n!}{(n-r)! \enspace r!}}\paren*{\frac{r!}{(r-k)! \enspace k!}} \\
                                          &= \binom{n}{r}\binom{r}{k}
         \end{align*}
-        Thus, we have proved the identity $\displaystyle\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k},n,r,k \in \nats \land r \leq n \land k \leq r$ algebraically.
+        Thus, we have proved the identity $\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k},n,r,k \in \nats \land r \leq n \land k \leq r$ algebraically.
+    \end{proof}
+    \item 
+    \begin{proof}
+        Consider a group of $n$ items. We want to select one group with $k$ items and another group with $r-k$ items such that the two groups have no items in common. \\
+        \\
+        To select $k + (r - k) = r$ items from $n$ items, there are $\binom{n}{r}$ such ways. We want $r$ of the $k$ items to be in the first group, which there are $\binom{r}{k}$ such ways. By the product rule, the total ways to select $r$ items from $k$ items from $n$ items to be put in the first group (thus $r-k$ items in the second group) is $\binom{n}{r}\binom{r}{k}$. \\
+        \\
+        To select $k$ items to place in the first group from $n$ items, there are $\binom{n}{k}$ such ways. There will now be $n-k$ items remaining. From the $n-k$ items, we want to choose $r-k$ items to place in the second group, which there are $\binom{n-k}{r-k}$ such ways. By the product rule, the total ways to select $k$ items from $n$ items to be put in the first group and $r-k$ items from $n-k$ items to be put in the second group is $\binom{n}{k}\binom{n-k}{r-k}$. \\
+        \\
+        Both result in the different ways to select one group with $k$ items and another group with $r-k$ items from a group of $n$ items. Thus:
+        \[ \binom{n}{r}\binom{r}{k} =\binom{n}{k}\binom{n-k}{r-k} \]
     \end{proof}
 \end{enumerate}
 \newpage
@@ -484,21 +489,20 @@ Let $S=\set*{1,2,3,4,5,6}$
 \begin{enumerate}[a)]
     \item 
     Since $x_i > 1$, there are at least 2 integers distributed among $x_i, i \in S$. Thus, there is 23 left to be distributed amongst $x_i, i \in S$:
-    \begin{align*}
-        \binom{6-1+29-2(6)}{29-2(6)} = \binom{22}{17}
-    \end{align*}
+    \[ \binom{6-1+29-2(6)}{29-2(6)} = \binom{22}{17} \]
     \item 
     There are at least $1,2,3,4,6,6$ distributed to $x_i, i \in S$ respectively. Thus, there is 22 left to be distributed amongst $x_i, x_i, i \in S$:
-    \begin{align*}
-        \binom{6-1+29-(1+2+3+4+6+6)}{29-(1+2+3+4+6+6)} = \binom{12}{7}
-    \end{align*}
+    \[ \binom{6-1+29-(1+2+3+4+6+6)}{29-(1+2+3+4+6+6)} = \binom{12}{7} \]
     \item
     Since $x_1 \geq 5$, there are at least 5 integers distributed to $x_1$. Thus, there is 24 left to be distributed amongst $x_i, i \in S$: 
-    \begin{align*}
-        \binom{6-1+29-5}{29-5} = \binom{29}{24}
-    \end{align*}
+    \[ \binom{6-1+29-5}{29-5} = \binom{29}{24} \]    
     \item 
-
+    To find the amount of solutions where $x_1 < 8 \land x_2 > 8$, we can first find the amount of solutions there are where $x_2 > 8$. \\
+    \\
+    Since $x_2 > 8$, there are at least 9 integers distributed to $x_2$. Thus, there are 20 left to be distributed amongst $x_i, i \in S$:
+    \[ \binom{6-1+29-9}{29-9} = \binom{25}{20} \]
+    $\displaystyle\binom{25}{20}$ is the amount of solutions where $x_1 \in \reals$. We can find the amount of solutions where $x_2 < 8$ by subtracting the amount of solutions where $x_1 \geq 8 \land x_2 > 8$ from the set of solutions where $x_2 > 8$:
+    \[ \binom{25}{20} - \binom{6 - 1 + 29 - 8 - 9}{29 - 8 - 9} = \binom{25}{20} - \binom{17}{12} \]
 \end{enumerate}
 \end{document} 
 
