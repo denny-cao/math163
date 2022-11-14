@@ -390,7 +390,7 @@ If positive integers are chosen at random, what is the minimum number you must h
     
     The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. The cardinality of the codomain of $f$ is 6. Therefore, there are only 6 possible outputs for $f$. By the pigeonhole principle, with 7 random integers in the domain, at least 2 must map to the same value in the codomain---at least 2 are congruent modulo 6---because there are only 6 values in the codomain. Thus, there must be a minimum of 7 random positive integers to guarentee that two numbers are congruent modulo 6.
 
-    There are $n$ possible remainders when an integer is divided by $n$. Therefore, there are 6 possible remainders when an integer is diviided by 6; $\set*{0,1,2,3,4,5}$. When there are 7 random integers, by the pigeon hole principle, there must be at least two with the same remainder when divided by 6 since there are only 6 possible remainders
+     There are $n$ possible remainders when an integer is divided by $n$. Therefore, there are 6 possible remainders when an integer is diviided by 6; $\set*{0,1,2,3,4,5}$. When there are 7 random integers, by the pigeon hole principle, there must be at least two with the same remainder when divided by 6 since there are only 6 possible remainders
 \\
 \\
     The codomain of the function $f(x) = x \Mod 6$ is $\set*{k, 0 \leq k \leq 5, k \in \ints}$. Suppose that for each element $y$ in the codomain of $f$, we have a box that contains all elements $x$ of the domain of $f$ such that $f(x)=y$. \\
@@ -455,10 +455,50 @@ What is the minimum number of cards that must be drawn from an ordinary deck of 
 \newpage
 % Question 13
 \question
-Prove the identity $\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k}$ , whenever $n, r$, and $k$ are nonnegative integers with $r \leq n$ and $k \leq r$,\\a) algebraically.\\ b) using a combinatorial argument.
+Prove the identity $\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k}$ , whenever $n, r$, and $k$ are nonnegative integers with $r \leq n$ and $k \leq r$,\\a) algebraically.\\ b) using a combinatorial argument. \\
+\\
+\solution 
+\begin{enumerate}[a)]
+    \item 
+    \begin{proof}
+        
+        \begin{align*}
+            \binom{n}{k}\binom{n-k}{r-k} &= \paren*{\frac{n!}{(n-k)! \enspace k!}}\paren*{\frac{(n-k)!}{(n-k - (r-k))! \enspace (r-k)!}} \\
+                                         &= \paren*{\frac{n!}{(n-k)! \enspace k!}}\paren*{\frac{(n-k)!}{(n-r)! \enspace (r-k)!}} \\
+                                         &= \frac{n!}{(n-r)! \enspace (r-k)! \enspace k!} \\
+                                         &= \paren*{\frac{n!}{(n-r)! \enspace (r-k)! \enspace k!}}\paren*{\frac{r!}{r!}} \\
+                                         &= \paren*{\frac{n!}{(n-r)! \enspace r!}}\paren*{\frac{r!}{(r-k)! \enspace k!}} \\
+                                         &= \binom{n}{r}\binom{r}{k}
+        \end{align*}
+        Thus, we have proved the identity $\displaystyle\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k},n,r,k \in \nats \land r \leq n \land k \leq r$ algebraically.
+    \end{proof}
+\end{enumerate}
 \newpage
 % Question 14
 \question
-How many solutions are there to the equation $\sum_{i=1}^6 x_i=29$, where $x_i, i = 1, 2, 3, 4, 5, 6,$ is a nonnegative integer such that\\ a)$x_i > 1$ for$ i = 1, 2, 3, 4, 5, 6$?\\ b)$x_1 \geq 1$, x2 $\geq 2$, $x_3 \geq 3$, $x4 \geq 4$, $x_5 > 5$, and $x_6 \geq 6$?\\ c)$x_1 \geq 5$? \\ d)$x_1 < 8$ and $x_2 > 8$?
+How many solutions are there to the equation $\sum_{i=1}^6 x_i=29$, where $x_i, i = 1, 2, 3, 4, 5, 6,$ is a nonnegative integer such that\\ a)$x_i > 1$ for $i = 1, 2, 3, 4, 5, 6$?\\ b)$x_1 \geq 1$, x2 $\geq 2$, $x_3 \geq 3$, $x4 \geq 4$, $x_5 > 5$, and $x_6 \geq 6$?\\ c)$x_1 \geq 5$? \\ d)$x_1 < 8$ and $x_2 > 8$? \\
+\\
+\solution \\
+\\
+Let $S=\set*{1,2,3,4,5,6}$
+\begin{enumerate}[a)]
+    \item 
+    Since $x_i > 1$, there are at least 2 integers distributed among $x_i, i \in S$. Thus, there is 23 left to be distributed amongst $x_i, i \in S$:
+    \begin{align*}
+        \binom{6-1+29-2(6)}{29-2(6)} = \binom{22}{17}
+    \end{align*}
+    \item 
+    There are at least $1,2,3,4,6,6$ distributed to $x_i, i \in S$ respectively. Thus, there is 22 left to be distributed amongst $x_i, x_i, i \in S$:
+    \begin{align*}
+        \binom{6-1+29-(1+2+3+4+6+6)}{29-(1+2+3+4+6+6)} = \binom{12}{7}
+    \end{align*}
+    \item
+    Since $x_1 \geq 5$, there are at least 5 integers distributed to $x_1$. Thus, there is 24 left to be distributed amongst $x_i, i \in S$: 
+    \begin{align*}
+        \binom{6-1+29-5}{29-5} = \binom{29}{24}
+    \end{align*}
+    \item 
+
+\end{enumerate}
 \end{document} 
 
