@@ -16,7 +16,7 @@
 \usepackage{enumerate} % lettered lists
 \usepackage{mathtools} % macros
 \usetikzlibrary{scopes}
-\usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039}
+% \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
 \hypersetup{
 	colorlinks=true,       % false: boxed links; true: colored links
 	linkcolor=blue,        % color of internal links
@@ -122,6 +122,7 @@
 % Question 1
 \question 
 Use the Principle of Mathematical Induction to show this inequality is true for all  integers $n\geq 2$: \\$\displaystyle\sum_{i=1}^n\df{1}{\sqrt{i\,\,}} > \sqrt{n}$ \\
+\\
 \solution
 \begin{proof}
     By induction. \\
@@ -160,7 +161,9 @@ Use the Principle of Mathematical Induction to show this inequality is true for 
 \newpage
 % Question 2
 \question
-Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
+Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$. \\
+\\
+\solution
 \begin{proof}
     By induction. \\
     Let $P(n)$ be the statement that $3^{2^n} -1$ is divisible by $2^{n+2}$, $n \in \ints^+$ \\ 
@@ -201,6 +204,8 @@ Prove that for all positive integers n,  $3^{2^n} -1$ is divisible by $2^{n+2}$.
 % Question 3
 \question
 Find a formula for $$(1-\df1{2^2})(1-\df1{3^2})(1-\df1{4^2})(1-\df1{5^2})...(1-\df1{n^2})$$  where $n \geq 2$, and use the Principle of Mathematical Induction to prove that the formula is correct. \\
+\\
+\solution
 \begin{align*}
       &\paren*{1-\df1{2^2}}\paren*{1-\df1{3^2}}\paren*{1-\df1{4^2}}\paren*{1-\df1{5^2}}\cdots \paren*{1-\df1{n^2}} \\
     = &\paren*{\frac{2^2-1}{2^2}}\paren*{\frac{3^2-1}{3^2}}\paren*{\frac{4^2-1}{4^2}}\paren*{\frac{5^2-1}{5^2}}\cdots \paren*{\frac{n^2-1}{n^2}} \\
@@ -391,7 +396,9 @@ If positive integers are chosen at random, what is the minimum number you must h
 \newpage
 % Question 10
 \question
-Write the expansion of $\paren*{x^2 -\df1 x}^{12}$.
+Write the expansion of $\paren*{x^2 -\df1 x}^{12}$. \\
+\\
+\solution
 \begin{align*}
     \paren*{x^2 - \frac{1}{x}}^{12} &= \sum_{k=0}^{12}\binom{12}{k}\paren*{x^2}^{12-k}\paren*{-\frac{1}{x}}^{k} \\
                                     &=\binom{12}{0}\paren*{x^2}^{12}\paren*{-\frac{1}{x}}^{0}+\binom{12}{1}\paren*{x^2}^{11}\paren*{-\frac{1}{x}}^{1}+\binom{12}{2}\paren*{x^2}^{10}\paren*{-\frac{1}{x}}^{2}  \\
@@ -407,7 +414,7 @@ Write the expansion of $\paren*{x^2 -\df1 x}^{12}$.
 \question
 In how many ways can 7 of the 8 letters in CHEMISTS be put in a row? \\
 \\
-\solution
+\solution \\
 \\
 The word CHEMISTS has 8 letters, not all of them distinct. To create a 7 letter word, we can consider 2 cases: \\
 \\
