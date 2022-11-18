@@ -1,0 +1,136 @@
+%++++++++++++++++++++++++++++++++++++++++
+\documentclass[article, 12pt]{article}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabu} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pfrac file
+\usepackage{tikz}
+\usepackage{caption} 
+\usepackage{fancyhdr}
+\usepackage{amssymb} % symbols like /therefore
+\usepackage{amsthm} % proofs
+\usepackage{enumerate} % lettered lists
+\usepackage{mathtools} % macros
+\usetikzlibrary{scopes}
+% \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+
+\newcounter{question}
+\setcounter{question}{0}
+\def\questionnum{{\Large\bfseries{Question \arabic{question} }}\\[1em]}
+
+\newcommand{\question}{
+    \stepcounter{question}
+    \questionnum
+}
+
+\newcommand{\solution}{
+    {{\large\bfseries{Solution}}}
+}
+
+\newcommand{\hwTitle}{Quiz 11}
+\newcommand{\hwDueDate}{November 18, 2022}
+\newcommand{\class}{MATH163}
+\newcommand{\professor}{Dr.\ Petrescu}
+\newcommand{\name}{Denny\ Cao}
+
+\pagestyle{fancy}
+\fancyhf{}% clears all header and footer fields
+\fancyfoot[C]{--~\thepage~--}
+\renewcommand*{\headrulewidth}{0.4pt}
+\renewcommand*{\footrulewidth}{0pt}
+\lhead{\name}
+\chead{\class: \hwTitle}
+
+% Shortcuts
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
+
+\DeclarePairedDelimiter\paren{(}{)} % parenthesis
+
+\newcommand{\df}{\displaystyle\frac} % displaystyle fraction
+\newcommand{\qeq}{\overset{?}{=}} % questionable equality
+
+\newcommand{\Mod}[1]{\;\mathrm{mod}\; #1} % modulo operator
+
+% Sets
+\DeclarePairedDelimiter\set{\{}{\}}
+\newcommand{\unite}{\cup}
+\newcommand{\inter}{\cap}
+
+\newcommand{\reals}{\mathbb{R}} % real numbers: textbook is Z^+ and 0
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\rats}{\mathbb{Q}}
+
+
+% Counting
+\newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+
+\setlength\parindent{0pt}
+
+% Sign Charts
+\newdimen\tcolw \tcolw=2.5em % the column width
+\edef\ecatcode{\catcode`&=\the\catcode`&\relax}\catcode`&=4
+\def\sgchart#1#2{\vbox{\offinterlineskip\halign{\hfil##\quad&##\hfil\crcr\sgchartA#2,:,%
+   \omit\sgchartR&\kern.2pt\sgchartS{.5\tcolw}\relax\sgchartE#1,\relax,%
+   \sgchartS{.5\tcolw}\relax\cr
+   \noalign{\kern2pt}&\def~{}\kern.5\tcolw\sgchartD#1,\relax,\cr}}}
+\def\sgchartA#1:#2,{\cr\ifx,#1,\else $#1$&\sgchartB#2{}\expandafter\sgchartA\fi}
+\def\sgchartB#1{\hbox to\tcolw{\hss$#1$\hss}\sgchartC}
+\def\sgchartC#1{\ifx,#1,\else
+   \strut\vrule\kern-.4pt\hbox to\tcolw{\hss$#1$\hss}\expandafter\sgchartC\fi}
+\def\sgchartD#1#2,{\ifx\relax#1\else\hbox to\tcolw{\hss$#1#2$\hss}\expandafter\sgchartD\fi}
+\def\sgchartE#1#2,{\ifx\relax#1\else
+    \ifx~#1\sgchartS\tcolw\circ \else\sgchartS\tcolw\bullet\fi \expandafter\sgchartE\fi}
+\def\sgchartR{\leaders\vrule height2.8pt depth-2.4pt\hfil}
+\def\sgchartS#1#2{\hbox to#1{\kern-.2pt\sgchartR \ifx\relax#2\else
+   \kern-.7pt$#2$\kern-.7pt\sgchartR\fi\kern-.2pt}}
+\ecatcode
+%++++++++++++++++++++++++++++++++++++++++
+
+\title{\hwTitle}
+\author{\name}
+\date{%
+    %CCP MATH163 \\%
+    %Dr. Petrescu \\[2ex]%
+    Due: \hwDueDate
+}
+\begin{document}
+\section*{Question 16}
+Let $L$ be the even that Ramesh is late. Let $B$ be the event that Ramesh bikes to work. Let $C$ be the event that Ramesh drives to work. Let $U$ be the event that Ramesh takes the bus to work. 
+\begin{enumerate}[a)]
+    \item
+    \begin{align*}
+        P(C|L) &= \frac{P(C) \cdot P(L|C)}{P(C) \cdot P(L|C) + P(B) \cdot P(L|B) \cdot P(U) \cdot P(L|U)} \\
+               &= \frac{\frac{1}{3}\paren*{\frac{1}{2}}}{\frac{1}{3}\paren*{\frac{1}{2}} + \frac{1}{3}\paren*{\frac{1}{5}} + \frac{1}{3}\paren*{\frac{1}{20}}} \\
+               &= \frac{\frac{1}{6}}{\frac{1}{6} + \frac{1}{15} + \frac{1}{60}} \\
+               &= \frac{\frac{1}{6}}{\frac{10}{60} + \frac{4}{60} + \frac{1}{60}} \\
+               &= \frac{\frac{1}{6}}{\frac{1}{4}} \\
+               &= \frac{4}{6} \\
+               &= \frac{2}{3}
+    \end{align*}
+    Under this assumption, there is a $\frac{2}{3} \approx 67\%$ chance that he drove his car, given that he is late.
+    \item 
+    \begin{align*}
+        P(C|L) &= \frac{P(C) \cdot P(L|C)}{P(C) \cdot P(L|C) + P(B) \cdot P(L|B) \cdot P(U) \cdot P(L|U)} \\
+               &= \frac{0.3(0.5)}{0.3(0.5) + 0.6(0.05) + 0.1(0.2)} \\
+               &= \frac{0.15}{0.15 + 0.03 + 0.02} \\
+               &= \frac{0.15}{0.2} \\
+               &= \frac{15}{20} \\
+               &= \frac{3}{4}
+    \end{align*}
+    Using the new information, there is a $\frac{3}{4} = 0.75\%$ chance that he drove his car, given that he is late.
+\end{enumerate}
+\end{document}
