@@ -1,0 +1,251 @@
+%++++++++++++++++++++++++++++++++++++++++
+\documentclass[article, 11pt]{article}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabu} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{tikz}
+\usepackage{caption} 
+\usepackage{fancyhdr}
+\usepackage{amssymb} % symbols like /therefore
+\usepackage{amsthm} % proofs
+\usepackage{enumerate} % lettered lists
+\usepackage{mathtools} % macros
+\usetikzlibrary{scopes}
+\usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
+\hypersetup{
+	colorlinks=false,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+\usepackage{siunitx} % units
+\usepackage{verbatim} 
+\newcommand{\studyTitle}{Study Guide} 
+\newcommand{\class}{MATH 163: Discrete Mathematics 1 Fall 2022}
+\newcommand{\professor}{Dr. Petrescu}
+\newcommand{\name}{Denny Cao}
+\pagestyle{fancy}
+\fancyhf{}% clears all header and footer fields
+\fancyfoot[C]{--~\thepage~--}
+\renewcommand*{\headrulewidth}{0.4pt}
+\renewcommand*{\footrulewidth}{0pt}
+\lhead{\name}
+\chead{\class}
+\rhead{\professor}
+
+
+\fancypagestyle{plain}{%
+  \fancyhf{}% clears all header and footer fields
+  \fancyfoot[C]{--~\thepage~--}%
+  \renewcommand*{\headrulewidth}{0pt}%
+  \renewcommand*{\footrulewidth}{0pt}%
+}
+
+% Shortcuts
+\newcommand{\xor}{\oplus} % exclusive or
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
+
+\DeclarePairedDelimiter\paren{(}{)} % parenthesis
+
+\newcommand{\df}{\displaystyle\frac} % displaystyle fraction
+\newcommand{\qeq}{\overset{?}{=}} % questionable equality
+
+\newcommand{\Mod}[1]{\;\mathrm{mod}\; #1} % modulo operator
+
+% Sets
+\DeclarePairedDelimiter\set{\{}{\}}
+\newcommand{\unite}{\cup}
+\newcommand{\inter}{\cap}
+
+\newcommand{\reals}{\mathbb{R}} % real numbers: textbook is Z^+ and 0
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\nats}{\mathbb{N}}
+\newcommand{\rats}{\mathbb{Q}}
+
+
+% Counting
+\newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
+\newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}
+
+\setlength\parindent{0pt}
+
+% Sign Charts
+\newdimen\tcolw \tcolw=2.5em % the column width
+\edef\ecatcode{\catcode`&=\the\catcode`&\relax}\catcode`&=4
+\def\sgchart#1#2{\vbox{\offinterlineskip\halign{\hfil##\quad&##\hfil\crcr\sgchartA#2,:,%
+   \omit\sgchartR&\kern.2pt\sgchartS{.5\tcolw}\relax\sgchartE#1,\relax,%
+   \sgchartS{.5\tcolw}\relax\cr
+   \noalign{\kern2pt}&\def~{}\kern.5\tcolw\sgchartD#1,\relax,\cr}}}
+\def\sgchartA#1:#2,{\cr\ifx,#1,\else $#1$&\sgchartB#2{}\expandafter\sgchartA\fi}
+\def\sgchartB#1{\hbox to\tcolw{\hss$#1$\hss}\sgchartC}
+\def\sgchartC#1{\ifx,#1,\else
+   \strut\vrule\kern-.4pt\hbox to\tcolw{\hss$#1$\hss}\expandafter\sgchartC\fi}
+\def\sgchartD#1#2,{\ifx\relax#1\else\hbox to\tcolw{\hss$#1#2$\hss}\expandafter\sgchartD\fi}
+\def\sgchartE#1#2,{\ifx\relax#1\else
+    \ifx~#1\sgchartS\tcolw\circ \else\sgchartS\tcolw\bullet\fi \expandafter\sgchartE\fi}
+\def\sgchartR{\leaders\vrule height2.8pt depth-2.4pt\hfil}
+\def\sgchartS#1#2{\hbox to#1{\kern-.2pt\sgchartR \ifx\relax#2\else
+   \kern-.7pt$#2$\kern-.7pt\sgchartR\fi\kern-.2pt}}
+\ecatcode
+%++++++++++++++++++++++++++++++++++++++++
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\studyTitle}}
+    \normalsize\vspace{0.1in}\\
+    \vspace{0.1in}\large{\text{\class: \professor}}
+    \vspace{3in}
+}
+
+\author{\name}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{empty}
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+    
+    \section{Logic and Proofs}  
+    \subsection{Propositional Logic}
+    \subsubsection{Truth Tables of Logical Operators}
+    \textbf{Proposition:} A statement that is either true or false.
+    \begin{figure}[H]
+        \centering
+            \begin{tabular}{c|c}
+                $p$ & $\neg p$ \\
+                \hline
+                T & F \\
+                F & T
+            \end{tabular}
+        \caption{Truth table for \textbf{negation}}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+            \begin{tabular}{c|c|c|c|c}
+                $p$ & $q$ & $p \land q$ & $p \lor q$ & $p \xor q$ \\
+                \hline
+                T & T & T & T & F \\
+                T & F & F & T & T \\
+                F & T & F & T & T \\
+                F & F & F & F & F
+            \end{tabular}
+        \caption{Truth table for \textbf{bit operations}}
+    \end{figure}
+    \subsubsection{Converse, Contrapositive, and Inverse}
+    \textbf{Converse:} The proposition $q \Rightarrow p$ is the converse of the proposition $p \Rightarrow q$. 
+    \begin{figure}[H]
+        \centering
+            \begin{tabular}{c|c|c}
+                $p$ & $q$ & $q \Rightarrow p$ \\
+                \hline
+                T & T & T \\
+                T & F & T \\
+                F & T & F \\
+                F & F & T 
+            \end{tabular}   
+        \caption{Truth Table for converse of implication of two propositions $p$ and $q$}
+    \end{figure}
+    \textbf{Contrapositive:} The proposition $\neg q \Rightarrow \neg p$ is the contrapositive of the proposition $p \Rightarrow q$.
+    \begin{itemize}
+        \item Same truth value as $p \Rightarrow q$
+    \end{itemize}
+    \begin{figure}[H]
+        \centering
+            \begin{tabular}{c|c|c|c|c}
+                $p$ & $q$ & $\neg{p}$ & $\neg{q}$ & $\neg q \Rightarrow \neg p$ \\
+                \hline
+                T & T & F & F & T \\
+                T & F & F & T & F \\
+                F & T & T & F & T \\
+                F & F & T & T & T
+            \end{tabular}   
+        \caption{Truth Table for contrapositive of implication of two propositions $p$ and $q$}
+    \end{figure}
+    \textbf{Inverse:} The proposition $\neg p \Rightarrow \neg q$ is the inverse of the proposition $p \Rightarrow q$.
+    \begin{figure}[H]
+        \centering
+            \begin{tabular}{c|c|c|c|c}
+                $p$ & $q$ & $\neg{p}$ & $\neg{q}$ & $\neg p \Rightarrow \neg q$ \\
+                \hline
+                T & T & F & F & T \\
+                T & F & F & T & T \\
+                F & T & T & F & F \\
+                F & F & T & T & T
+            \end{tabular}    
+        \caption{Truth Table for inverse of implication of two propositions $p$ and $q$}
+    \end{figure}
+    \subsubsection{Precedence of Logical Operators}
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            Operator & Precedence \\
+            \hline
+            $\neg$ & 1 \\
+            $\land$ & 2 \\
+            $\lor$ & 3 \\
+            $\Rightarrow$ & 4 \\
+            $\Leftrightarrow$ & 5 \\
+            \hline        
+        \end{tabular}
+        \caption{Precedence of Logical Operators}
+    \end{figure}
+    \subsection{Applications of Propositional Logic}
+    \begin{enumerate}
+        \item Translating English into Propositional Logic and vice versa
+        \item Logic Puzzles 
+    \end{enumerate}
+    Intuitive. 
+    \subsection{Propositional Equivalences}
+    \subsubsection{Introduction}
+    \textbf{Tautology:} A compound proposition that is always true.
+
+    \textbf{Contradiction:} A compound proposition that is always false.
+
+    \textbf{Contingency:} A compound proposition that is neither a tautology nor a contradiction.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{c|c|c|c}
+            $p$ & $\neg q$ & $p \lor \neg q$ & $p \land \neg q$ \\
+            \hline
+            T & T & T & F \\
+            T & F & T & F \\
+        \end{tabular}
+        \caption{Truth Table of an example of a Tautology and Contradiction}
+    \end{figure}
+    \subsubsection{Logical Equivalences}
+    Two propositions are \textbf{logically equivalent} if $p \Leftrightarrow q$ is a tautology. 
+    The following are important logical equivalences:
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{|c|}
+            \hline
+            De Morgan's Laws \\
+            \hline
+            \begin{tabular}{c}
+                $\neg(p \land q) \Leftrightarrow \neg p \lor \neg q$ \\
+                $\neg(p \lor q) \Leftrightarrow \neg p \land \neg q$ \\
+            \end{tabular} \\
+            \hline
+        \end{tabular}
+        \caption{De Morgan's Laws}
+    \end{figure}
+    \textbf{Conditional-disjunction equivalence:} $p \lor q \Leftrightarrow \neg p \Rightarrow q$
+    \subsection{Predicates and Quantifiers}
+    \subsection{Nested Quantifiers}
+    \subsection{Rules of Inference}
+    \subsection{Introduction to Proofs}
+    \subsection{Proof Methods and Strategy}
+\end{document}
