@@ -17,8 +17,11 @@
 \usepackage{mathtools} % macros
 \usetikzlibrary{scopes}
 \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \hypersetup{
-	colorlinks=false,       % false: boxed links; true: colored links
+	colorlinks=false,      % false: boxed links; true: colored links
 	linkcolor=blue,        % color of internal links
 	citecolor=blue,        % color of links to bibliography
 	filecolor=magenta,     % color of file links
@@ -33,13 +36,14 @@
 \newcommand{\class}{MATH 163: Discrete Mathematics 1 Fall 2022}
 \newcommand{\professor}{Dr. Petrescu}
 \newcommand{\name}{Denny Cao}
+\newcommand{\final}{Monday, December 12, 2022}
 \pagestyle{fancy}
 \fancyhf{}% clears all header and footer fields
 \fancyfoot[C]{--~\thepage~--}
 \renewcommand*{\headrulewidth}{0.4pt}
 \renewcommand*{\footrulewidth}{0pt}
 \lhead{\name}
-\chead{\class}
+\chead{\leftmark}
 \rhead{\professor}
 
 
@@ -52,6 +56,9 @@
 
 % Shortcuts
 \newcommand{\xor}{\oplus} % exclusive or
+\newcommand{\true}{\textbf{T}} % true
+\newcommand{\false}{\textbf{F}} % false
+\newcommand{\lra}{\leftrightarrow} % iff
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
 
@@ -67,11 +74,13 @@
 \newcommand{\unite}{\cup}
 \newcommand{\inter}{\cap}
 
-\newcommand{\reals}{\mathbb{R}} % real numbers: textbook is Z^+ and 0
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\realspos}{\mathbb{R}^+} % real numbers: textbook is Z^+
 \newcommand{\ints}{\mathbb{Z}}
-\newcommand{\nats}{\mathbb{N}}
+\newcommand{\posints}{\mathbb{Z}^+}
+\newcommand{\nats}{\mathbb{N}} % textbook is Z^+ and 0
 \newcommand{\rats}{\mathbb{Q}}
-
+\newcommand{\comps}{\mathbb{C}}
 
 % Counting
 \newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}
@@ -102,7 +111,9 @@
     \vspace{2in}
     \textmd{\textbf{\studyTitle}}
     \normalsize\vspace{0.1in}\\
-    \vspace{0.1in}\large{\text{\class: \professor}}
+    \vspace{0.1in}\large{\text{\class}} \\
+    \vspace{0.1in}\text{\professor}\\
+    \vspace{0.1in}\large\text{Final: \text{\final}}\\
     \vspace{3in}
 }
 
@@ -118,8 +129,11 @@
     
     \section{Logic and Proofs}  
     \subsection{Propositional Logic}
-    \subsubsection{Truth Tables of Logical Operators}
-    \textbf{Proposition:} A statement that is either true or false.
+    \stepcounter{subsubsection}
+    \subsubsection{Propositions}
+    \begin{definition}
+        \textbf{Proposition:} A statement that is either true or false.
+    \end{definition}    
     \begin{figure}[H]
         \centering
             \begin{tabular}{c|c}
@@ -142,12 +156,17 @@
             \end{tabular}
         \caption{Truth table for \textbf{bit operations}}
     \end{figure}
-    \subsubsection{Converse, Contrapositive, and Inverse}
-    \textbf{Converse:} The proposition $q \Rightarrow p$ is the converse of the proposition $p \Rightarrow q$. 
+    \subsubsection{Conditional Statements}
+    \begin{definition}
+        \textbf{Conditional Statement:} A statement of the form $p \to q$. The conditional statement is called the \textit{hypothesis} (or \textit{antecedent} or \textit{premise}) and $q$ is called the \textit{conclusion} (or \textit{consequence}). 
+    \end{definition}
+    \begin{definition}
+        \textbf{Converse:} The proposition $q \to p$ is the converse of the proposition $p \to q$. 
+    \end{definition}
     \begin{figure}[H]
         \centering
             \begin{tabular}{c|c|c}
-                $p$ & $q$ & $q \Rightarrow p$ \\
+                $p$ & $q$ & $q \to p$ \\
                 \hline
                 T & T & T \\
                 T & F & T \\
@@ -156,14 +175,16 @@
             \end{tabular}   
         \caption{Truth Table for converse of implication of two propositions $p$ and $q$}
     \end{figure}
-    \textbf{Contrapositive:} The proposition $\neg q \Rightarrow \neg p$ is the contrapositive of the proposition $p \Rightarrow q$.
+    \begin{definition}
+        \textbf{Contrapositive:} The proposition $\neg q \to \neg p$ is the contrapositive of the proposition $p \to q$.  
+    \end{definition}
     \begin{itemize}
-        \item Same truth value as $p \Rightarrow q$
+        \item Same truth value as $p \to q$
     \end{itemize}
     \begin{figure}[H]
         \centering
             \begin{tabular}{c|c|c|c|c}
-                $p$ & $q$ & $\neg{p}$ & $\neg{q}$ & $\neg q \Rightarrow \neg p$ \\
+                $p$ & $q$ & $\neg{p}$ & $\neg{q}$ & $\neg q \to \neg p$ \\
                 \hline
                 T & T & F & F & T \\
                 T & F & F & T & F \\
@@ -172,11 +193,13 @@
             \end{tabular}   
         \caption{Truth Table for contrapositive of implication of two propositions $p$ and $q$}
     \end{figure}
-    \textbf{Inverse:} The proposition $\neg p \Rightarrow \neg q$ is the inverse of the proposition $p \Rightarrow q$.
+    \begin{definition}
+        \textbf{Inverse:} The proposition $\neg p \to \neg q$ is the inverse of the proposition $p \to q$.    
+    \end{definition}
     \begin{figure}[H]
         \centering
             \begin{tabular}{c|c|c|c|c}
-                $p$ & $q$ & $\neg{p}$ & $\neg{q}$ & $\neg p \Rightarrow \neg q$ \\
+                $p$ & $q$ & $\neg{p}$ & $\neg{q}$ & $\neg p \to \neg q$ \\
                 \hline
                 T & T & F & F & T \\
                 T & F & F & T & T \\
@@ -185,6 +208,7 @@
             \end{tabular}    
         \caption{Truth Table for inverse of implication of two propositions $p$ and $q$}
     \end{figure}
+    \stepcounter{subsubsection}
     \subsubsection{Precedence of Logical Operators}
     \begin{figure}[H]
         \centering
@@ -195,26 +219,24 @@
             $\neg$ & 1 \\
             $\land$ & 2 \\
             $\lor$ & 3 \\
-            $\Rightarrow$ & 4 \\
-            $\Leftrightarrow$ & 5 \\
+            $\to$ & 4 \\
+            $\lra$ & 5 \\
             \hline        
         \end{tabular}
         \caption{Precedence of Logical Operators}
     \end{figure}
-    \subsection{Applications of Propositional Logic}
-    \begin{enumerate}
-        \item Translating English into Propositional Logic and vice versa
-        \item Logic Puzzles 
-    \end{enumerate}
-    Intuitive. 
+    \stepcounter{subsection}
     \subsection{Propositional Equivalences}
     \subsubsection{Introduction}
-    \textbf{Tautology:} A compound proposition that is always true.
-
-    \textbf{Contradiction:} A compound proposition that is always false.
-
-    \textbf{Contingency:} A compound proposition that is neither a tautology nor a contradiction.
-
+    \begin{definition}
+        \textbf{Tautology:} A compound proposition that is always true.
+    \end{definition}
+    \begin{definition}
+        \textbf{Contradiction:} A compound proposition that is always false.  
+    \end{definition}
+    \begin{definition}
+        \textbf{Contingency:} A compound proposition that is neither a tautology nor a contradiction. 
+    \end{definition}
     \begin{figure}[H]
         \centering
         \begin{tabular}{c|c|c|c}
@@ -226,7 +248,9 @@
         \caption{Truth Table of an example of a Tautology and Contradiction}
     \end{figure}
     \subsubsection{Logical Equivalences}
-    Two propositions are \textbf{logically equivalent} if $p \Leftrightarrow q$ is a tautology. 
+    \begin{definition}
+        Two propositions are \textbf{logically equivalent} if $p \lra q$ is a tautology.    
+    \end{definition}
     The following are important logical equivalences:
     \begin{figure}[H]
         \centering
@@ -235,17 +259,398 @@
             De Morgan's Laws \\
             \hline
             \begin{tabular}{c}
-                $\neg(p \land q) \Leftrightarrow \neg p \lor \neg q$ \\
-                $\neg(p \lor q) \Leftrightarrow \neg p \land \neg q$ \\
+                $\neg(p \land q) \lra \neg p \lor \neg q$ \\
+                $\neg(p \lor q) \lra \neg p \land \neg q$ \\
             \end{tabular} \\
             \hline
         \end{tabular}
-        \caption{De Morgan's Laws}
     \end{figure}
-    \textbf{Conditional-disjunction equivalence:} $p \lor q \Leftrightarrow \neg p \Rightarrow q$
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{|c|}
+            \hline
+            Conditional-Disjunction Equivalence \\
+            \hline
+            \begin{tabular}{c}
+                $p \to q \lra \neg p \lor q$ \\
+            \end{tabular} \\
+            \hline
+        \end{tabular}
+    \end{figure}    
+
+    Here are some other logical equivalences:
+    \begin{figure}[H]
+        \centering
+        {\setlength{\tabcolsep}{2em}
+        \begin{tabular}{|c|c|}
+            \hline
+            \multicolumn{2}{|c|}{} \\
+            \multicolumn{2}{|c|}{Logical Equivalences} \\
+            \multicolumn{2}{|c|}{} \\
+            \hline
+            Equivalence & Name \\
+            \hline
+            $p \land \true \equiv \true$ & Identity Laws \\
+            $p \land \false \equiv \false$ &  \\
+            \hline
+            $p \lor \true \equiv \true$ & Domination Laws \\
+            $p \lor \false \equiv \false$ &  \\
+            \hline
+            $p \lor p \equiv p$ & Idempotent Laws \\
+            $p \land p \equiv p$ &  \\
+            \hline
+            $\neg(\neg p) \equiv p$ & Double Negation Law \\
+            \hline
+            $p \lor q \equiv q \lor p $ & Commutative Laws \\
+            $p \land q \equiv q \land p$ &  \\
+            \hline
+            $(p \lor q) \lor r \equiv p \lor (q \lor r)$ & Associative Laws \\
+            $(p \land q) \land r \equiv p \land (q \land r)$ &  \\
+            \hline
+            $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ & Distributive Laws \\
+            $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$ &  \\
+            \hline
+            $\neg(p \land q) \equiv \neg p \lor \neg q$ & De Morgan's Laws \\
+            $\neg(p \lor q) \equiv \neg p \land \neg q$ &  \\
+            \hline
+            $p \lor (p \land q) \equiv p$ & Absorption Laws \\
+            $p \land (p \lor q) \equiv p$ &  \\
+            \hline
+            $p \lor \neg p \equiv \true$ & Negation Laws \\
+            $p \land \neg p \equiv \false$ &  \\
+            \hline
+        \end{tabular}}
+    \end{figure}
+    
+    \begin{figure}[H]
+        \centering
+        {\setlength{\tabcolsep}{2em}
+        \begin{tabular}{|c|}
+            \hline
+            \\
+            Logical Equivalences Involving Conditional Statements \\
+            \\
+            \hline
+            $p \to q \equiv \neg p \lor q$ \\
+            $p \to q \equiv \neg q \to \neg p$ \\
+            $p \lor q \equiv \neg p \to q$ \\
+            $p \land q \equiv \neg (\neg p \lor \neg q) \equiv \neg (p \to \neg q)$ \\
+            $\neg(p \to q) \equiv p \land \neg q$ \\
+            $(p \to q) \land (p \to r) \equiv p \to (q \land r) $ \\
+            $(p \to r) \land (q \to r) \equiv (p \lor q) \to r$ \\
+            $(p \to q) \lor (p \to r) \equiv p \to (q \lor r)$ \\
+            $(p \to r) \lor (q \to r) \equiv (p \land q) \to r$ \\
+            \hline
+        \end{tabular}}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        {\setlength{\tabcolsep}{2em}
+        \begin{tabular}{|c|}
+            \hline
+            \\
+            Logical Equivalences Involving Biconditonal Statements \\
+            \\
+            \hline
+            $p \lra q \equiv (p \to q) \land (q \to p)$ \\
+            $p \lra q \equiv \neg p \lra \neg q$ \\
+            $p \lra q \equiv (p \land q) \lor (\neg p \land \neg q)$ \\
+            $\neg(p \lra q) \equiv p \lra \neg q$ \\
+            \hline
+        \end{tabular}}
+    \end{figure}
+    \begin{equation*}
+        \bigvee_{i=1}^n p_i = p_1 \lor p_2 \lor \cdots \lor p_n
+    \end{equation*}
+    \begin{equation*}
+        \bigwedge_{i=1}^n p_i = p_1 \land p_2 \land \cdots \land p_n
+    \end{equation*}
+    By De Morgan's laws, it follows that:
+    \stepcounter{subsubsection}
+    \stepcounter{subsubsection}
+    \begin{equation*}
+        \neg \bigvee_{i=1}^n p_i = \bigwedge_{i=1}^n \neg p_i
+    \end{equation*}
+    \subsubsection{Satisfiability}
+    \begin{definition}
+        A compound proposition is \textbf{satisfiable} if there is an assignment of truth values to its variables that makes it true (When it is a tautology or a contigency). 
+    \end{definition}
+    \begin{definition}
+        A compound proposition is \textbf{unsatisfiable} if there is no assignment of truth values to its variables that makes it true (When it is a contradiction). To prove this, we can prove that the negation is a tautology.
+    \end{definition}
     \subsection{Predicates and Quantifiers}
+    \stepcounter{subsubsection}
+    \subsubsection{Predicates}
+    \begin{definition}
+        A \textbf{statement} contains 2 parts: a \textbf{subject} and a \textbf{predicate}.
+        \begin{itemize}
+            \item In the statement, $x$ is greater than 3, $x$ is the subject and greater than 3 is the predicate.
+            \item The statement $P(x)$ is said to be the value of the \textbf{propositional function} $P$ at $x$.
+        \end{itemize}
+    \end{definition}
+    \subsubsection{Quantifiers}
+    \begin{definition}
+        \textbf{Universal Quantifier}: $\forall x P(x)$. $P(x)$ for all values of $x$ in the domain.
+        \begin{itemize}
+            \item An element for which $P(x)$ is false is called a \textbf{counterexample}.
+        \end{itemize}   
+    \end{definition}
+    \begin{definition}
+        \textbf{Existential Quantifier}: $\exists x P(x)$. There exists an element $x$ in the domain such that $P(x)$ is true.    
+    \end{definition}
+    \begin{definition}
+        \textbf{Uniqueness Quantifier}: $\exists! x P(x)$. There exists exactly one element $x$ in the domain such that $P(x)$ is true.    
+    \end{definition}
+    
+    \textit{A way to think about determining the truth value of quantifiers is to think about looping. To determine if $\forall x P(x)$ is true, we loop through all the elements in the domain and check if $P(x)$ is true for all of them. To determine if $\exists x P(x)$ is true, we loop through all the elements in the domain and check if $P(x)$ is true for at least one of them.}
+    \subsubsection{Quantifiers Over Finite Domains}
+    When domain is finite, we can express statements using propositional logic:
+    \begin{equation*}
+        \forall x P(x) \equiv \bigwedge_{i=1}^{n} P(x)
+    \end{equation*}
+    \begin{equation*}
+        \exists x P(x) \equiv \bigvee_{i=1}^{n} P(x)
+    \end{equation*}
+    \stepcounter{subsubsection}
+    \subsubsection{Precedence of Quantifiers}
+    $\forall x$ and $\exists x$ have higher precedence than all logical operators from propositional calculus. For instance, $\forall P(x) \lor Q(x) \equiv (\forall P(x)) \lor Q(x)$.
+    \stepcounter{subsubsection}
+    \subsubsection{Negating Quantified Expressions}
+    \begin{figure}[H]
+        \begin{align*}
+            \neg \forall x P(x) &\equiv \exists x \neg P(x) \\
+            \neg \exists x P(x) &\equiv \forall x \neg P(x)
+        \end{align*}
+        \caption{De Morgan's Laws for Quantifiers}
+    \end{figure}
     \subsection{Nested Quantifiers}
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{|c|p{12em}|p{12em}|}
+            \hline
+            Statement & When True & When False \\
+            \hline
+            $\forall x \forall y P(x,y)$ & $P(x,y)$ is true for all values of $x$ and $y$ & $\exists x \exists y \neg P(x,y)$ \\
+            \hline
+            $\forall x \exists y P(x,y)$ & For every $x$ there is a $y$ such that $P(x,y)$ is true & $\exists x \forall y \neg P(x,y)$ \\
+            \hline
+            $\exists x \forall y P(x,y)$ & There is an $x$ such that $P(x,y)$ is true for all values of $y$ & $\forall x \exists y \neg P(x,y)$ \\
+            \hline
+            $\exists x \exists y P(x,y)$ & There is an $x$ and a $y$ such that $P(x,y)$ is true & $\forall x \forall y \neg P(x,y)$ \\
+            \hline
+        \end{tabular}
+        \caption{Quantifications of Two Variables}
+    \end{figure}
     \subsection{Rules of Inference}
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{|l|c|c|}
+            \hline
+            Rule of Inference & Tautology & Name \\
+            \hline
+            $\begin{array}{rl}
+                & p \\
+                & p \to q \\
+                \cline{2-2}
+                \therefore & q
+            \end{array}$ & $(p \land (p \to q)) \to q$ & Modus Ponens \\
+            \hline
+            $\begin{array}{rl}
+                & \neg q \\
+                & p \to q \\
+                \cline{2-2}
+                \therefore & q 
+            \end{array}$ & $(\neg q \land (p \to q)) \to \neg p$ & Modus Tollens \\
+            \hline
+            $\begin{array}{rl}
+                & p \to q \\
+                & q \to r \\
+                \cline{2-2}
+                \therefore & p \to r
+            \end{array}$ & $((p \to q) \land (q \to r)) \to (p \to r)$ & Hypothetical Syllogism \\
+            \hline
+            $\begin{array}{rl}
+                & p \lor q \\
+                & \neg p \\
+                \cline{2-2}
+                \therefore & q
+            \end{array}$ & $((p \lor q) \land \neg p) \to q$ & Disjunctive Syllogism \\
+            \hline
+            $\begin{array}{rl}
+                & p \\
+                \cline{2-2}
+                \therefore & p \lor q
+            \end{array}$ & $p \to (p \lor q)$ & Addition \\
+            \hline
+            $\begin{array}{rl}
+                & p \land q \\
+                \cline{2-2}
+                \therefore & p
+            \end{array}$ & $(p \land q) \to p$ & Simplification \\
+            \hline
+            $\begin{array}{rl}
+                & p \\
+                & q \\
+                \cline{2-2}
+                \therefore & p \land q
+            \end{array}$ & $((p) \land (q)) \to (p \land q)$ & Conjunction \\
+            \hline
+            $\begin{array}{rl}
+                & p \lor q \\
+                & \neg p \lor r \\
+                \cline{2-2}
+                \therefore & q \lor r
+            \end{array}$ & $((p \lor q) \land (\neg p \lor r)) \to (q \lor r)$ & Resolution \\
+            \hline
+        \end{tabular}
+        \caption{Rules of Inference for Propositional Logic}
+    \end{figure}
+    Note: Resolution is saying, regardless of what $p$ is, $q$ or $r$ is true.
+    \begin{figure}[H]
+        \centering
+        \begin{tabular}{|l|c|}
+            \hline
+            Rule of Inference & Name \\
+            \hline
+            $\begin{array}{rl}
+                & \forall x P(x) \\
+                \cline{2-2}
+                \therefore & P(c)
+            \end{array}$ & Universal Instantiation \\
+            \hline
+            $\begin{array}{rl}
+                & P(c) \text{ for an arbitrary } c \\
+                \cline{2-2}
+                \therefore & \forall x P(x)
+            \end{array}$ & Universal Generalization \\
+            \hline
+            $\begin{array}{rl}
+                & \exists x P(x) \\
+                \cline{2-2}
+                \therefore & P(c) \text{ for some element } c
+            \end{array}$ & Existential Instantiation \\
+            \hline
+            $\begin{array}{rl}
+                & P(c) \text{ for some element } c \\
+                \cline{2-2}
+                \therefore & \exists x P(x)
+            \end{array}$ & Existential Generalization \\
+            \hline
+        \end{tabular}
+        \caption{Rules of Inference for Quantified Statements}
+    \end{figure}
+    \textbf{Universal Modus Ponens:} The usage of universal instantiation and modus ponens together.
+    \begin{center}
+        $\begin{array}{rl}
+            & \forall x (P(x) \to Q(x)) \\
+            & P(a) \text{, where } a \text{ is a particular element in the domain} \\
+            \cline{2-2}
+            \therefore & Q(a)
+        \end{array}$
+    \end{center}
     \subsection{Introduction to Proofs}
+    Prove $\forall x(P(x) \to Q(x))$ by showing that $P(c) \to Q(c)$ is true, where $c$ is an arbitrary element of the domain, and then apply universal generalization.
+    \stepcounter{subsubsection}
+    \stepcounter{subsubsection}
+    \stepcounter{subsubsection}
+    \stepcounter{subsubsection}
+    \subsubsection{Direct Proofs}
+    Show $p \to q$ by first assuming $p$ is true and then showing that $q$ is true using the rules of inference.
+    
+    \begin{definition}
+        The integer $n$ is \textbf{even} if $\exists k \in \ints \ | \ n = 2k$.
+    \end{definition}
+    \begin{definition}
+        The integer $n$ is \textbf{odd} if $\exists k \in \ints \ | \ n = 2k + 1$.   
+    \end{definition}
+    \begin{definition}
+        Two integers have the same \textbf{parity} if they are both even or both odd. They have \textbf{opposite parity} if one is even and the other is odd.     
+    \end{definition}
+    \subsubsection{Proof by Contraposition}
+    \begin{definition}
+        An \textbf{indirect proof} is a proof that does not start with the premise and ends with the conclusion. One type is \textbf{proof by contraposition}. This is a proof that shows $p \to q$ by showing $\neg q \to \neg p$.   
+    \end{definition}
+    \subsubsection{Proof by Contradiction}
+    Another type of indirect proof is \textbf{proof by contradiction}. 
+    We can prove $p$ is true by showing that $\neg p \to (r \land \neg r)$. Assume the negation of $p$ is true, and then show that $r$ and $\neg r$ are both true. This is a contradiction, so $p$ must be true.
+    \\
+
+    Important example of proof by contradiction: Prove that $\sqrt{2}$ is irrational.
+    \begin{proof} By contradiction. Let $p$ be the proposition that $\sqrt{2}$ is irrational. Assum $\neg p$ is true, that is, assume $\sqrt{2}$ is rational. By definition of rational numbers, there exist integers $a$ and $b$ such that $\sqrt{2} = \frac{a}{b}$, where $\frac{a}{b}$ is in simplest terms. Then, we have:
+    \begin{align*}
+        \sqrt{2} &= \frac{a}{b} \\
+               2 &= \frac{a^2}{b^2} \\
+            2b^2 &= a^2 \\
+        \intertext{Since $a^2$ is a multiple of 2, $a^2$ is even. Therefore, $a$ is even, and $a = 2k$ for some integer $k$.}
+           2b^2 &= 4k^2 \\
+            b^2 &= 2k^2 \\
+        \intertext{Since $b^2$ is a multiple of 2, $b^2$ is even. Therefore, $b$ is even, and $b = 2l$ for some integer $l$.}
+        \sqrt{2} &= \frac{2k}{2l}
+    \end{align*}
+    Since both $a$ and $b$ are even, we can divide both the numerator and denominator by 2. Because our assumption of $\neg p$ leads to the contradiction that 2 divides both $a$ and $b$ and 2 does not divide both $a$ and $b$, $\neg p$ is false. Therefore, $p$ is true.
+    \end{proof}
     \subsection{Proof Methods and Strategy}
+    \stepcounter{subsubsection}
+    \subsubsection{Exhaustive Proof and Proof by Cases}
+    \textbf{Exhaustive Proof}: Prove that $p \to q$ by showing:
+    \begin{equation*}
+        \bigvee_{i=1}^n p_i \to q
+    \end{equation*}
+    \textbf{Proof by Cases}: Prove that $p \to q$ by breaking $p$ into cases and showing that $q$ is true in each case.
+    \section{Basic Structures}
+    \subsection{Sets}
+    \subsubsection{Introduction}
+    \begin{definition}
+        A \textbf{set} is an unordered collection of distinct objects called \textbf{elements} or \textbf{members} of the set. A set is said to \textbf{contain} its elements. We write $a \in A$ to denote that $a$ is an element of the set $A$. The notation $a \notin A$ denotes that $a$ is not an element of the set $A$.   
+    \end{definition}
+
+    Sets of types of numbers:
+    \begin{itemize}
+        \item Natural Numbers: $\nats = \{0, 1, 2, 3, \dots\} = \set*{\posints \unite 0}$
+        \item Integers: $\ints = \{..., -2, -1, 0, 1, 2, \dots\}$
+        \item Positive Integers: $\ints^+ = \{1, 2, 3, \dots\}$
+        \item Rational Numbers: $\rats = \set*{\df{a}{b} \ | \ a, b \in \ints \text{ and } b \neq 0}$
+        \item Real Numbers: $\reals$
+        \item Positive Real Numbers: $\reals^+$
+        \item Complex Numbers: $\comps$
+    \end{itemize}
+
+    \textbf{Equality of Sets}: $A=B$ if and only if $\forall x (x \in A \lra x \in B)$
+    \\
+
+    \textbf{Empty Set}: $\emptyset = \set*{}$
+    \stepcounter{subsubsection}
+    \subsubsection{Subsets}
+    \begin{equation*}
+        A \subseteq B \lra \forall x (x \in A \lra x \in B) \lra B \supseteq A
+    \end{equation*}
+    To show that $A \not\subseteq B$, show $\exists x (x \in A \land x \not\in B)$.
+    
+    For every set $S$, $\emptyset \subseteq S$ and $S \subseteq S$.
+    \subsection{Set operations}
+    \subsection{Functions}
+    \subsection{Sequences and Summations}
+    \subsection{Cardinality of Sets}
+    \subsection{Matrices}
+    \section{Number Theory}
+    \subsection{Divisibility and Modular Arithmetic}
+    \subsection{Integer Representations and Algorithms}
+    \subsection{Primes and Greatest Common Divisors}
+    \subsection{Solving Congruences}
+    \subsection{Applications of Congruences}
+    \section{Induction and Recursion}
+    \subsection{Mathematical Induction}
+    \subsection{Strong Induction and Well Ordering Principle}
+    \section{Counting}
+    \subsection{Basics of Counting}
+    \subsection{Pigeonhole Principle}
+    \subsection{Permutations and Combinations}
+    \subsection{Binomial Coefficients and Identities}
+    \subsection{Generalized Permutations and Combinations}
+    \subsection{Generating Permutations and Combinations}
+    \section{Probability}
+    \subsection{Introduction to Discrete Probability}
+    \subsection{Probability Theory}
+    \subsection{Bayes' Theorem}
+    \subsection{Expected Value and Variance} 
 \end{document}
