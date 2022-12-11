@@ -18,8 +18,8 @@
 \usetikzlibrary{scopes}
 \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
 \theoremstyle{definition}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[subsubsection]
+\newtheorem{definition}{Definition}[subsubsection]
 \hypersetup{
 	colorlinks=false,      % false: boxed links; true: colored links
 	linkcolor=blue,        % color of internal links
@@ -62,6 +62,7 @@
 
 \newcommand{\powset}{\mathcal{P}} % power set
 
+\newcommand{\comp}{\circ} % composition
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
 
@@ -561,10 +562,10 @@
     Show $p \to q$ by first assuming $p$ is true and then showing that $q$ is true using the rules of inference.
     
     \begin{definition}
-        The integer $n$ is \textbf{even} if $\exists k \in \ints \ | \ n = 2k$.
+        The integer $n$ is \textbf{even} if $\exists k \in \ints \mid n = 2k$.
     \end{definition}
     \begin{definition}
-        The integer $n$ is \textbf{odd} if $\exists k \in \ints \ | \ n = 2k + 1$.   
+        The integer $n$ is \textbf{odd} if $\exists k \in \ints \mid n = 2k + 1$.   
     \end{definition}
     \begin{definition}
         Two integers have the same \textbf{parity} if they are both even or both odd. They have \textbf{opposite parity} if one is even and the other is odd.     
@@ -612,7 +613,7 @@
         \item Natural Numbers: $\nats = \{0, 1, 2, 3, \dots\} = \set*{\posints \unite 0}$
         \item Integers: $\ints = \{..., -2, -1, 0, 1, 2, \dots\}$
         \item Positive Integers: $\ints^+ = \{1, 2, 3, \dots\}$
-        \item Rational Numbers: $\rats = \set*{\df{a}{b} \ | \ a, b \in \ints \text{ and } b \neq 0}$
+        \item Rational Numbers: $\rats = \set*{\df{a}{b} \mid a, b \in \ints \text{ and } b \neq 0}$
         \item Real Numbers: $\reals$
         \item Positive Real Numbers: $\reals^+$
         \item Complex Numbers: $\comps$
@@ -645,7 +646,7 @@
     \begin{definition}
         Let $S$ be a set. If there are exactly $n$ distinct elements in $S$, where $n$ is a nonnegative integer, we say that $S$ is a \textbf{finite set} and that $n$ is the \textbf{cardinality} of $S$, denoted by $|S|$.
         \begin{itemize}
-            \item Note: Theorem 2.1!
+            \item Note: Theorem 2.1.3.1!
         \end{itemize}
     \end{definition}
     \subsubsection{Power Sets}
@@ -661,7 +662,7 @@
     \begin{definition}
         Let $A$ and $B$ be sets. The \textbf{Cartesian product} of $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs $(a,b)$ where $a \in A$ and $b \in B$. Hence:
         \begin{equation*}
-            A \times B = \{(a,b) \ | \ a \in A \land b \in B\}    
+            A \times B = \{(a,b) \mid a \in A \land b \in B\}    
         \end{equation*}
     \end{definition}
     \subsection{Set Operations}
@@ -669,13 +670,13 @@
     \begin{definition}
         Let $A$ and $B$ be sets. The \textbf{union} of the sets $A$ and $B$, denoted $A \unite B$, is the set that contains those elements that are in either $A$ or $B$ or both. Hence:
         \begin{equation*}
-            A \unite B = \{x \ | \ x \in A \lor x \in B\}
+            A \unite B = \{x \mid x \in A \lor x \in B\}
         \end{equation*}
     \end{definition}
     \begin{definition}
         Let $A$ and $B$ be sets. The \textbf{intersection} of the sets $A$ and $B$, denoted $A \inter B$, is the set that contains those elements in both $A$ and $B$. Hence:
         \begin{equation*}
-            A \inter B = \{x \ | \ x \in A \land x \in B\}
+            A \inter B = \{x \mid x \in A \land x \in B\}
         \end{equation*}
     \end{definition}
     \begin{definition}
@@ -684,11 +685,20 @@
     \begin{definition}
         Let $A$ and $B$ be sets. The \textbf{difference} of the sets $A$ and $B$, denoted $A - B$, is the set that contains those elements in $A$ but not in $B$. It is also called the \textbf{complement of $B$ with respect to $A$}. Hence:
         \begin{equation*}
-            A - B = \{x \ | \ x \in A \land x \not\in B\}
+            A - B = \{x \mid x \in A \land x \not\in B\}
         \end{equation*}
     \end{definition}
     \begin{definition}
-        Let $U$ be the universal set. The \textbf{complement} of a set $A$, denoted $\overline{A}$, is the set $U - A$.
+        Let $U$ be the universal set. The \textbf{complement} of a set $A$, denoted $\overline{A}$, is the set $U - A$. Hence:
+        \begin{equation*}
+            \overline{A} = \{x \mid x \in U \land x \not\in A\}
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        Let $A$ and $B$ be sets. The \textbf{symmetric difference} of $A$ and $B$ is the set of elements that are in either $A$ or $B$ but not in both. It is denoted by $A \xor B$. Hence:
+        \begin{equation*}
+            A \xor B = (A \unite B) - (A \inter B)
+        \end{equation*} 
     \end{definition}
     \subsubsection{Set Identities}
     \begin{figure}[H]
@@ -768,9 +778,119 @@
         \end{equation*}
     \end{definition}
     \subsection{Functions}
+    \subsubsection{Introduction}
+    \begin{definition}
+        Let $A$ and $B$ be nonempty sets. A \textbf{function} $f$ from $A$ to $B$ is an assignment of exactly one element of $B$ to each element of $A$. We write $f(a) = b$ if $b$ is the unique element of $B$ assigned by the function $f$ to the element $a$ of $A$. If $f$ is a function from $A$ to $B$, we write $f: A \to B$.
+        \begin{itemize}
+            \item Functions are sometimes also called \textbf{mappings} or \textbf{transformations}
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        Let $f: A \to B$ be a function. $A$ is the \textbf{domain} of $f$ and $B$ is the \textbf{codomain} of $f$. If $f(a) = b$, we say that $b$ is the \textbf{image} of $a$ and $a$ is the \textbf{preimage} of $b$. The \textbf{range}, or \textbf{image} of $f$ is the set of all images of elements of $A$. Also, if $f$ is a function from $A$ to $B$, we say that $f$ \textbf{maps} $A$ to $B$.
+        \begin{itemize}
+            \item Codomain is set of possible values of the function and range is the set of all elements of the codomain that are achieved as the value of $f$ for at least one element of the domain.
+            \item Two functions are \textbf{equal} when they have the same domain, same codomain, and map each each element of their common domain to the same element in their common codomain.
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        Let $f_1$ and $f_2$ be functions from $A$ to $B$. Then $f_1 + f_2$ and $f_1f_2$ are also functions from $A$ to $B$ defined $\forall x \in A$ by:
+        \begin{align*}
+            (f_1 + f_2)(x) &= f_1(x) + f_2(x) \\
+               (f_1f_2)(x) &= f_1(x)f_2(x)
+        \end{align*}
+    \end{definition}
+    \begin{definition}
+        Let $f$ be a function from $A$ to $B$ and let $S \subseteq A$. The \textbf{image} of $S$ under the function $f$ is the subset of $B$ that consists of the images of the elements of $S$. We denote the image of $S$ by $f(S)$, so:
+        \begin{equation*}
+            f(S) = \set*{t \mid \exists s \in S (t = f(s))} = \set*{f(s) \mid s \in S}
+        \end{equation*}
+    \end{definition}
+    \subsubsection{One-to-One and Onto Functions}
+    \begin{definition}
+        A function $f$ with domain $A$ is \textbf{one-to-one} if and only if: 
+        \begin{equation*}
+            \forall a \forall b (a,b \in A \land (f(a) = f(b) \to a = b))
+        \end{equation*}
+        \begin{itemize}
+            \item A function $f$ is one-to-one if and only if $f(a) \neq f(b)$ whenever $a \neq b$. This is obtained by taking the contrapositve of the implication in the definition.
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        A function $f$ whose domain $A$ and codomain $B$ are subsets of the set of real numbers is called \textbf{increasing} if $f(x) \leq f(y)$ whenever $x < y$ and $x,y \in A$. Hence:
+        \begin{equation*}
+            \forall x \forall y (x,y \in A \land x < y \to f(x) \leq f(y))
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        A function $f$ whose domain $A$ and codomain $B$ are subsets of the set of real numbers is called \textbf{strictly increasing} if $f(x) < f(y)$ whenever $x < y$ and $x,y \in A$. Hence:
+        \begin{equation*}
+            \forall x \forall y (x,y \in A \land x < y \to f(x) < f(y))
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        A function $f$ whose domain $A$ and codomain $B$ are subsets of the set of real numbers is called \textbf{decreasing} if $f(x) \geq f(y)$ whenever $x < y$ and $x,y \in A$. Hence:
+        \begin{equation*}
+            \forall x \forall y (x,y \in A \land x < y \to f(x) \geq f(y))
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        A function $f$ whose domain $A$ and codomain $B$ are subsets of the set of real numbers is called \textbf{strictly decreasing} if $f(x) > f(y)$ whenever $x < y$ and $x,y \in A$. Hence:
+        \begin{equation*}
+            \forall x \forall y (x,y \in A \land x < y \to f(x) > f(y))
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        A function $f$ from $A$ to $B$ is \textbf{onto}, or a \textbf{surjection}, if and only if for every element $y \in B$ there exists an element $x \in A$ such that $f(x) = y$. Hence:
+        \begin{equation*}
+            \forall y \exists x (f(x) = y)
+        \end{equation*}
+        where the domain for $x$ is $A$ and the domain of $y$ is $B$.
+        \begin{itemize}
+            \item $f$ is \textbf{surjective} if it is onto.
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        The function $f$ is a \textbf{one-to-one correspondence} if it is both one-to-one and onto. 
+        \begin{itemize}
+            \item Such a function is \textbf{bijective}
+        \end{itemize}
+    \end{definition}
+    \begin{figure}[H]
+        \centering
+        {\renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|l p{25em}|}
+            \hline
+            \multicolumn{2}{|l|}{Suppose that $f: A \to B$.} \\
+            \hline
+            Show $f$ is injective: & Show that if $f(x) = f(y)$ for arbitrary $x,y \in A$, then $x = y$ \\
+            Show $f$ is not injective: & Find particular elements, $x,y \in A$ such that $x \neq y$ and $f(x)=f(y)$. \\
+            Show $f$ is surjective: & Consider an arbitrary element $y \in B$ and find an element $x \in A$ such that $f(x) = y$. \\
+            Show $f$ is not surjective: & Find a particular $y \in B$ such that $f(x) \neq y$ for all $x \in A$. \\
+            Show $f$ is bijective: & Show that $f$ is both injective and surjective. \\
+            \hline
+        \end{tabular}}
+    \end{figure}
+    \subsubsection{Inverse Functions and Composite Functions}
+    \begin{definition}
+        Let $f$ be a one-to-one correspondence from the set $A$ to the set $B$. The \textbf{inverse function} of $f$ is denoted by $f^{-1}$: Hence: 
+        \begin{equation*}
+            f^{-1}(b) = a \text{ when } f(a) = b
+        \end{equation*}
+        \begin{itemize}
+            \item A one-to-one correspondence $f$ is \textbf{invertible} because we can define an inverse function $f^{-1}$.
+            \item A function is \textbf{invertible} if it is not a one-to-one correspondence, because the inverse of $f$ does not exist.
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        Let $g$ be a function from the set $A$ to the set $B$ and let $f$ be a function from the set $B$ to the set $C$. The \textbf{composition} of the functions $f$ and $g$, denoted for all $a \in A$ by $f \comp g$, is the function from $A$ to $C$ defined by:
+        \begin{equation*}
+            (f \comp g)(a) = f(g(a))
+        \end{equation*}
+    \end{definition}
     \subsection{Sequences and Summations}
     \subsection{Cardinality of Sets}
     \subsection{Matrices}
+    \stepcounter{section}
     \section{Number Theory}
     \subsection{Divisibility and Modular Arithmetic}
     \subsection{Integer Representations and Algorithms}
