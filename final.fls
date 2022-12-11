@@ -868,6 +868,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/hyperref.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryscopes.code.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryscopes.code.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/xcolor/xcolor.sty

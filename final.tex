@@ -15,9 +15,12 @@
 \usepackage{amsthm} % proofs
 \usepackage{enumerate} % lettered lists
 \usepackage{mathtools} % macros
+\usepackage{hyperref} % hyperlinks
 \usetikzlibrary{scopes}
 \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
 \theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem*{remark}{Remark}
 \newtheorem{theorem}{Theorem}[subsubsection]
 \newtheorem{definition}{Definition}[subsubsection]
 \hypersetup{
@@ -65,6 +68,7 @@
 \newcommand{\comp}{\circ} % composition
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolute value
 
 \DeclarePairedDelimiter\paren{(}{)} % parenthesis
 
@@ -854,6 +858,7 @@
         \begin{itemize}
             \item Such a function is \textbf{bijective}
         \end{itemize}
+        \label{def:one-to-one-correspondence}
     \end{definition}
     \begin{figure}[H]
         \centering
@@ -886,9 +891,208 @@
         \begin{equation*}
             (f \comp g)(a) = f(g(a))
         \end{equation*}
+        \begin{itemize}
+            \item $f \comp g$ assigns the element $a$ of $A$ the element assigned by $f$ to $g(a)$. 
+            \item The domain of $f \comp g$ is the domain of $g$.
+            \item The range of $f \comp g$ is the image of the range of $g$ with respect to $f$.
+            \item The composition $f \comp g$ cannot be defined unless the range of $g$ is a subset of the domain of $f$. 
+            \item \textbf{Not Commutative!} 
+            \begin{equation*}
+                f \comp g \neq g \comp f
+            \end{equation*}
+            \item When composing with inverse function, an identity function is obtained:
+            \begin{equation*}
+                f \comp f^{-1}(a) = f^{-1} \comp f(a) = a
+            \end{equation*}
+        \end{itemize}
     \end{definition}
+    \stepcounter{subsubsection}
+    \subsubsection{Some Important Functions}
+    \begin{definition}
+        The \textbf{floor function} assigns to the real number $x$ the largest integer that is less than or equal to $x$. The value of the floor function at $x$ is denoted by $\floor*{x}$. The \textbf{ceiling function} assigns to the real number $x$ the smllest integer that is greater than or equal to $x$. The value of the ceiling function at $x$ is denoted by $\ceil*{x}$.
+    \end{definition}
+    \begin{figure}[H]
+        \centering
+        {\renewcommand{\arraystretch}{1.3}
+        \begin{tabular}{|c|}
+            \hline
+            \textbf{$n$ is an integer, $x$ is a real number} \\
+            \hline
+            $\floor*{x} = n \lra n \leq x < n+1$ \\
+            $\ceil*{x} = n \lra n-1 < x \leq n$ \\
+            $\floor*{x} = n \lra x-1 < n \leq x$ \\
+            $\ceil*{x} = n \lra x \leq n < x+1$ \\
+            \hline
+            $x-1 < \floor*{x} \leq x \leq \ceil*{x} < x+1$ \\
+            \hline
+            $\floor*{-x} = -\ceil*{x}$ \\
+            $\ceil*{-x} = -\floor*{x}$ \\
+            \hline
+            $\floor*{x+n} = \floor*{x} + n$ \\
+            $\ceil*{x+n} = \ceil*{x} + n$ \\
+            \hline
+        \end{tabular}}
+        \caption{Useful Properties of the Floor and Ceiling Functions}
+    \end{figure}
     \subsection{Sequences and Summations}
+    \stepcounter{subsubsection}
+    \subsubsection{Sequences}
+    \begin{definition}
+        A \textbf{sequence} is a function from the set of integers to a set $S$. We use the notation $a_n$ to denote the image of the integer $n$. $a_n$ is called a \textbf{term} of the sequence.
+    \end{definition}
+    \begin{definition}
+        A \textbf{geometric progression} is a sequence of the form:
+        \begin{equation*}
+            a, ar, ar^2, \dots, ar^n, \dots 
+        \end{equation*}
+        where the \textbf{initial term} $a$ and the \textbf{common ratio} $r$ are real numbers.
+    \end{definition}
+    \begin{definition}
+        An \textbf{arithmetic progression} is a sequence of the form:
+        \begin{equation*}
+            a, a+d, a+2d, \dots, a+nd, \dots
+        \end{equation*}
+        where the \textbf{initial term} $a$ and the \textbf{common difference} $d$ are real numbers.
+    \end{definition}
+    \subsubsection{Recursive Relations}
+    \begin{definition}
+        A \textbf{recursive relation} for the sequence $\set*{a_n}$ is an equation that expresses $a_n$ in terms of one or more of the previous terms of the sequence, namely, $a_0, a_1, \dots, a_{n-1}$, for all integers $n$ with $n \geq n_0$, where $n_0$ is a nonnegative integer. A sequence is called a \textbf{solution} of a recurrence relation if its terms satisfy the recurrence relation.
+    \end{definition}
+    \begin{definition}
+        The \textbf{Fibonacci sequence} is a sequence of integers defined by the recurrence relation:
+        \begin{equation*}
+            f_0 = 0, \quad f_1 = 1, \quad f_{n+2} = f_{n+1} + f_n
+        \end{equation*}
+    \end{definition}
+    \stepcounter{subsubsection}
+    \subsubsection{Summations}
+    \begin{definition}
+        The \textbf{sum} of a sequence $\set*{a_n}$ is the real number:
+        \begin{equation*}
+            \sum_{j=0}^{n} a_j = a_0 + a_1 + a_2 + \dots
+        \end{equation*}
+    \end{definition}
+    \begin{theorem}
+        If $a$ and $r$ are real numbers and $r \neq 0$, then:
+        \begin{equation*}
+            \sum_{j=0}^{n} ar^j = \begin{cases}
+                                    \df{ar^{n+1} - a}{r-1}, & \text{if } r \neq 1 \cr a(n+1), & \text{if } r = 1
+                                  \end{cases}
+        \end{equation*}
+    \end{theorem}
+    \begin{figure}[H]
+        \centering
+        {\renewcommand{\arraystretch}{2}
+        \begin{tabular}{|c|c|}
+            \hline
+            Sum & Closed Form \\
+            \hline
+            $\displaystyle\sum_{k=0}^{n}ar^k, r \neq 0$ & $\df{ar^{n+1}-a}{r-1}, r \neq 1$ \\
+            $\displaystyle\sum_{k=1}^n k$               & $\df{n(n+1)}{2}$ \\
+            $\displaystyle\sum_{k=1}^n k^2$             & $\df{n(n+1)(2n+1)}{6}$ \\
+            $\displaystyle\sum_{k=1}^n k^3$             & $\df{n^2(n+1)^2}{4}$ \\
+            $\displaystyle\sum_{k=0}^{\infty}x^k, \abs*{x} < 1$ & $\df{1}{1-x}$ \\
+            $\displaystyle\sum_{k=1}^{\infty}kx^{k-1}, \abs*{x} < 1$ & $\df{1}{(1-x)^2}$ \\
+            \hline
+        \end{tabular}}
+        \caption{Some Useful Summation Formulae}
+    \end{figure}
     \subsection{Cardinality of Sets}
+    \subsubsection{Introduction}
+    \begin{definition}
+        The sets $A$ and $B$ have the \textbf{same cardinality} if and only if there is a one-to-one correspondence from $A$ to $B$. When $A$ and $B$ have the same cardinality, we write $|A| = |B|$.
+        \begin{itemize}
+            \item For infinite sets, the definition of cardinality provides a relative measure of the size of two sets, rather than a measure of the size of one particular set. 
+        \end{itemize}
+    \end{definition}
+    \begin{definition}
+        If there is a one-to-one correspondence from $A$ to $B$, the cardinality of $A$ is less than or equal to the cardinality of $B$ and we write $|A| \leq |B|$. Moreover, when $|A| \leq |B|$ and $A$ and $B$ have different cardinality, we say that the cardinality of $A$ is less than the cardinality of $B$ and we write $|A| < |B|$.
+    \end{definition}
+    \begin{remark}
+        Definitions 2.5.1.1 and 2.5.1.2 do not give any separate meaning to $|A|$ and $|B|$ when $A$ and $B$ are arbitrary infinite sets.
+    \end{remark}
+    \subsubsection{Countable Sets}
+    \begin{definition}
+        A set that is either finite or has the same cardinality as the set of positive integers is called \textbf{countable}. A set that is not countable is called \textbf{uncountable}. When an infinite set $S$ is countable, we denote the cardinality of $S$ by $\aleph_0$. We write $|S| = \aleph_0$ and say that $S$ has cardinality ``aleph null.''
+        \begin{itemize}
+            \item To prove that a set is countable, we must show that there is a one-to-one correspondence between the set and the set of positive integers (\hyperref[def:one-to-one-correspondence]{Refer to Definition 2.3.2.7})
+        \end{itemize}
+    \end{definition}
+    The following are examples of how to prove some common sets are countable:
+    \begin{example}
+        Prove that $\ints$ is countable. \\
+        \begin{proof}
+            We can list all integers in a sequence by starting with 0 and alternating between positive and negative integers: $0, 1, -1, 2, -2, 3, -3, \dots$. Let $f$ have the domain $\ints^+$.
+            \begin{equation*}
+                f(n) = \begin{cases}
+                            \df{n}{2}, & \text{if } n \text{ is even} \cr
+                            -\df{n-1}{2}, & \text{if } n \text{ is odd}
+                        \end{cases}
+            \end{equation*}
+            Since when $n$ is even, $f(n)$ maps to all positive integers, and when $n$ is odd, $f(n)$ maps to all negative integers and 0, the codomain of $f$ is $\ints$. Since there is a function $f$ that maps $\ints^+$ to $\ints$, we can conclude that $\ints$ is countable.
+        \end{proof}
+    \end{example}
+    \begin{example}
+        Prove that $\rats^+$ is countable.
+        \begin{proof}
+            Every positive rational number is the quotient $p/q$ of two positive integers. We can arrange the positive rational numbers by listing those with denominator $q=1$ in the first row, those with denominator $q=2$ in the second row, and so on:
+            \begin{align*}
+                \begin{tabular}{c | c c c c c c}
+                      & 1           & 2           & 3           & 4           & 5           & $\cdots$ \\
+                      \hline\rule{0pt}{1.2\normalbaselineskip} 
+                    1 & $\frac{1}{1}$ & $\frac{2}{1}$ & $\frac{3}{1}$ & $\frac{4}{1}$ & $\frac{5}{1}$ & $\cdots$ \\[1em]
+                    2 & $\frac{1}{2}$ & $\frac{2}{2}$ & $\frac{3}{2}$ & $\frac{4}{2}$ & $\frac{5}{2}$ & $\cdots$ \\[1em]
+                    3 & $\frac{1}{3}$ & $\frac{2}{3}$ & $\frac{3}{3}$ & $\frac{4}{3}$ & $\frac{5}{3}$ & $\cdots$ \\[1em]
+                    4 & $\frac{1}{4}$ & $\frac{2}{4}$ & $\frac{3}{4}$ & $\frac{4}{4}$ & $\frac{5}{4}$ & $\cdots$ \\[1em]
+                    5 & $\frac{1}{5}$ & $\frac{2}{5}$ & $\frac{3}{5}$ & $\frac{4}{5}$ & $\frac{5}{5}$ & $\cdots$ \\[1em]
+                    $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$
+                \end{tabular}    
+            \end{align*}
+            Each rational number can be represented by the ordered pair $(i,j)$ where $i$ is the row number and $j$ is the column number. We can see by snaking a line from $\rats^{+}_{11}$ to $\rats^{+}_{21}$ to $\rats^{+}_{12}$ to $\rats^{+}_{13}$ to $\rats^{+}_{31}$ and so forth, such that there is a zigzag-ing enumeration, we can list the element of $\rats^+$ in a sequence indexed by the positive integers, and thus $\rats^+$ is countable.
+        \end{proof}
+    \end{example}
+    \begin{remark}
+        Note that the same proof can be used to show that $\rats^-$ is countable, and thus the union of $\rats^+$ and $\rats^-$ is countable. By using the ordered pair $(0,0)$, we can show that $\rats$ is countable.
+    \end{remark}
+    \subsubsection{Uncountable Sets}
+    We can utilize the \textbf{Cantor diagonalization argument} to prove that the set of real numbers is uncountable.
+    \begin{example}
+        Prove that $\reals$ is uncountable. 
+        \begin{proof} By contradiction. 
+            Suppose $\reals$ is countable. Then, the subset of all real numbers that fall between 0 and 1 would also be countable (The subset of a countable set is countable). Under this assumption, the real numbers between 0 and  can be listed in some order, $r_1, r_2, r_3, \dots$. Let the decimal representation of these real numbers be: 
+            \begin{align*}
+                r_1 &= 0.d_{11}d_{12}d_{13}d_{14}\dots \\
+                r_2 &= 0.d_{21}d_{22}d_{23}d_{24}\dots \\
+                r_3 &= 0.d_{31}d_{32}d_{33}d_{34}\dots \\
+                r_4 &= 0.d_{41}d_{42}d_{43}d_{44}\dots \\
+                    &\vdotswithin{=}
+            \end{align*}
+            where $d_{ij} \in \set*{x \mid 0 \leq x \leq 9}$. Then, form a new real number with decimal expansion $r=0.d_1d_2d_3d_4\dots$, where the decimal digits are determined by the following rule:
+            \begin{equation*}
+                d_i = \begin{cases}
+                            4 & \text{if } d_{ii} \neq 4 \\
+                            5 & \text{if } d_{ii} = 4
+                        \end{cases}
+            \end{equation*}
+            For instance, let $r_1 = 0.23794102\dots, r_2=0.44590138\dots, r_3=0.09118764\dots, r=4=0.80553900\dots,$ and so on. Then we have $r=0.d_1d_2d_3d_4\dots=0.4544$, where $d_1=4$ because $d_{11} \neq 4$, $d_2=5$ because $d_{21}=4$, $d_3=4$ because $d_{31} \neq 4$, and so on. \\
+            
+            Every real number has a unique decimal expansion. Therefore, the real number $r$ is not equal to any of $r_1,r_2,\dots$ because the decimal expansion of $r$ differs from the decimal expansion of $r_i$ in the $i$th place to the right of the decimal point, for each $i$. \\
+
+            Because there is a real number $r$ between 0 and 1 that is not in the list, the assumption that all the real numbers between 0 and 1 could be listed must be false. Therefore, all the real numbers between 0 and 1 cannot be listed, so the set of real numbers between 0 and 1 is uncountable. Any set with an uncountable subset is uncountable. Hence, the set of real numbers is uncountable.
+        \end{proof}
+    \end{example}
+    \begin{remark}
+        What we essentially did in the proof was create a number that is not in the list. We proved that we can infinitely create new numbers, $r$ that are not in the list. 
+    \end{remark}
+    \begin{theorem}
+        If $A$ and $B$ are countable sets, then $A \unite B$ is also countable.
+        \begin{itemize}
+            \item Proof on page 184.
+        \end{itemize}
+    \end{theorem}
+    \begin{theorem}
+        \textbf{Schröder-Bernstein Theorem} If $A$ and $B$ are sets with $|A| \leq |B|$ and $|B| \leq |A|$, then $|A| = |B|$. In other words, if there are one-to-one functions $f$ from $A$ to $B$ and $g$ from $B$ to $A$, then there is a one-to-one correspondence between $A$ and $B$.
+    \end{theorem}
     \subsection{Matrices}
     \stepcounter{section}
     \section{Number Theory}
