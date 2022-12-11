@@ -17,8 +17,8 @@
 \usepackage{mathtools} % macros
 \usetikzlibrary{scopes}
 \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
-\newtheorem{theorem}{Theorem}
 \theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}{Definition}[section]
 \hypersetup{
 	colorlinks=false,      % false: boxed links; true: colored links
@@ -59,6 +59,9 @@
 \newcommand{\true}{\textbf{T}} % true
 \newcommand{\false}{\textbf{F}} % false
 \newcommand{\lra}{\leftrightarrow} % iff
+
+\newcommand{\powset}{\mathcal{P}} % power set
+
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil} % ceil function
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % floor function
 
@@ -615,19 +618,155 @@
         \item Complex Numbers: $\comps$
     \end{itemize}
 
-    \textbf{Equality of Sets}: $A=B$ if and only if $\forall x (x \in A \lra x \in B)$
-    \\
+    \begin{definition}
+        \textbf{Equality of Sets}:
+        \begin{equation*}
+            A=B \lra \forall x (x \in A \lra x \in B) \lra A \subseteq B \land B \subseteq A   
+        \end{equation*}
+    \end{definition}
 
-    \textbf{Empty Set}: $\emptyset = \set*{}$
+    \begin{definition}
+        \textbf{Empty Set}: $\emptyset = \set*{}$
+    \end{definition}
     \stepcounter{subsubsection}
     \subsubsection{Subsets}
+    \begin{definition}
+        \textbf{Subset}:
+        \begin{equation*}
+            A \subseteq B \lra \forall x (x \in A \lra x \in B) \lra B \supseteq A
+        \end{equation*}
+        To show that $A \not\subseteq B$, show $\exists x (x \in A \land x \not\in B)$.
+    \end{definition}
+
+    \begin{theorem}
+        For every set $S$, $\emptyset \subseteq S$ and $S \subseteq S$.
+    \end{theorem}
+    \subsubsection{Size of a Set}
+    \begin{definition}
+        Let $S$ be a set. If there are exactly $n$ distinct elements in $S$, where $n$ is a nonnegative integer, we say that $S$ is a \textbf{finite set} and that $n$ is the \textbf{cardinality} of $S$, denoted by $|S|$.
+        \begin{itemize}
+            \item Note: Theorem 2.1!
+        \end{itemize}
+    \end{definition}
+    \subsubsection{Power Sets}
+    \begin{definition}
+        Let $S$ be a set. The \textbf{power set} of $S$, denoted by $\powset(S)$, is the set of all subsets of $S$.
+    \end{definition}
+    \begin{theorem} Cardinality of a power set
+        \begin{equation*}
+            |\powset(S)| = 2^{|S|}
+        \end{equation*}
+    \end{theorem}
+    \subsubsection{Cartesian Products}
+    \begin{definition}
+        Let $A$ and $B$ be sets. The \textbf{Cartesian product} of $A$ and $B$, denoted by $A \times B$, is the set of all ordered pairs $(a,b)$ where $a \in A$ and $b \in B$. Hence:
+        \begin{equation*}
+            A \times B = \{(a,b) \ | \ a \in A \land b \in B\}    
+        \end{equation*}
+    \end{definition}
+    \subsection{Set Operations}
+    \subsubsection{Introduction}
+    \begin{definition}
+        Let $A$ and $B$ be sets. The \textbf{union} of the sets $A$ and $B$, denoted $A \unite B$, is the set that contains those elements that are in either $A$ or $B$ or both. Hence:
+        \begin{equation*}
+            A \unite B = \{x \ | \ x \in A \lor x \in B\}
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        Let $A$ and $B$ be sets. The \textbf{intersection} of the sets $A$ and $B$, denoted $A \inter B$, is the set that contains those elements in both $A$ and $B$. Hence:
+        \begin{equation*}
+            A \inter B = \{x \ | \ x \in A \land x \in B\}
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        Two sets are called \textbf{disjoint} if their intersection is the emptyset.
+    \end{definition}
+    \begin{definition}
+        Let $A$ and $B$ be sets. The \textbf{difference} of the sets $A$ and $B$, denoted $A - B$, is the set that contains those elements in $A$ but not in $B$. It is also called the \textbf{complement of $B$ with respect to $A$}. Hence:
+        \begin{equation*}
+            A - B = \{x \ | \ x \in A \land x \not\in B\}
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        Let $U$ be the universal set. The \textbf{complement} of a set $A$, denoted $\overline{A}$, is the set $U - A$.
+    \end{definition}
+    \subsubsection{Set Identities}
+    \begin{figure}[H]
+        \centering
+        {\renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|l|c|}
+            \hline
+            Identity & Name \\
+            \hline
+            $A \inter U = A$ & Identity Laws \\
+            $A \unite \emptyset = A$ & \\
+            \hline
+            $A \unite U = U$ & Domination Laws \\
+            $A \inter \emptyset = \emptyset$ & \\
+            \hline
+            $A \unite A = A$ & Idempotent Laws \\
+            $A \inter A = A$ & \\
+            \hline
+            $\overline{(\overline{A})} = A$ & Complementation Law \\
+            \hline
+            $A \unite B = B \unite A$ & Commutative Laws \\
+            $A \inter B = B \inter A$ & \\
+            \hline
+            $A \unite (B \unite C) = (A \unite B) \unite C$ & Associative Laws \\
+            $A \inter (B \inter C) = (A \inter B) \inter C$ & \\
+            \hline
+            $A \unite (B \inter C) = (A \unite B) \inter (A \unite C)$ & Distributive Laws \\
+            $A \inter (B \unite C) = (A \inter B) \unite (A \inter C)$ & \\
+            \hline
+            $\overline{A \inter B} = \overline{A} \unite \overline{B}$ & De Morgan's Laws \\
+            $\overline{A \unite B} = \overline{A} \inter \overline{B}$ & \\
+            \hline
+            $A \unite (A \inter B) = A$ & Absorption Laws \\
+            $A \inter (A \unite B) = A$ & \\
+            \hline
+            $A \unite \overline{A} = U$ & Complement Laws \\
+            $A \inter \overline{A} = \emptyset$ & \\
+            \hline
+        \end{tabular}}
+        \caption{Set Identities}
+    \end{figure}
+    There are 3 ways to prove that two sets are equal:
+    \begin{enumerate}
+        \item Showing that they are subsets of each other. (Definition 2.2)
+        \item Membership tables.
+        \item Set identities.
+    \end{enumerate}
+    A \textbf{membership table} considers each combination of the atomic sets (the original sets used to produce the sets on each side) that an element can belong to and verify that elements in the same combinations of sets belong to both the sets in the identity. Use a 1 to indicate that an element belongs to a set and a 0 to indicate that it does not. For example, consider the following identity:
     \begin{equation*}
-        A \subseteq B \lra \forall x (x \in A \lra x \in B) \lra B \supseteq A
+        A \unite (A \inter B) = A
     \end{equation*}
-    To show that $A \not\subseteq B$, show $\exists x (x \in A \land x \not\in B)$.
-    
-    For every set $S$, $\emptyset \subseteq S$ and $S \subseteq S$.
-    \subsection{Set operations}
+    We can construct a membership table for this identity as follows:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $A$ & $B$ & $A \unite (A \inter B)$ \\
+            \hline
+            1 & 1 & 1 \\
+            1 & 0 & 1 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Since the columns are the same, we can conclude that the sets are equal.
+    \subsubsection{Generalized Unions and Intersections}
+    \begin{definition}
+        The \textbf{union} of a collection of sets is the set that contains those elements that are members of at least one set in the collection. It is denoted by:
+        \begin{equation*}
+            A_1 \unite A_2 \unite \cdots A_n = \bigcup_{i=1}^{n} A_i
+        \end{equation*}
+    \end{definition}
+    \begin{definition}
+        The \textbf{intersection} of a collection of sets is the set that contains those elements that are members of all sets in the collection. It is denoted by:
+        \begin{equation*}
+            A_1 \inter A_2 \inter \cdots A_n = \bigcap_{i=1}^{n} A_i
+        \end{equation*}
+    \end{definition}
     \subsection{Functions}
     \subsection{Sequences and Summations}
     \subsection{Cardinality of Sets}

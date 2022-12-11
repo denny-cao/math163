@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1670716812 "/home/akkaro/math163/final.tex" "final.pdf" "final" 1670716813
-  "/home/akkaro/math163/final.tex" 1670716811 27021 378587fcc95b90d59d06635531b40f6d ""
+["pdflatex"] 1670722328 "/home/akkaro/math163/final.tex" "final.pdf" "final" 1670722329
+  "/home/akkaro/math163/final.tex" 1670722326 33373 1c4ceee77f2ca578052a8907b28ce799 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -37,6 +37,7 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1248133631 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
@@ -185,10 +186,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1666161220 4595883 1a8137d784f6ac4a90cecb4bdd05a7cf ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1666161259 3058865 e4f58d72146e9845b97136b6e6ac75ce ""
   "/usr/local/texlive/2022/texmf.cnf" 1666161215 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "final.aux" 1670716813 9447 73bda29c0a42cc952491f319f93327ea "pdflatex"
-  "final.out" 1670716813 9159 52e4e843eeb7daaef290682eaacfe358 "pdflatex"
-  "final.tex" 1670716811 27021 378587fcc95b90d59d06635531b40f6d ""
-  "final.toc" 1670716813 4794 79c7db02284e9a40749406234dfca79c "pdflatex"
+  "final.aux" 1670722329 10401 be437d8672e59176ae337f57b8541212 "pdflatex"
+  "final.out" 1670722329 10109 0b382471ae09297b32ae2d58f6bc1fb4 "pdflatex"
+  "final.tex" 1670722326 33373 1c4ceee77f2ca578052a8907b28ce799 ""
+  "final.toc" 1670722329 5359 e71cdbcae22d22987ae64a2d717dd627 "pdflatex"
   (generated)
   "final.aux"
   "final.log"
