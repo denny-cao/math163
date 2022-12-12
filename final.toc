@@ -57,13 +57,32 @@
 \contentsline {subsection}{\numberline {5.2}Strong Induction and Well Ordering Principle}{21}{subsection.5.2}%
 \contentsline {section}{\numberline {6}Counting}{21}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Basics of Counting}{21}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Pigeonhole Principle}{21}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Permutations and Combinations}{21}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Binomial Coefficients and Identities}{21}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Generalized Permutations and Combinations}{21}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Generating Permutations and Combinations}{21}{subsection.6.6}%
-\contentsline {section}{\numberline {7}Probability}{21}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Introduction to Discrete Probability}{21}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Probability Theory}{21}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Bayes' Theorem}{21}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Expected Value and Variance}{21}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {6.1.2}Basic Counting Principles}{21}{subsubsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.5}Subtraction Rule (Inclusion-Exclusion For Two Sets)}{21}{subsubsection.6.1.5}%
+\contentsline {subsubsection}{\numberline {6.1.6}Division Rule}{21}{subsubsection.6.1.6}%
+\contentsline {subsection}{\numberline {6.2}Pigeonhole Principle}{22}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Introduction}{22}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Generalized Pigeonhole Principle}{22}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}Some Elegant Applications of the Pigeonhole Principle}{23}{subsubsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.3}Permutations and Combinations}{23}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.2}Permutations}{23}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Combinations}{24}{subsubsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.4}Binomial Coefficients and Identities}{24}{subsection.6.4}%
+\contentsline {subsubsection}{\numberline {6.4.1}Binomial Theorem}{24}{subsubsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.2}Pascal's Identity}{24}{subsubsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.3}Other Identities Involving Binomial Coefficients}{25}{subsubsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.5}Generalized Permutations and Combinations}{25}{subsection.6.5}%
+\contentsline {subsubsection}{\numberline {6.5.2}Permutations with Repetition}{25}{subsubsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.3}Combinations with Repetition}{25}{subsubsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.4}Permutations with Indistinguishable Objects}{25}{subsubsection.6.5.4}%
+\contentsline {subsubsection}{\numberline {6.5.5}Distributing Objects into Boxes}{26}{subsubsection.6.5.5}%
+\contentsline {section}{\numberline {7}Probability}{26}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Introduction to Discrete Probability}{26}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Probability Theory}{26}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Bayes' Theorem}{26}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Expected Value and Variance}{26}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.2}Expected Values}{26}{subsubsection.7.4.2}%
+\contentsline {subsubsection}{\numberline {7.4.3}Linearity of Expectations}{27}{subsubsection.7.4.3}%
+\contentsline {subsubsection}{\numberline {7.4.5}Geometric Distribution}{27}{subsubsection.7.4.5}%
+\contentsline {subsubsection}{\numberline {7.4.6}Independent Random Variables}{27}{subsubsection.7.4.6}%
+\contentsline {subsubsection}{\numberline {7.4.7}Variance}{28}{subsubsection.7.4.7}%

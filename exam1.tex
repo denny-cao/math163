@@ -1,0 +1,166 @@
+%++++++++++++++++++++++++++++++++++++++++
+\documentclass[letterpaper,12pt]{article}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{tabu} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{tikz}
+\usepackage{caption} 
+\usepackage{fancyhdr}
+\usepackage{amssymb} % symbols like /therefore
+\usepackage{amsthm} % proofs
+
+\pagestyle{fancy}
+\fancyhf{}% clears all header and footer fields
+\fancyfoot[C]{--~\thepage~--}
+\renewcommand*{\headrulewidth}{0pt}
+\renewcommand*{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}% clears all header and footer fields
+  \fancyfoot[C]{--~\thepage~--}%
+  \renewcommand*{\headrulewidth}{0pt}%
+  \renewcommand*{\footrulewidth}{0pt}%
+}
+
+\captionsetup[table]{skip=15px}
+
+\usetikzlibrary{scopes}
+
+\hypersetup{
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=blue,        % color of internal links
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,     % color of file links
+	urlcolor=blue         
+}
+%++++++++++++++++++++++++++++++++++++++++
+\begin{document}
+\onehalfspacing
+
+\setlength\parindent{0pt}
+\title{Exam 1 Corrections}
+\author{Denny Cao}
+\date{October 9, 2022}
+\maketitle
+% Question 1
+\textbf{Q1. The domain is the set of all real numbers. Determine the truth value of the following expression: $\forall x \exists y (x < 0 \lor y^2 = x)$} \\
+When $x < 0$, it satisfies the first condition, $x<0$. When $x \geq 0$, $y=\sqrt{x}$ satisfies the second condition, $y^2=x$. \\ 
+$\forall x \exists y|x < 0 \rightarrow x < 0 \land \forall x \exists y|x \geq 0 \rightarrow y = \sqrt{x}$ \\
+The expression is true. \\
+\\
+% Question 2
+\textbf{Q2. Prove that $\neg[p \lor (s \land (\neg p \rightarrow q))] \equiv \neg p \land (\neg s \lor \neg q)$ using a truth table.}
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $p$&$q$&$s$&$\neg p$&$\neg p \rightarrow q$&$s \wedge \left(\neg p \rightarrow q\right)$&$p \vee \left(s \wedge \left(\neg p \rightarrow q\right)\right)$&$\neg [p \vee \left(s \wedge \left(\neg p \rightarrow q\right)\right)]$\\ \hline
+        T&T&T&F&T&T&T&F\\\hline
+        T&T&F&F&T&F&T&F\\\hline
+        T&F&T&F&T&T&T&F\\\hline
+        T&F&F&F&T&F&T&F\\\hline
+        F&T&T&T&T&T&T&F\\\hline
+        F&T&F&T&T&F&F&T\\\hline
+        F&F&T&T&F&F&F&T\\\hline
+        F&F&F&T&F&F&F&T\\\hline
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $p$&$q$&$s$&$\neg s$&$\neg q$&$\neg q \vee \neg s$&$\neg p$&$\neg p \wedge \left(\neg q \vee \neg s\right)$\\ \hline
+        T&T&T&F&F&F&F&F\\\hline
+        T&T&F&T&F&T&F&F\\\hline
+        T&F&T&F&T&T&F&F\\\hline
+        T&F&F&T&T&T&F&F\\\hline
+        F&T&T&F&F&F&T&F\\\hline
+        F&T&F&T&F&T&T&T\\\hline
+        F&F&T&F&T&T&T&T\\\hline
+        F&F&F&T&T&T&T&T\\\hline
+    \end{tabular}
+\end{center}
+Since the truth values of $\neg [p \lor (s \land (\neg p \rightarrow q))]$ are the same as $\neg p \land (\neg s \lor \neg q)$, the two statements are equivalent. \\
+\\
+% Question 3
+\textbf{Q3. Write the statement:\textit{Everybody loves Raymond} and its negation symbolically using quantifiers. Clearly state what variable represents what statement.} \\
+Let $L(x)$ be the statement that $x$ loves Raymond, and the domain consists of everyone. \\
+Original: $$\forall x (L(x))$$
+Negation: $$\neg(\forall x (L(x)) \equiv \exists x | \neg L(x)$$ 
+\\
+% Question 4
+\textbf{Q4. Consider the theorem \textit{The second power of integers end only in the digits} $\{0,1,4,5,6,9\}$} \\
+\textbf{a. Write the statement of this theorem \underline{symbolically}}, as a conditional, as if you were to use a direct proof. \\
+Let $P(x)$ be the statement that $x$ is the second power of an integer, and the domain consists of integers.
+$$\forall x \in \mathbb{Z} (P(x) \rightarrow x \bmod{10} \in \{0,1,4,5,6,9\})$$
+\textbf{b. Write the statement \underline{symbolically}, as a conditional, as if you were to prove it by contraposition.} 
+$$\forall x \in \mathbb{Z} (x \bmod{10} \notin \{0,1,4,5,6,9\} \rightarrow \neg P(x))$$
+% Question 5
+\textbf{Q5. Suppose that the universe for $x$ and $y$ is $\{a,b,c,d\}$. Assume that $P(x,y)$ is a predicate that is true in the following cases: $P(a,d), P(b,a), P(b,b), P(b,c), P(c,a), P(c,b), \\ P(c,d), P(d,a), P(d,b), P(d,d)$ and false otherwise. \\
+Determine and justify whether each of the following is true or false:} \\
+\textbf{a. $\forall x (P(x,y) \rightarrow y \neq x$} \\
+False. $x=b$. For $P(b,b)$, $y=x$. \\
+\textbf{b. $\forall x \exists y|((P(x,y) \lor P(y,x))$} \\
+True. $\forall x \exists y (P(x,y)). \ x=a, y=d \ P(a,d). \ x=b, y = a \ P(b,a). \ x=c, y=a \ P(c,a). \\ x=d, y=a \ P(d,a).$ \\
+\textbf{c. $\forall y \exists x|(y \neq x \land P(x,y))$} \\
+True. $y=a, x=b \ P(b,a). \ y=b, x=c \ P(c,b). \ y=c, x=b \ P(c,b). \ y=d, x=a \ P(a,d).$ \\
+\\
+% Question 6
+\textbf{Q6. Negate this statement symbolically: \textit{No work, no credit without using it is not true that}... \\
+Clearly indicate which variable is which statement.} \\
+Let $w, c$ be the propositions that "there is no work", "there is no credit", respectively. \\
+Original: $$w \rightarrow c$$
+Negation: 
+\begin{align*}
+    \neg ( w \rightarrow c) &\equiv \neg (\neg w \lor c) \\
+                            &\equiv w \land \neg c
+\end{align*}
+% Question 7
+\textbf{Q7. The domain of discourse are the students in a class. Define the predicates: \\ $S(x)$ and $A(x)$ as \textit{$x$ received as an A on the test,} respectively. \\ 
+Write symbolically: \textit{Someone who did not study for the test received an A on the test.}} \\
+$$\exists x | (\neg S(x) \land A(x))$$ \\
+% Question 8
+\textbf{Q8. Determine whether the following argument is valid. \\
+\\
+If I get a job then I will buy a new car or a new house. \\
+\underline{I won't buy a new house.} \\
+$\therefore$ I will not get a job.} \\
+\\
+Let $j,c,h$ be the propositions that "I get a job", "I will buy a new car", "I will by a new house", respectively.
+\begin{align}
+    &j \rightarrow (c \lor h)               &&\text{Premise} \\
+    &\neg h                                 &&\text{Premise} \\
+    &\neg (c \lor h) \rightarrow \neg j     &&\text{Law of Contraposition from (1)} \\
+    &\neg c \land \neg h \rightarrow \neg j &&\text{De Morgan's Laws from (3)}
+\end{align}
+False. $\neg h$ is not sufficient to prove $\neg j$; we must know the truth value of $c$ as well. \\
+% Question 9
+\newpage
+\textbf{Q9. Prove: \textit{The average of two odd integers is an integer.}}
+\begin{proof} Direct. Let $a = 2c+1, b=2k+1, c,k \in \mathbb{Z}$
+\begin{align*}
+\frac{a+b}{2} &= \frac{2c+1 + 2k+1}{2} \\
+              &= \frac{2c + 2k + 2}{2} \\
+              &= c + k + 1 
+\end{align*}
+The sum of integers is an integer.
+\end{proof}
+% Question 10
+\textbf{Q10. Prove by contraposition: \textit{For every integer $n, n^2 - 2n + 7$ is even, then $n$ is odd}.}
+\begin{proof} Contraposition. For every integer $n$, if $n$ is not odd, then $n^2 - 2n + 7$ is not even. \\
+If $n$ is not odd, $n$ is even and can be rewritten as $2c, c \in \mathbb{Z}$
+\begin{align*}
+    (2c)^2 - 2(2c) + 7 &= 4c^2 - 4c + 7 \\
+                       &= 4c^2 - 4c + 6 + 1 \\
+                       &= 2(2c^2 - 2c + 3) + 1 \\
+                       &\text{Let } 2c^2 - 2c + 3 = k \\
+                       &= 2k + 1 
+\end{align*}
+Since $n^2 - 2n + 7$ can be rewritten as $2k + 1$, it is not even; it is odd.
+\end{proof}
+\end{document}
+ 

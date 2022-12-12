@@ -19,10 +19,11 @@
 \usetikzlibrary{scopes}
 \usepackage{xcolor} \pagecolor[rgb]{0.12549019607,0.1294117647,0.13725490196} \color[rgb]{0.82352941176,0.76862745098,0.62745098039} % dark theme
 \theoremstyle{definition}
-\newtheorem{example}{Example}
+\newtheorem{example}{Example}[subsubsection]
 \newtheorem*{remark}{Remark}
 \newtheorem{theorem}{Theorem}[subsubsection]
 \newtheorem{definition}{Definition}[subsubsection]
+\newtheorem{corollary}{Corollary}[subsubsection]
 \hypersetup{
 	colorlinks=false,      % false: boxed links; true: colored links
 	linkcolor=blue,        % color of internal links
@@ -1106,14 +1107,347 @@
     \subsection{Strong Induction and Well Ordering Principle}
     \section{Counting}
     \subsection{Basics of Counting}
+    \stepcounter{subsubsection}
+    \subsubsection{Basic Counting Principles}
+    \begin{theorem}
+        \textbf{Multiplication Rule}: Multiply the number of ways that $A$ can occur by the number of ways that $B$ can occur (where $A$ and $B$ are two events).
+        \begin{itemize}
+            \item $|A_1 \times A_2 \times \dots \times A_n| = |A_1| \cdot |A_2| \cdot \dots \cdot |A_n|$
+        \end{itemize}
+    \end{theorem}
+    \begin{theorem}
+        \textbf{Sum Rule}: Add the number of ways that $A$ can occur to the number of ways that $B$ can occur (where $A$ and $B$ are two events).
+        \begin{itemize}
+            \item $|A_1 \unite A_2 \unite \dots \unite A_n| = |A_1| + |A_2| + \dots + |A_n|$ when $A_i \inter A_j =$ for all $i,j$.
+        \end{itemize}
+    \end{theorem}
+    \stepcounter{subsubsection}
+    \stepcounter{subsubsection}
+    \subsubsection{Subtraction Rule (Inclusion-Exclusion For Two Sets)}
+    \begin{theorem}
+        \textbf{Subtraction Rule}: If $A$ can be done in either $n_1$ or $n_2$ ways, then the number of ways to do the task is $n_1 + n_2$ minus the number of ways to do the task that are common to the two different ways.
+        \begin{itemize}
+            \item $|A_1 \unite A_2| = |A_1| + |A_2| - |A_1 \inter A_2|$
+        \end{itemize}
+    \end{theorem}
+    \subsubsection{Division Rule}
+    \begin{theorem}
+        \textbf{Division Rule}: There are $n/d$ ways to do a task if it can be done using a procedure that can be carried out in $n$ ways, and for every way $w$, exactly $d$ of the $n$ ways correspond to way $w$.
+        \begin{itemize}
+            \item Useful when it appears that a task can be done in $n$ different ways, but it turns out that for each way of doing the task, there are $d$ equivalent ways of doing it. There are $n/d$ inequivalent ways to do the task.
+        \end{itemize}
+    \end{theorem}
     \subsection{Pigeonhole Principle}
+    \subsubsection{Introduction}
+    \begin{theorem}
+        \textbf{Pigeonhole Principle}: If $k$ is a positive integer and $k+1$ or more objects are placed into $k$ boxes, then there is at least one box containing two or more of the objects.
+    \end{theorem}
+    \begin{corollary}
+        A function $f$ from a set with $k+1$ or more elements to a set with $k$ elements is not one-to-one.
+    \end{corollary}
+    \subsubsection{Generalized Pigeonhole Principle}
+    \begin{theorem}
+        \textbf{Generalized Pigeonhole Principle}: If $N$ objects are placed into $k$ boxes, then there is at least one box containing at least $\ceil*{\df{N}{k}}$ objects.
+    \end{theorem}
+    Here are some proofs using the pigeonhole principle:
+    \begin{example}
+        \textbf{Show that for every integer $n$ there is a multiple of $n$ that has only 0s and 1s in its decimal expansion.}
+        \begin{proof}
+            Let $n$ be a positive integer. Consider the $n+1$ integers $1,11,111,\dots,11\dots 1$ (where the last integer in this list is the integer with $n+1$ 1s in its decimal expansion). Note that there are $n$ possible remainders when an integer is divided by $n$. Because there are $n+1$ integers in this list, by the pigeonhole principle, there must be two with the same remainder when divided by $n$. The larger of these integers less the smaller one is a multiple of $n$, which has decimal expansion with only 0s and 1s.
+        \end{proof}
+    \end{example}
+    \begin{example}
+        \textbf{How many cards must be selected from a standard deck of 62 cards to guarentee that:}
+        \begin{enumerate}[a)]
+            \item at least three cards are of the same suit?
+            \item at least three hearts are selected?
+        \end{enumerate}
+        \begin{proof}
+            \textbf{a)} Suppose there are 4 boxes, one for each suit, and as cards are selected they are placed in their respective box. Using the generalized pigeonhole principle, we see that if $N$ cards are selected, there is at least 1 box contaning at least $\ceil*{N/4}$ cards. Thus, we know that at least 3 cards of 1 suit are selected if $\ceil*{N/4} \geq 3$. The smallest integer $N$ to satisfy this inequality is $2\times 4+1=9$, so we must select at least 9 cards to guarentee that at least 3 cards are of the same suit.
+        \end{proof}
+        \begin{itemize}
+            \item Note that if 8 cards are selected, it is possible to have 2 cards of each suit, so more than eight cards are needed.
+        \end{itemize} 
+    \begin{proof}
+        \textbf{b)} We do not use the generalized pigeonhole principle because we want to make sure that there are 3 hearts, not just 3 cards of a suit. Note that in the worst case, we can select all the clubs, diamonds, and spades, 39 cards in all, before we select a single heart. The next 3 cards will all be hearts, so we may need to select 42 cards to get 3 hearts.
+    \end{proof}
+    \end{example}
+    \subsubsection{Some Elegant Applications of the Pigeonhole Principle}
+    \begin{example}
+        During a month with 30 days, a baseball team plays at least one game a day, but no more than 45 games. Show that there must be a period fo some number of consecutive days during which the team must play exactly 14 games.
+        \begin{proof}
+            Let $a_j$ be the number of games played on or before the $j$th day of the month. Then $a_1, a_2, \dots, a_{30}$ is an increasing sequence of distinct positive integers, with $1 \leq a_j \leq 45$. Moreover, $a_1 + 14, a_2 + 14, \dots, a_j + 14$ is also an increasing sequence of distinct positive integers, with $15 \leq a_j + 14 \leq 59$. \\
+
+            The 60 positive integers $a_1, a_2, \dots, a_{30}, a_1 + 14, a_2 + 14, \dots, a_j + 14$ are all less than or equal to 59. Hence, by the pigeonhole principle two of these integers must be equal. Because the integers $a_j, j = 1,2,\dots, 30$, are all distinct and the integers $a_j+14, j= 1,2,\dots,30$ are all distinct, there must be indices $i$ and $j$ with $a_i = a_j + 14$. This means that exactly 14 games were played from day $j+1$ to day $i$.
+        \end{proof}
+    \end{example}
+    \begin{example}
+        Show that among any $n+1$ positive integers not exceeding $2n$ there must be an integer that divides one of the other integers.
+        \begin{proof}
+            Write out each of the $n+1$ integers $a_1, a_2, \dots, a_{n+1}$ as a power of 2 times an odd integer. In other words, let $a_j=2^{k_j}q_j$, for $j=1,2,\dots n+1$, where $k_j$ is a nonnegative integer and $q_j$ is odd. The integers $q_1, q_2, \dots, q_{n+1}$ are all odd positive integers less than $2n$. Because there are only $n$ odd positive integers less than $2n$, it follows from the pigeonhole principle that two of the integers $q_1, q_2, \dots, q_{n+1}$ must be equal. Therefore, there are distinct integers $i$ and $j$ such that $q_i = q_j$. Let $q$ be the common value of $q_i$ and $q_j$. Then $a_i = 2^{k_i}q$ and $a_j = 2^{k_j}q$. It follows that if $k_i < k_j$, then $a_i$ divides $a_j$; while if $k_i > k_j$, then $a_j$ divides $a_i$. In either case, there is an integer that divides one of the other integers.
+        \end{proof}
+    \end{example}
+    \begin{theorem}
+        Every sequence of $n^2 + 1$ distinct real numbers contains a subsequence of $n+1$ that is either strictly increasing or strictly decreasing.
+    \end{theorem}
     \subsection{Permutations and Combinations}
+    \stepcounter{subsubsection}
+    \subsubsection{Permutations}
+    \begin{definition}
+        A \textbf{permutation} of a set $S$ is an ordering of the elements of $S$.
+    \end{definition}
+    \begin{theorem}
+        If $n$ is a positive integer and $r$ is an integer with $1 \leq r \leq n$, then there are:
+        \begin{equation*}
+            P(n,r) = n(n-1)(n-2)\cdots(n-r+1)
+        \end{equation*}
+        $r$-permutations of a set of $n$ \textbf{distinct} elements.
+    \end{theorem}
+    \begin{corollary}
+        If $n$ and $r$ are integers with $0 \leq r \leq n$, then: 
+        \begin{equation*}
+            P(n,r) = \frac{n!}{(n-r)!}
+        \end{equation*}
+    \end{corollary}
+    \subsubsection{Combinations}
+    \begin{definition}
+        An $r$-combination of a set $S$ is a subset of $S$ with $r$ elements.
+    \end{definition}
+    \begin{theorem}
+        The number of $r$-combinations of a set with $n$ elements, where $n$ is a nonnegative integer and $r$ is an integer with $0 \leq r \leq n$, is:
+        \begin{equation*}
+            C(n,r) = \frac{n!}{r!(n-r)!}
+        \end{equation*}
+    \end{theorem}
+    \begin{corollary}
+        Let $n$ and $r$ be nonnegative integers with $r \leq n$. Then:
+        \begin{equation*}
+            C(n,r) = C(n, n-r)
+        \end{equation*}
+    \end{corollary}
+    \begin{definition}
+        \textbf{Combinatorial Proof}: If this is on the final, doomed. Refer to Homework 3 (Practice Exam 3) Question 13 Part B for an example. Page 438 uses this method to prove the Binomial Theorem.
+    \end{definition}
     \subsection{Binomial Coefficients and Identities}
+    \subsubsection{Binomial Theorem}
+    \begin{theorem}
+        Let $x$ and $y$ be variables, and let $n$ be a nonnegative integer. Then:
+        \begin{equation*}
+            (x+y)^n = \sum_{j=0}^n \binom{n}{j}x^jy^{n-j} = \binom{n}{0}x^ny^0 + \binom{n}{1}x^{n-1}y^1 + \cdots + \binom{n}{n}x^0y^n
+        \end{equation*}
+    \end{theorem}
+    \begin{corollary}
+        Let $n$ be a nonnegative integer. Then:
+        \begin{equation*}
+            \sum_{k=0}^n \binom{n}{k} = 2^n
+        \end{equation*}        
+    \end{corollary}
+    \begin{corollary}
+        Let $n$ be a positive integer. Then:
+        \begin{equation*}
+            \sum_{k=0}^n (-1)^k \binom{n}{k} = 0
+        \end{equation*}
+    \end{corollary}
+    \begin{corollary}
+        Let $n$ be a nonnegative integer. Then:
+        \begin{equation*}
+            \sum_{k=0}^n 2^k \binom{n}{k} = 3^n
+        \end{equation*}
+    \end{corollary}
+    \subsubsection{Pascal's Identity}
+    \begin{theorem}
+        \textbf{Pascal's Identity}: Let $n$ and $k$ be positive integers with $n \geq k$. Then:
+        \begin{equation*}
+            \binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
+        \end{equation*}
+    \end{theorem}
+    \subsubsection{Other Identities Involving Binomial Coefficients}
+    \begin{theorem}
+        \textbf{Vandermonde's Identity}: Let $m,n,r$ be nonnegative integers, $r < m,n$. Then:
+        \begin{equation*}
+            \binom{m + n}{r} = \sum_{k=0}^r \binom{n}{k}\binom{m}{r-k}
+        \end{equation*}
+    \end{theorem}
+    \begin{corollary}
+        If $n$ is a nonnegative integer, then:
+        \begin{equation*}
+            \binom{2n}{n} = \sum_{k=0}^n \binom{n}{k}^2
+        \end{equation*}
+    \end{corollary}
+    \begin{theorem}
+        Let $n$ and $r$ be nonnegative integers with $r \leq n$. Then:
+        \begin{equation*}
+            \binom{n + 1}{r + 1} = \sum_{j=r}^n \binom{j}{r}
+        \end{equation*}
+    \end{theorem}
     \subsection{Generalized Permutations and Combinations}
-    \subsection{Generating Permutations and Combinations}
+    \stepcounter{subsubsection}
+    \subsubsection{Permutations with Repetition}
+    \begin{theorem}
+        The number of $r$-permutations of a set of $n$ objects \textbf{with repetition} is:
+        \begin{equation*}
+            P_r(n) = n^r
+        \end{equation*}
+    \end{theorem}
+    \subsubsection{Combinations with Repetition}
+    \begin{itemize}
+        \item STARS AND BARS
+    \end{itemize}
+    \begin{theorem}
+        There are $C(n+r-1, r) = C(n+r-1, n-1)$ $r$-combinations from a set of $n$ elements \textbf{with repetition}.
+    \end{theorem}
+    \begin{itemize}
+        \item $n$ stars and $r$ bars. Total positions is $n+r-1$. Number of ways to place $r$ bars is $C(n+r-1, r)$.
+        \item Recall that we can have restrictions for each bar. \textbf{At least: Subtract from $n+r-1$ the number of stars. At most, subtract the complement.} 
+    \end{itemize}
+    \subsubsection{Permutations with Indistinguishable Objects}
+    \begin{theorem}
+        The number of different permutations of $n$ objects where there are $n_1$ indistinguishable objects of type 1, $n_2$ indistinguishable objects of type 2, \ldots, $n_k$ indistinguishable objects of type $k$ is:
+        \begin{equation*}
+            \frac{n!}{n_1!n_2!\cdots n_k!}
+        \end{equation*}
+    \end{theorem}
+    \begin{itemize}
+        \item Proof on Page 450.
+    \end{itemize}
+    \subsubsection{Distributing Objects into Boxes}
+    \begin{theorem}
+        The number of ways to distribute $n$ \textbf{distinguishable objects} into $k$ \textbf{distinguishable boxes} so that $n_i$ objects are placed into box $i, i = 1, 2, \ldots, k$ is:
+        \begin{equation*}
+            \frac{n!}{n_1!n_2!\cdots n_k!}
+        \end{equation*}
+    \end{theorem}
+    \begin{figure}[H]
+        \centering
+        {\renewcommand{\arraystretch}{2}
+        \begin{tabular}{|l|c|}
+            \hline
+            Situation & Formula \\
+            \hline
+            $n$ Distinguishable Objects and $r$ Boxes & $\df{n!}{n_1!n_2!\cdots n_k!}$ \\
+            $n$ Indistinguishable Objects and $r$ Distinguishable Boxes & $\displaystyle\binom{n + r - 1}{r}$ \\
+            $n$ Distinguishable Objects and $r$ Indistinguishable Boxes & Give up. Start writing everything out. \\
+            \hline
+        \end{tabular}}
+        \caption{Distributing Objects into Boxes}
+    \end{figure}
     \section{Probability}
     \subsection{Introduction to Discrete Probability}
     \subsection{Probability Theory}
     \subsection{Bayes' Theorem}
-    \subsection{Expected Value and Variance} 
+    \begin{theorem} \textbf{Bayes' Theorem}: Suppose that $E$ and $F$ are events from a sample space $S$ such that $p(E) \neq 0$ and $p(F) \neq 0$. Then:
+        \begin{equation*}
+            p(F \mid E) = \frac{p(E \mid F)p(F)}{p(E \mid F)p(F) + p(E \mid \overline{F})p(\overline{F})}
+        \end{equation*}
+    \end{theorem}
+    \subsection{Expected Value and Variance}
+    \stepcounter{subsubsection}
+    \subsubsection{Expected Values}
+    \begin{definition}
+        The \textbf{expected value} of the random variable $X$ on the sample space $S$ is:
+        \begin{equation*}
+            E(X) = \sum_{s \in S} p(s)X(s)
+        \end{equation*}
+        The \textbf{deviation} of $X$ at $s \in S$ is: 
+        \begin{equation*}
+            d(s) = X(s) - E(X)
+        \end{equation*}
+    \end{definition} 
+    \begin{theorem}
+        If $X$ is a random variable and $p(X=r)$ is the probability that $X=r$, so that $p(X=r) = \displaystyle\sum_{s \in S, X(s)=r} p(s)$, then:
+        \begin{equation*}
+            E(X) = \sum_{r \in X(s)} p(X=r)r
+        \end{equation*}
+    \end{theorem}
+    \begin{example}
+        \textbf{Expected Value of a Die: }
+        \begin{itemize}
+            \item Let $X$ be the random variable that represents the number of spots on a die. Then $X$ is a random variable on the sample space $S = \{1,2,3,4,5,6\}$.
+            \item Let $\displaystyle p(s) = \frac{1}{6}$ for each $s \in S$.
+            \item Then $\displaystyle E(X) = \sum_{s \in S} p(s)X(s) = \sum_{s \in S} \frac{1}{6}X(s) = \frac{1}{6}\sum_{s \in S} X(s) = \frac{1}{6}\cdot 21 = \df{7}{2}$
+            \item The expected value of $X$ is 3.5.
+        \end{itemize}
+        \label{ex:ev-die}
+    \end{example} 
+    \begin{theorem}
+        The expected number of successes when $n$ mutually independent Bernoulli trials are formed, where $p$ is the probability of success on each trial, is:
+        \begin{equation*}
+            E(X) = np
+        \end{equation*}
+    \end{theorem}
+    \subsubsection{Linearity of Expectations}
+    \begin{theorem}
+        If $X_i=1,2,\dots,n$ with $n$ a positive integer, are random variables on $S$, and if $a$ and $b$ are real numbers:
+        \begin{enumerate}[(i).]
+            \item $E(X_1 + X_2 + \dots + X_n) = E(X_1) + E(X_2) + \dots + E(X_n)$
+            \item E(aX + b) = aE(X) + b
+        \end{enumerate}
+    \end{theorem}
+    \stepcounter{subsubsection}
+    \subsubsection{Geometric Distribution}
+    \begin{definition}
+        TA random variable $X$ has a \textbf{geometric distribution with parameter} $p$ if $p(X = k) = (1-p)^{k-1}p$ for $k = 1,2,\dots$, where $p$ is a real number with $0 \leq p \leq 1$.
+    \end{definition}
+    \begin{theorem}
+        If the random variable $X$ has the geometric distribution with parameter $p$, then:
+        \begin{equation*}
+            E(X) = \frac{1}{p}
+        \end{equation*}
+    \end{theorem}
+    \subsubsection{Independent Random Variables}
+    \begin{theorem}
+        The random variables $X$ and $Y$ on the sample space $S$ are \textbf{independent} if:
+        \begin{equation*}
+            p(X=r_1 \text{ and } Y=r_2) = p(X=r_1)p(Y=r_2)
+        \end{equation*}
+        or in words, if the probability that $X = r_1$ and $Y = r_2$ equals the product of the probabilities that $X = r_1$ and $Y = r_2$ for all numbers $r_1$ and $r_2$.
+    \end{theorem}
+    \begin{theorem}
+        If $X$ and $Y$ are independent random variables on the sample space $S$, then:
+        \begin{equation*}
+            E(XY) = E(X)E(Y)
+        \end{equation*}
+    \end{theorem}
+    \subsubsection{Variance}
+    \begin{definition}
+        Let $X$ be a random variable on a sample space $S$. The \textbf{variance} of $X$ is, denoted by $V(X)$ is:
+        \begin{equation*}
+            V(X) = \sum_{x \in S}(X(s) - E(X))^2p(s)=E(X^2) - E(X)^2
+        \end{equation*}
+        $V(X)$ is the weighted average of the square of the deviation of $X$. The \textbf{standard deviation} of $X$, denoted $\sigma(X)$, is:
+        \begin{equation*}
+            \sigma(X) = \sqrt{V(X)}
+        \end{equation*}
+    \end{definition}
+    \begin{example}
+        \textbf{Variance of the Value of a Die} \\
+        We have $V(X) = E(X^2) - E(X)^2$. From \hyperref[ex:ev-die]{Example 7.4.2.1}, we have $E(X) = 7/2$. To find $E(X^2)$ note that $X^2$ takes the values $i^2, i=1,2,\dots,6$, each with probability $\frac{1}{6}$. Thus:
+        \begin{equation*}
+            E(X^2) = \frac{1}{6}\sum_{i=1}^6 i^2 = \frac{1}{6}\cdot 91 = \frac{91}{6}
+        \end{equation*}
+        Thus:
+        \begin{equation*}
+            V(X) = \frac{91}{6} - \paren*{\frac{7}{2}}^2 = \frac{35}{12}
+        \end{equation*}
+    \end{example}
+    \begin{corollary}
+        If $X$ is a random variable on a sample space $S$ and $E(X) = \mu$, then:
+        \begin{equation*}
+            V(X) = E(X - \mu)^2
+        \end{equation*}
+    \end{corollary}
+    \begin{theorem}
+        \textbf{Variance of a Bernoulli Trial} \\
+        Because $X$ takes only the values $0$ and $1$, it follows that $X^2(t) = X(t)$. Hence:
+        \begin{equation*}
+            V(X) = E(X^2) - E(X)^2 = p - p^2 = p(1-p) = pq
+        \end{equation*}
+        Where $p$ is the probability of success on a single trial, $q$ is the probability of failure.
+    \end{theorem}
+    \begin{theorem}
+        If $X$ and $Y$ are independent random variables on the sample space $S$, the $V(X+Y) = V(X) + V(Y)$. Furthermore, if $X_i, i=1,2,\dots,n$, with $n$ a positive integer, are pairwise independent random variables on $S$, then:
+        \begin{equation*}
+            V(X_1 + X_2 + \dots + X_n) = V(X_1) + V(X_2) + \dots + V(X_n)
+        \end{equation*}
+    \end{theorem}
 \end{document}
